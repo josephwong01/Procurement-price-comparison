@@ -4,7 +4,7 @@
 
 ## 当前阶段
 
-当前版本完成项目规划与 `Procurement Requirement Schema v0.1`。平台检索、商品采集、自动询价和下单不在本阶段范围内。
+当前正在用真实采购案例验证 `Procurement Requirement Schema v0.1`。咖啡饮料机案例只完成了“设备类”验证；在标准品、定制品、设备和服务至少各验证 1 个案例并冻结 v0.2 前，不进入 Query Planner。
 
 ## 核心流程
 

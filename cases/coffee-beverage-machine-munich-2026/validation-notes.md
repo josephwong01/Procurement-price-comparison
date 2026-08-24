@@ -2,7 +2,7 @@
 
 ## 结论
 
-该案例可以由 Procurement Requirement Schema v0.1 表达，并已达到 `SEARCH_READY`。现有 Schema 暂不需要修改。
+该设备类案例可以由 Procurement Requirement Schema v0.1 表达，并已达到 `SEARCH_READY`。这只代表本案例可以进入搜索，不代表 Requirement Schema 阶段已经结束，也不授权跳到 Query Planner。
 
 ## 已验证能力
 
@@ -33,6 +33,7 @@
 ## 阶段判断
 
 - 需求状态：`SEARCH_READY`
-- 可开始 Query Planner：是
+- 本案例具备生成 Query Planner 输入的条件：是
+- 项目是否进入 Query Planner 阶段：否；必须先完成阶段 2～5
 - 可直接下单：否
-- 是否立即修改 v0.1 Schema：否；先保留改进候选，等待更多真实案例。
+- 是否立即冻结 v0.2：否；还需完成标准品、定制品、服务类案例，并汇总改进项。
