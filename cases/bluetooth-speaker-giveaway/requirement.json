@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1",
+  "requirement_id": "PR-BT-SPEAKER-GIFT-001",
+  "title": "展会抽奖礼品蓝牙音响",
+  "status": "SEARCH_READY",
+  "requester": { "name": null, "department": "采购部", "company": null },
+  "product": {
+    "name": "蓝牙音响",
+    "category": "标准品/消费电子/便携音响",
+    "description": "用于展会游戏抽奖并赠送客户，优先支持定制Logo。",
+    "brand_policy": { "mode": "ANY", "brands": [], "substitutes_allowed": true },
+    "attributes": [
+      { "key": "bluetooth_audio", "label": "蓝牙播放", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "gift_suitability", "label": "适合作为客户礼品", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "外观、包装和便携性在候选比较阶段评估" },
+      { "key": "portable", "label": "便携", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "logo_customization", "label": "支持定制Logo", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "需核验10个的定制MOQ和费用" }
+    ]
+  },
+  "quantity": { "value": 10, "unit": "个" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 100, "currency": "CNY", "tax_included": null },
+    "total_ceiling": { "amount": 1000, "currency": "CNY", "tax_included": null },
+    "level": "HARD"
+  },
+  "delivery": {
+    "destination": "双路径：中国境内地址或德国地址",
+    "required_date": null,
+    "lead_time_days_max": null,
+    "level": "HARD"
+  },
+  "commercial": {
+    "moq_max": { "value": 10, "unit": "个" },
+    "invoice_required": null,
+    "invoice_type": null,
+    "tax_rate": null,
+    "payment_terms": null
+  },
+  "customization": {
+    "required": false,
+    "process_confirmed": false,
+    "requirements": [
+      { "key": "logo_printing", "label": "Logo定制", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "不支持或超预算时仍可作为无Logo候选" }
+    ],
+    "sample_required": null,
+    "artwork_reference": null
+  },
+  "supplier_requirements": [
+    { "key": "free_shipping", "label": "包邮", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "国内方案包邮至国内地址；Amazon Germany方案包邮至德国地址" },
+    { "key": "small_batch_available", "label": "支持10个采购", "level": "HARD", "operator": "LTE", "value": 10, "unit": "个", "tolerance": null, "notes": null }
+  ],
+  "search_preferences": {
+    "platforms": ["1688", "淘宝", "京东", "Amazon Germany", "公开网页"],
+    "supplier_count_min": 5,
+    "languages": ["zh-CN", "de", "en"]
+  },
+  "constraints": [
+    { "key": "domestic_channel_cost_scope", "label": "国内渠道成本口径", "level": "INFORMATION", "operator": "EQ", "value": "售价且包邮至国内地址", "unit": null, "tolerance": null, "notes": "中国至德国转运成本暂不计入" },
+    { "key": "amazon_de_channel_cost_scope", "label": "Amazon Germany成本口径", "level": "INFORMATION", "operator": "EQ", "value": "售价且包邮至德国地址", "unit": null, "tolerance": null, "notes": "欧元价格需按采集时汇率换算并保留原币值" }
+  ],
+  "readiness": {
+    "blocking_questions": [],
+    "warnings": [
+      "最晚到货日期尚未提供",
+      "中国境内和德国的具体收货地址尚未提供",
+      "预算币种按中文采购语境暂记为CNY",
+      "Amazon Germany价格需保留欧元原价、税费口径和汇率时间",
+      "10个的小批量Logo定制可能不满足MOQ或超过预算",
+      "续航、功率、防水和蓝牙版本未设最低要求，只能作为候选比较字段"
+    ],
+    "assumptions": [
+      "100元/个按商品售价上限理解，且候选必须满足对应目的地包邮",
+      "Logo定制是偏好，不支持Logo的标准品仍可进入候选池",
+      "国内方案的中国至德国后续转运成本暂不计入"
+    ]
+  },
+  "provenance": [
+    { "field_path": "/product", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "蓝牙音响；作为展会礼品，送给客户，通过玩游戏抽奖", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/quantity", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "数量10个", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/budget", "source_type": "INFERRED", "source_reference": "当前项目对话", "original_text": "预算100元/个；按照售价算，包邮", "recorded_at": null, "confidence": "HIGH", "inference_basis": "总预算由10个×100元计算" },
+    { "field_path": "/delivery", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "收货地址德国，也是先送到国内先，但是可以考虑在亚马逊找找", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/customization/requirements/0", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "最好可以定制logo", "recorded_at": null, "confidence": "HIGH", "inference_basis": null }
+  ],
+  "notes": [
+    "Requirement Schema v0.1标准品真实案例。",
+    "本案例同时验证标准品的可选轻定制和双渠道成本边界。"
+  ]
+}
