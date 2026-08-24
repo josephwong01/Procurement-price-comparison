@@ -4,7 +4,7 @@
 
 ## 当前阶段
 
-当前正在用真实采购案例验证 `Procurement Requirement Schema v0.1`。咖啡饮料机案例只完成了“设备类”验证；在标准品、定制品、设备和服务至少各验证 1 个案例并冻结 v0.2 前，不进入 Query Planner。
+四类真实采购案例已完成 `Procurement Requirement Schema v0.1` 验证。当前下一步是汇总问题、修订 Schema，并以四例回归验证后冻结 v0.2；在此之前不进入后续输出结构或 Query Planner。
 
 ## 核心流程
 
@@ -27,7 +27,10 @@
 │   ├── bluetooth-speaker-giveaway/
 │   │   ├── requirement.json
 │   │   └── validation-notes.md
-│   └── ip-mascot-costume/
+│   ├── ip-mascot-costume/
+│   │   ├── requirement.json
+│   │   └── validation-notes.md
+│   └── residential-floor-plan-design/
 │       ├── requirement.json
 │       └── validation-notes.md
 ├── docs/
@@ -52,4 +55,4 @@
 
 详见 [项目路线图](docs/project-roadmap.md)、[工作流](docs/workflow.md)和 [Schema 指南](docs/schema-guide.md)。
 
-真实案例见 `cases/`。目前已覆盖设备类、定制品和标准品。
+真实案例见 `cases/`。目前已覆盖设备类、定制品、标准品和服务类。

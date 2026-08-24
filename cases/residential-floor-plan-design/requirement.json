@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "requirement_id": "PR-RESIDENTIAL-DESIGN-001",
+  "title": "150平方米商品房平面及室内装修设计",
+  "status": "SEARCH_READY",
+  "requester": { "name": null, "department": "采购部", "company": null },
+  "product": {
+    "name": "商品房平面图及室内装修设计服务",
+    "category": "服务/室内设计/住宅设计",
+    "description": "为约150平方米商品房提供平面布局、室内装修设计及3D渲染效果图。",
+    "brand_policy": { "mode": "ANY", "brands": [], "substitutes_allowed": true },
+    "attributes": [
+      { "key": "property_area", "label": "设计面积", "level": "HARD", "operator": "EQ", "value": 150, "unit": "m²", "tolerance": null, "notes": null },
+      { "key": "floor_plan_design", "label": "平面图设计", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "interior_design", "label": "室内装修设计", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "rendered_3d_views", "label": "3D渲染效果图", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "不要求可编辑3D模型源文件" },
+      { "key": "remote_collaboration", "label": "线上资料沟通", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "可提供户型图，必要时补充视频和图片" }
+    ]
+  },
+  "quantity": { "value": 1, "unit": "项目" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 8000, "currency": "CNY", "tax_included": null },
+    "total_ceiling": { "amount": 8000, "currency": "CNY", "tax_included": null },
+    "level": "HARD"
+  },
+  "delivery": { "destination": "线上交付", "required_date": null, "lead_time_days_max": 14, "level": "HARD" },
+  "commercial": {
+    "moq_max": { "value": 1, "unit": "项目" },
+    "invoice_required": null,
+    "invoice_type": null,
+    "tax_rate": null,
+    "payment_terms": "支付后起算14天，具体付款节点待确认"
+  },
+  "customization": {
+    "required": true,
+    "process_confirmed": false,
+    "requirements": [
+      { "key": "design_based_on_floor_plan", "label": "依据原始户型图设计", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "supplementary_media", "label": "必要时提供视频和图片", "level": "INFORMATION", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null }
+    ],
+    "sample_required": false,
+    "artwork_reference": "原始户型图可提供，必要时补充视频和图片"
+  },
+  "supplier_requirements": [
+    { "key": "residential_design_experience", "label": "住宅室内设计经验", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": "查看同类案例" },
+    { "key": "delivery_from_payment", "label": "支付后14天内交付", "level": "HARD", "operator": "LTE", "value": 14, "unit": "天", "tolerance": null, "notes": null }
+  ],
+  "search_preferences": {
+    "platforms": ["设计服务平台", "室内设计工作室", "自由设计师平台", "公开网页"],
+    "supplier_count_min": 5,
+    "languages": ["zh-CN"]
+  },
+  "constraints": [
+    { "key": "all_in_design_fee", "label": "设计服务全包总价", "level": "HARD", "operator": "LTE", "value": 8000, "unit": "CNY", "tolerance": null, "notes": "覆盖已明确设计范围；修改轮次、税费和附加服务仍需确认" }
+  ],
+  "readiness": {
+    "blocking_questions": [],
+    "warnings": [
+      "户型图尚未实际附入",
+      "装修风格、功能需求和居住者信息尚未提供",
+      "效果图数量、修改轮次和阶段确认节点未明确",
+      "税费、知识产权和源文件归属未确认",
+      "房屋所在城市及现场复尺责任未明确"
+    ],
+    "assumptions": [
+      "按一个150平方米住宅设计项目理解",
+      "8000元全包不自动包含未说明的施工图、现场服务或无限次修改",
+      "3D建模图按用户确认理解为渲染效果图"
+    ]
+  },
+  "provenance": [
+    { "field_path": "/product", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "商品房平面图设计；包含室内装修设计，3D模型有渲染效果图即可", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/product/attributes/0", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "面积150平方米", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/budget", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "预算8000RMB；8000是全包的价格", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/delivery/lead_time_days_max", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "交期2周；从支付开始算", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/customization/artwork_reference", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "提供原始户型图，必要时可提供视频和图片", "recorded_at": null, "confidence": "HIGH", "inference_basis": null }
+  ],
+  "notes": ["Requirement Schema v0.1服务类真实案例。"]
+}
