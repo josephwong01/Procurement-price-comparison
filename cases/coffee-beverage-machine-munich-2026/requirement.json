@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "title": "德国慕尼黑展会吧台咖啡饮料机",
+  "status": "SEARCH_READY",
+  "requester": { "name": null, "department": "采购部", "company": null },
+  "product": {
+    "name": "商用咖啡饮料机",
+    "category": "商用餐饮设备/咖啡及热饮设备",
+    "description": "2026年11月德国慕尼黑展会吧台使用，优先一台设备制作常规咖啡及常规饮料，可接受速溶粉料型设备。",
+    "brand_policy": { "mode": "ANY", "brands": [], "substitutes_allowed": true },
+    "attributes": [
+      { "key": "coffee_capability", "label": "咖啡制作能力", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "常规咖啡即可，可接受速溶粉料型" },
+      { "key": "non_coffee_beverage_capability", "label": "非咖啡饮料制作能力", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "参考展会常规饮料，具体菜单在候选比较阶段确认" },
+      { "key": "instant_powder_accepted", "label": "接受速溶粉料方案", "level": "INFORMATION", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "water_supply_mode", "label": "供水方式", "level": "PREFERENCE", "operator": "IN", "value": ["内置水箱", "桶装水"], "unit": null, "tolerance": null, "notes": "优先不依赖固定进排水" },
+      { "key": "fixed_plumbing_required", "label": "固定上下水依赖", "level": "PREFERENCE", "operator": "EQ", "value": false, "unit": null, "tolerance": null, "notes": null },
+      { "key": "supply_voltage", "label": "适配德国电压", "level": "PREFERENCE", "operator": "EQ", "value": 230, "unit": "V", "tolerance": null, "notes": "正式购买前确认" },
+      { "key": "supply_frequency", "label": "适配德国频率", "level": "PREFERENCE", "operator": "EQ", "value": 50, "unit": "Hz", "tolerance": null, "notes": "正式购买前确认" }
+    ]
+  },
+  "quantity": { "value": 1, "unit": "台" },
+  "budget": {
+    "unit_price_ceiling": null,
+    "total_ceiling": { "amount": 10000, "currency": "CNY", "tax_included": null },
+    "level": "HARD"
+  },
+  "delivery": {
+    "destination": "德国慕尼黑",
+    "required_date": "2026-11-01",
+    "lead_time_days_max": null,
+    "level": "HARD"
+  },
+  "commercial": {
+    "moq_max": { "value": 1, "unit": "台" },
+    "invoice_required": null,
+    "invoice_type": null,
+    "tax_rate": null,
+    "payment_terms": null
+  },
+  "customization": {
+    "required": false,
+    "process_confirmed": true,
+    "requirements": [],
+    "sample_required": false,
+    "artwork_reference": null
+  },
+  "supplier_requirements": [
+    { "key": "delivery_to_munich", "label": "可配送至德国慕尼黑", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "亚马逊等可直接配送的商品可进入候选池" },
+    { "key": "eu_electrical_compliance", "label": "欧盟电气合规", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": "正式购买前核验适用合规信息" }
+  ],
+  "search_preferences": {
+    "platforms": ["Amazon Germany", "德国本地电商", "欧洲商用设备供应商", "公开网页"],
+    "supplier_count_min": 3,
+    "languages": ["de", "en", "zh-CN"]
+  },
+  "constraints": [
+    { "key": "landed_cost_ceiling", "label": "配送至慕尼黑的落地总成本上限", "level": "HARD", "operator": "LTE", "value": 10000, "unit": "CNY", "tolerance": null, "notes": "包含设备价格和可确认的运输费用，未知税费不得按零计算" }
+  ],
+  "readiness": {
+    "blocking_questions": [],
+    "warnings": [
+      "预算币种按对话语境暂记为CNY，正式筛选前需再次确认",
+      "具体展会日期未知，11月1日仅为临时控制日期",
+      "吧台尺寸、可用功率和现场上下水条件尚未确认",
+      "230V/50Hz当前为偏好，正式购买前必须核验",
+      "未知税费不得按零计入TCO"
+    ],
+    "assumptions": [
+      "按直接购买理解，因为用户明确提及亚马逊可直接购买",
+      "报告需提供最低成本、较高配置和中间平衡方案；该策略属于后续搜索与报告层"
+    ]
+  },
+  "provenance": [
+    { "field_path": "/product", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "咖啡饮料机；最好能做出咖啡和饮料；展会上放在吧台使用", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/quantity", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "数量1台", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/budget/total_ceiling", "source_type": "INFERRED", "source_reference": "当前项目对话", "original_text": "不能超过1w；考虑运输到慕尼黑费用", "recorded_at": null, "confidence": "MEDIUM", "inference_basis": "金额按中文采购语境暂记为10000 CNY，币种仍需确认" },
+    { "field_path": "/delivery", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "2026年11月，德国慕尼黑", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/product/attributes/3", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "桶装水或内置水箱、不依赖固定上下水设为优先", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/product/attributes/5", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "230V/50Hz，但确认前不设为硬约束", "recorded_at": null, "confidence": "HIGH", "inference_basis": null }
+  ],
+  "notes": [
+    "Procurement Requirement Schema v0.1的第一个真实案例。",
+    "下一阶段可生成Query Planner输入，本文件不包含实际商品报价。"
+  ]
+}
