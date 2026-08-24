@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "requirement_id": "PR-IP-MASCOT-001",
+  "title": "高还原度定制IP人偶服",
+  "status": "SEARCH_READY",
+  "requester": { "name": null, "department": "采购部", "company": null },
+  "product": {
+    "name": "定制IP人偶服",
+    "category": "定制品/展会道具/人偶服",
+    "description": "根据IP设计图制作高比例、高还原度人偶服，穿戴人员身高约175cm。",
+    "brand_policy": { "mode": "ANY", "brands": [], "substitutes_allowed": true },
+    "attributes": [
+      { "key": "head_structure", "label": "头部结构", "level": "HARD", "operator": "EQ", "value": "整块泡沫雕刻", "unit": null, "tolerance": null, "notes": null },
+      { "key": "head_outer_material", "label": "头部外包材料", "level": "HARD", "operator": "EQ", "value": "高弹水晶毛绒布料", "unit": null, "tolerance": null, "notes": null },
+      { "key": "body_structure", "label": "身体结构", "level": "HARD", "operator": "EQ", "value": "海绵拼接", "unit": null, "tolerance": null, "notes": null },
+      { "key": "manufacturing_process", "label": "制作工艺", "level": "HARD", "operator": "CONTAINS", "value": "泡沫雕刻工艺", "unit": null, "tolerance": null, "notes": null },
+      { "key": "restoration_quality", "label": "造型还原要求", "level": "HARD", "operator": "EQ", "value": "高比例高还原", "unit": null, "tolerance": null, "notes": "需通过设计图、效果图或样品照片确认，量化验收标准待补" },
+      { "key": "total_weight", "label": "整体重量", "level": "PREFERENCE", "operator": "EQ", "value": 10, "unit": "kg", "tolerance": 2, "notes": "“左右”按目标值表达，允许范围需正式确认" },
+      { "key": "wearer_height", "label": "穿戴人员身高", "level": "HARD", "operator": "EQ", "value": 175, "unit": "cm", "tolerance": 3, "notes": "体重、肩宽等尺寸尚未提供" },
+      { "key": "design_artwork_available", "label": "可提供IP设计图", "level": "INFORMATION", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "用户原句为“可以体感设计图”，按上下文理解为可提供设计图" }
+    ]
+  },
+  "quantity": { "value": 1, "unit": "套" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 5000, "currency": "CNY", "tax_included": null },
+    "total_ceiling": { "amount": 5000, "currency": "CNY", "tax_included": null },
+    "level": "HARD"
+  },
+  "delivery": {
+    "destination": "中国境内（具体地址待定）",
+    "required_date": null,
+    "lead_time_days_max": 10,
+    "level": "HARD"
+  },
+  "commercial": {
+    "moq_max": { "value": 1, "unit": "套" },
+    "invoice_required": null,
+    "invoice_type": null,
+    "tax_rate": null,
+    "payment_terms": null
+  },
+  "customization": {
+    "required": true,
+    "process_confirmed": true,
+    "requirements": [
+      { "key": "artwork_based_modeling", "label": "依据IP设计图制作", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "approval_before_production", "label": "生产前效果确认", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "现有Schema尚无专用审批节点字段" }
+    ],
+    "sample_required": null,
+    "artwork_reference": "IP设计图可提供，文件尚未附入"
+  },
+  "supplier_requirements": [
+    { "key": "custom_mascot_experience", "label": "同类IP人偶服经验", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": "需查看真实案例和细节照片" },
+    { "key": "lead_time_from_order", "label": "下单后10天内交付", "level": "HARD", "operator": "LTE", "value": 10, "unit": "天", "tolerance": null, "notes": "起算点为下单" }
+  ],
+  "search_preferences": {
+    "platforms": ["1688", "淘宝", "中国定制厂家", "公开网页"],
+    "supplier_count_min": 5,
+    "languages": ["zh-CN"]
+  },
+  "constraints": [
+    { "key": "exclude_international_shipping", "label": "排除中国至德国物流成本", "level": "INFORMATION", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "本轮仅比较中国境内交付" }
+  ],
+  "readiness": {
+    "blocking_questions": [],
+    "warnings": [
+      "中国境内具体收货地址未确定，国内运费暂不能准确计算",
+      "预算币种按中文采购语境暂记为CNY，含税和国内运费口径仍需确认",
+      "“高比例高还原”尚缺量化验收标准和确认节点",
+      "穿戴人员体重、肩宽、头围等尺寸尚未提供",
+      "10天交期很紧，需核验是否包含设计确认和返工时间"
+    ],
+    "assumptions": [
+      "“可以体感设计图”按上下文理解为“可以提供设计图”",
+      "重量10kg左右按目标10kg、暂定容差±2kg表达",
+      "中国至德国的二次物流明确排除在本轮TCO外"
+    ]
+  },
+  "provenance": [
+    { "field_path": "/product/attributes/0", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "头部整块泡沫雕刻，外包高弹水晶毛绒布料，身体海绵拼接", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/product/attributes/4", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "泡沫雕刻工艺，高比例高还原", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/quantity", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "数量：1套", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/budget", "source_type": "INFERRED", "source_reference": "当前项目对话", "original_text": "预算5k以内", "recorded_at": null, "confidence": "MEDIUM", "inference_basis": "按中文采购语境暂记为5000 CNY" },
+    { "field_path": "/delivery", "source_type": "USER_EXPLICIT", "source_reference": "当前项目对话", "original_text": "中国境内，后续再打包发到德国；德国部分成本先忽略；10天从下单开始", "recorded_at": null, "confidence": "HIGH", "inference_basis": null },
+    { "field_path": "/product/attributes/7", "source_type": "INFERRED", "source_reference": "当前项目对话", "original_text": "可以体感设计图，穿戴人员大致身高175cm", "recorded_at": null, "confidence": "MEDIUM", "inference_basis": "“体感”按上下文理解为“提供”" }
+  ],
+  "notes": [
+    "Requirement Schema v0.1定制品真实案例。",
+    "本案例验证定制材料、工艺、设计输入、穿戴尺寸、相对交期和验收不确定性的表达。"
+  ]
+}

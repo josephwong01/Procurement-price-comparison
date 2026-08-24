@@ -21,7 +21,10 @@
 ├── SKILL.md
 ├── agents/openai.yaml
 ├── cases/
-│   └── coffee-beverage-machine-munich-2026/
+│   ├── coffee-beverage-machine-munich-2026/
+│   │   ├── requirement.json
+│   │   └── validation-notes.md
+│   └── ip-mascot-costume/
 │       ├── requirement.json
 │       └── validation-notes.md
 ├── docs/
@@ -46,4 +49,4 @@
 
 详见 [项目路线图](docs/project-roadmap.md)、[工作流](docs/workflow.md)和 [Schema 指南](docs/schema-guide.md)。
 
-首个真实案例见 `cases/coffee-beverage-machine-munich-2026/`。
+真实案例见 `cases/`。目前已覆盖设备类和定制品。
