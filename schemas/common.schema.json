@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/josephwong01/Procurement-price-comparison/schemas/common.schema.json",
+  "title": "Procurement Common Types",
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]
+    },
+    "constraintLevel": {
+      "type": "string",
+      "enum": ["HARD", "PREFERENCE", "INFORMATION"]
+    },
+    "money": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "tax_included": { "type": ["boolean", "null"] }
+      }
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "provenanceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field_path", "source_type", "confidence"],
+      "properties": {
+        "field_path": { "type": "string", "pattern": "^/" },
+        "source_type": {
+          "type": "string",
+          "enum": ["USER_EXPLICIT", "ATTACHMENT", "WEB_SOURCE", "INFERRED", "HUMAN_CONFIRMED"]
+        },
+        "source_reference": { "type": ["string", "null"] },
+        "original_text": { "type": ["string", "null"] },
+        "recorded_at": { "type": ["string", "null"], "format": "date-time" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "inference_basis": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

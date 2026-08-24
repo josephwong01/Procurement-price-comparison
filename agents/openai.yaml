@@ -1,0 +1,7 @@
+interface:
+  display_name: "采购询源与比价"
+  short_description: "整理采购需求并生成可追溯的询源与比价结论"
+  default_prompt: "Use $procurement-price-comparison to structure my procurement request and prepare a traceable sourcing and comparison plan."
+
+policy:
+  allow_implicit_invocation: true

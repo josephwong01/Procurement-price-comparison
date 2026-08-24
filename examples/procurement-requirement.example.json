@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "requirement_id": "PR-EXAMPLE-001",
+  "title": "客户礼品用 20000mAh 充电宝",
+  "status": "SEARCH_READY",
+  "requester": {
+    "name": null,
+    "department": "采购部",
+    "company": null
+  },
+  "product": {
+    "name": "20000mAh 充电宝",
+    "category": "消费电子/移动电源",
+    "description": "用于客户礼品，可印 Logo",
+    "brand_policy": {
+      "mode": "ANY",
+      "brands": [],
+      "substitutes_allowed": true
+    },
+    "attributes": [
+      { "key": "capacity", "label": "标称容量", "level": "HARD", "operator": "GTE", "value": 20000, "unit": "mAh", "tolerance": null, "notes": null },
+      { "key": "pd_output", "label": "PD 输出功率", "level": "HARD", "operator": "GTE", "value": 20, "unit": "W", "tolerance": null, "notes": null },
+      { "key": "type_c", "label": "Type-C 接口", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "digital_display", "label": "数显", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null }
+    ]
+  },
+  "quantity": { "value": 200, "unit": "件" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 80, "currency": "CNY", "tax_included": true },
+    "total_ceiling": null,
+    "level": "HARD"
+  },
+  "delivery": {
+    "destination": "深圳",
+    "required_date": null,
+    "lead_time_days_max": 15,
+    "level": "HARD"
+  },
+  "commercial": {
+    "moq_max": { "value": 200, "unit": "件" },
+    "invoice_required": true,
+    "invoice_type": "增值税专用发票",
+    "tax_rate": null,
+    "payment_terms": null
+  },
+  "customization": {
+    "required": true,
+    "process_confirmed": false,
+    "requirements": [
+      { "key": "logo", "label": "印制 Logo", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "工艺和颜色待询价确认" }
+    ],
+    "sample_required": null,
+    "artwork_reference": null
+  },
+  "supplier_requirements": [
+    { "key": "supplier_type", "label": "供应商类型", "level": "PREFERENCE", "operator": "EQ", "value": "工厂", "unit": null, "tolerance": null, "notes": null }
+  ],
+  "search_preferences": {
+    "platforms": ["1688", "淘宝", "京东", "Alibaba", "公开网页"],
+    "supplier_count_min": 5,
+    "languages": ["zh-CN", "en"]
+  },
+  "constraints": [],
+  "readiness": {
+    "blocking_questions": [],
+    "warnings": ["Logo 工艺和费用需要正式询价确认", "税率尚未确认"],
+    "assumptions": []
+  },
+  "provenance": [
+    {
+      "field_path": "/quantity",
+      "source_type": "USER_EXPLICIT",
+      "source_reference": null,
+      "original_text": "采购 200 个",
+      "recorded_at": null,
+      "confidence": "HIGH",
+      "inference_basis": null
+    }
+  ],
+  "notes": ["示例仅用于验证 Schema，不代表真实采购报价。"]
+}
