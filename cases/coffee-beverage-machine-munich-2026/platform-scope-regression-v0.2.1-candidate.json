@@ -46,10 +46,10 @@
       "platform_name": "京东-中国",
       "market": "CN",
       "origin": "USER_SPECIFIED",
-      "status": "PARTIAL",
-      "candidate_count": 0,
-      "evidence_url": "https://www.jd.com/chanpin/2628977.html",
-      "notes": "公开索引可确认咖啡奶茶一体机品类和商品名称，但直接搜索跳转登录页，无法稳定取得逐项价格及商品详情链接。"
+      "status": "SUCCEEDED",
+      "candidate_count": 3,
+      "evidence_url": "https://search.jd.com/Search?keyword=%E5%95%86%E7%94%A8%E5%92%96%E5%95%A1%E9%A5%AE%E6%96%99%E4%B8%80%E4%BD%93%E6%9C%BA",
+      "notes": "通过用户已登录的Chrome会话取得搜索结果、当前价格、店铺、销量、好评率和商品ID；按低、中、高三个价格层级保留候选。"
     },
     {
       "platform_id": "jd-de-joybuy",
@@ -102,6 +102,45 @@
       "reason": "德国本地平台、价格与销量信号可核验；主要为咖啡和奶咖，非咖啡饮料能力仍需核实。"
     },
     {
+      "candidate_id": "PLAT-JD-CN-WEINASHI-LOW",
+      "platform_id": "jd-cn",
+      "product_title": "维纳仕商用速溶咖啡机上置式台式",
+      "product_url": "https://item.jd.com/10038826907073.html",
+      "observed_price": { "amount": 860, "currency": "CNY", "tax_included": true },
+      "estimated_delivered_cost": { "amount": 3860, "currency": "CNY" },
+      "seller": "维纳仕商厨旗舰店",
+      "sales_signal": "已售6000+",
+      "rating_signal": "100%好评",
+      "disposition": "CONDITIONAL",
+      "reason": "最低价层级、包邮、四出水且销量信号强；饮品种类、桶装水方式、德国230V/50Hz和CE合规仍需逐项确认。"
+    },
+    {
+      "candidate_id": "PLAT-JD-CN-MIAOQUE-MID",
+      "platform_id": "jd-cn",
+      "product_title": "妙雀2冷2热＋冷热水台式咖啡奶茶饮料机",
+      "product_url": "https://item.jd.com/10125691765315.html",
+      "observed_price": { "amount": 1480, "currency": "CNY", "tax_included": true },
+      "estimated_delivered_cost": { "amount": 4480, "currency": "CNY" },
+      "seller": "妙雀官方旗舰店",
+      "sales_signal": "已售900+",
+      "rating_signal": "100%好评；商用咖啡机热卖榜第7名",
+      "disposition": "CONDITIONAL",
+      "reason": "中间价格层级，冷热双用、花式饮品、台式且店铺信号较强；供水方式、德国电压和CE合规待确认。"
+    },
+    {
+      "candidate_id": "PLAT-JD-CN-XIDIDAO-HIGH",
+      "platform_id": "jd-cn",
+      "product_title": "西堤岛6冷6热涡轮防堵台式咖啡奶茶果汁一体机",
+      "product_url": "https://item.jd.com/10096651005504.html",
+      "observed_price": { "amount": 2980, "currency": "CNY", "tax_included": true },
+      "estimated_delivered_cost": { "amount": 5980, "currency": "CNY" },
+      "seller": "西堤岛专卖店",
+      "sales_signal": "已售1000+",
+      "rating_signal": "99%好评",
+      "disposition": "CONDITIONAL",
+      "reason": "高价格层级，六冷六热、咖啡奶茶果汁覆盖更贴近展会用途；供水、电压、CE、运输包装和售后仍需确认。"
+    },
+    {
       "candidate_id": "PLAT-GGM-HAS2S",
       "platform_id": "ggm-gastro-de",
       "product_title": "GGM Gastro HAS2S 双粉料热饮机",
@@ -151,7 +190,7 @@
         "reason": "详情页当前仍要求登录，旧选择器和价格接口不能视为可用。"
       }
     ],
-    "screenshot_result": "JD_DETAIL_REDIRECTED_TO_LOGIN",
+    "screenshot_result": "JD_SEARCH_RESULTS_CAPTURED_AFTER_CHROME_LOGIN",
     "safe_next_method": "由用户在其已登录浏览器中打开商品搜索结果后，再执行可视读取和截图取证；不处理或导出Cookie。"
   },
   "china_to_munich_transport_estimate": {
@@ -165,7 +204,7 @@
   },
   "limitations": [
     "淘宝和1688未取得商品级结果，不属于成功搜索。",
-    "京东中国仅完成公开索引层面的品类核验，不属于完整商品询源。",
+    "京东中国已完成搜索结果层面的价格与商家信号采集，但规格、电压、CE和德国适用性仍需详情页或卖家确认。",
     "中国平台商品若后续纳入比价，暂按3000元运输规划值计算；进口税费、插头和合规成本仍需单列。",
     "本次测试验证平台范围策略，不构成2026年11月锁价或库存承诺。"
   ]
