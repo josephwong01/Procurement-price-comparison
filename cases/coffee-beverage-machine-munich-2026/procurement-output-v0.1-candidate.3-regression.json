@@ -1,0 +1,834 @@
+{
+  "output_version": "0.1-candidate.3",
+  "report_id": "REPORT-2026-MUNICH-COFFEE-REG-002",
+  "generated_at": "2026-08-25T06:00:00Z",
+  "data_cutoff_at": "2026-08-25T06:00:00Z",
+  "requirement_reference": {
+    "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+    "schema_version": "0.2",
+    "snapshot_reference": "cases/coffee-beverage-machine-munich-2026/requirement-v0.2.json"
+  },
+  "report_status": "READY_FOR_REVIEW",
+  "coverage": {
+    "channels_attempted": [
+      "德国品牌官网",
+      "德国餐饮设备电商",
+      "德国翻新商用设备供应商"
+    ],
+    "channels_succeeded": [
+      "德国品牌官网",
+      "德国餐饮设备电商",
+      "德国翻新商用设备供应商"
+    ],
+    "candidates_found": 4,
+    "candidates_eligible": 3,
+    "candidates_excluded": 1,
+    "duplicates_removed": 0,
+    "limitations": [
+      {
+        "code": "MANUAL_CONFIRMATION_REQUIRED",
+        "description": "2026年11月实际库存、最终送达慕尼黑的运费和展馆进场条件需在下单前复核",
+        "impact": "HIGH"
+      },
+      {
+        "code": "DATA_UNAVAILABLE",
+        "description": "候选页面未统一提供可比的供应商数字评分；产品评分、店铺评分和客户满意度不可混用",
+        "impact": "MEDIUM"
+      }
+    ]
+  },
+  "executive_summary": {
+    "decision_status": "RECOMMENDED",
+    "summary": "建议优先复核GGM Gastro HAS2S。它在约297.49欧元含税、页面标注欧洲免费配送的价位上，直接支持咖啡和热巧克力、桶装水、230V/50Hz及连续出杯，更符合展会吧台场景。Bosch TASSIMO适合作为最低成本方案，但胶囊耗材成本和高峰吞吐存在不确定性；翻新Nescafé Alegria 6/30容量更高，但价格、二手状态和售后风险更高。",
+    "recommended_candidate_ids": [
+      "COFFEE-GGM-HAS2S"
+    ],
+    "recommendation_rationale": [
+      "直接覆盖咖啡与非咖啡饮料，而不是仅以热水或人工调制间接满足",
+      "使用机顶桶装水，不依赖固定上下水",
+      "230V/50Hz且页面声明连续出杯能力，适配展会吧台",
+      "总价明显低于1万元人民币预算并保留耗材和现场准备余量"
+    ],
+    "current_tendency": "BALANCED",
+    "scenario_picks": {
+      "lowest_cost": "COFFEE-BOSCH-TAS107E",
+      "balanced": "COFFEE-GGM-HAS2S",
+      "highest_configuration": "COFFEE-NESCAFE-ALEGRIA-630"
+    }
+  },
+  "comparison_basis": {
+    "comparison_currency": "CNY",
+    "procurement_quantity": {
+      "value": 1,
+      "unit": "台"
+    },
+    "fulfillment_option_id": "DE_DIRECT",
+    "cost_basis": "DELIVERED_PRICE",
+    "unknown_cost_policy": "DO_NOT_TREAT_AS_ZERO",
+    "exchange_rates": [
+      {
+        "from_currency": "EUR",
+        "to_currency": "CNY",
+        "rate": 7.8414,
+        "observed_at": "2026-08-24T14:15:00Z",
+        "source": "European Central Bank euro reference exchange rates, 2026-08-24"
+      }
+    ]
+  },
+  "scoring_model": {
+    "model_name": "展会咖啡饮料机五维综合评分",
+    "dimensions": [
+      {
+        "code": "PRODUCT_MATCH",
+        "name": "产品与场景匹配",
+        "weight": 0.3,
+        "description": "咖啡与非咖啡饮料、独立供水、展会吧台适用性"
+      },
+      {
+        "code": "PRICE",
+        "name": "价格与总成本",
+        "weight": 0.25,
+        "description": "含税送达价、未知费用和后续耗材"
+      },
+      {
+        "code": "SUPPLIER",
+        "name": "供应商",
+        "weight": 0.2,
+        "description": "主体可识别性、服务信号和可核验评价"
+      },
+      {
+        "code": "DELIVERY",
+        "name": "交付",
+        "weight": 0.15,
+        "description": "德国境内供货、库存和送达不确定性"
+      },
+      {
+        "code": "QUALITY_RISK",
+        "name": "质量与风险",
+        "weight": 0.1,
+        "description": "设备状态、清洁、合规与售后风险"
+      }
+    ],
+    "score_scale": "0-100",
+    "calculation_note": "采用默认均衡权重；总分为五个维度评分的加权和。维度分记录在测试工作底稿，本输出主表仅展示总分。"
+  },
+  "main_comparison_table": [
+    {
+      "rank": 1,
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "platform": "GGM Gastro Germany",
+      "product_title": "HAS2S 双粉料热饮机",
+      "supplier_name": "GGM Gastro",
+      "price": {
+        "display_unit_price": {
+          "amount": 297.49,
+          "currency": "EUR",
+          "tax_included": true
+        },
+        "normalized_total_cost": {
+          "amount": 2332.74,
+          "currency": "CNY",
+          "tax_included": true
+        },
+        "cost_basis": "DELIVERED_PRICE",
+        "unknown_costs": [
+          "首次粉料和桶装水",
+          "展馆末端搬运或特殊地址附加费"
+        ],
+        "confidence": "HIGH"
+      },
+      "advantages": [
+        "直接制作咖啡和热巧克力",
+        "机顶桶装水供水",
+        "230V/50Hz",
+        "页面标注连续出杯和欧洲免费配送"
+      ],
+      "disadvantages": [
+        "只有两个饮料程序",
+        "依赖速溶粉料",
+        "无可比的数字商家评分"
+      ],
+      "supplier_rating": null,
+      "overall_score": 84.25,
+      "recommendation_role": "BALANCED",
+      "detail_ref": "DETAIL-GGM-HAS2S",
+      "product_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "supplier_signal": "TÜV Saarland客户满意度：sehr gut（非数字评分）"
+    },
+    {
+      "rank": 2,
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "platform": "Bosch Germany official store",
+      "product_title": "TASSIMO HAPPY friendly TAS107E",
+      "supplier_name": "Bosch Hausgeräte",
+      "price": {
+        "display_unit_price": {
+          "amount": 39.99,
+          "currency": "EUR",
+          "tax_included": true
+        },
+        "normalized_total_cost": null,
+        "cost_basis": "DELIVERED_PRICE",
+        "unknown_costs": [
+          "订单低于50欧元时的实际运费",
+          "展会期间T DISC胶囊耗材"
+        ],
+        "confidence": "MEDIUM"
+      },
+      "advantages": [
+        "购置成本最低",
+        "咖啡、巧克力和茶等饮品选择多",
+        "操作简单且设备紧凑",
+        "官网显示有货"
+      ],
+      "disadvantages": [
+        "单杯胶囊制式，高峰吞吐偏弱",
+        "长期耗材成本和备货量未计入",
+        "页面4.8分是产品评分而非供应商评分"
+      ],
+      "supplier_rating": null,
+      "overall_score": 82.25,
+      "recommendation_role": "LOWEST_COST",
+      "detail_ref": "DETAIL-BOSCH-TAS107E",
+      "product_url": "https://www.bosch-home.com/de/de/product/kaffeemaschinen/tassimo-kapselmaschinen/tassimo-happy/TAS107E",
+      "supplier_signal": "品牌官方商店；页面4.8/5为产品评分，不作为商家评分"
+    },
+    {
+      "rank": 3,
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "platform": "Automaten Hofmann",
+      "product_title": "Nescafé Alegria 6/30 翻新热饮系统",
+      "supplier_name": "Automaten Hofmann GmbH",
+      "price": {
+        "display_unit_price": {
+          "amount": 750,
+          "currency": "EUR",
+          "tax_included": false
+        },
+        "normalized_total_cost": {
+          "amount": 7642.31,
+          "currency": "CNY",
+          "tax_included": true
+        },
+        "cost_basis": "DELIVERED_PRICE",
+        "unknown_costs": [
+          "耗材",
+          "翻新机后续维修"
+        ],
+        "confidence": "MEDIUM"
+      },
+      "advantages": [
+        "咖啡、巧克力和奶类共六种饮品",
+        "80—180杯/小时",
+        "水箱且可选固定水路",
+        "230V/50Hz"
+      ],
+      "disadvantages": [
+        "翻新二手机并按现状出售",
+        "含税含运价格接近预算上部",
+        "保修和2026年11月库存需确认"
+      ],
+      "supplier_rating": null,
+      "overall_score": 72.25,
+      "recommendation_role": "HIGHEST_CONFIGURATION",
+      "detail_ref": "DETAIL-NESCAFE-ALEGRIA-630",
+      "product_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "supplier_signal": "专业自动售货设备商；页面未提供数字商家评分"
+    }
+  ],
+  "candidate_details": [
+    {
+      "detail_id": "DETAIL-GGM-HAS2S",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "supplier_id": "SUPPLIER-GGM-GASTRO",
+      "product_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "eligibility": "ELIGIBLE",
+      "specification_summary": [
+        {
+          "name": "饮品",
+          "value": [
+            "咖啡",
+            "热巧克力"
+          ],
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "供水",
+          "value": "机顶桶装水",
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "电源",
+          "value": "230V/50Hz",
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "连续出杯",
+          "value": "页面声称可连续输出200杯且温度不低于65°C",
+          "status": "CLAIMED"
+        }
+      ],
+      "commercial": {
+        "moq": {
+          "value": 1,
+          "unit": "台"
+        },
+        "lead_time_days": null,
+        "invoice": "德国含19%增值税价格",
+        "payment_terms": null,
+        "known_costs": [
+          {
+            "component": "ITEM_PRICE",
+            "amount": {
+              "amount": 297.49,
+              "currency": "EUR",
+              "tax_included": true
+            },
+            "notes": "页面含税总价"
+          }
+        ]
+      },
+      "supplier_snapshot": {
+        "supplier_type": "RETAILER",
+        "location": "Germany",
+        "rating": null,
+        "rating_count": null,
+        "transaction_signal": "页面展示TÜV Saarland价格/性能及客户满意度为sehr gut，但不是可直接换算的数字店铺评分",
+        "certifications": [
+          "页面声明CE标识"
+        ]
+      },
+      "score_explanation": "五维底稿：匹配95、价格85、供应商75、交付80、质量风险75，加权总分84.25。",
+      "evidence_refs": [
+        "E-GGM-PRICE",
+        "E-GGM-SPEC",
+        "E-GGM-WATER-POWER",
+        "E-GGM-SUPPLIER"
+      ],
+      "risk_refs": [
+        "R-GGM-LEADTIME",
+        "R-GGM-CONSUMABLES"
+      ],
+      "score_breakdown": [
+        {
+          "dimension_code": "PRODUCT_MATCH",
+          "raw_score": 95,
+          "weight": 0.3,
+          "weighted_score": 28.5,
+          "rationale": "直接覆盖咖啡、热巧克力、桶装水及德国电源"
+        },
+        {
+          "dimension_code": "PRICE",
+          "raw_score": 85,
+          "weight": 0.25,
+          "weighted_score": 21.25,
+          "rationale": "含税价格较低且页面标注欧洲免费配送"
+        },
+        {
+          "dimension_code": "SUPPLIER",
+          "raw_score": 75,
+          "weight": 0.2,
+          "weighted_score": 15,
+          "rationale": "供应商主体明确但缺少可比数字评分"
+        },
+        {
+          "dimension_code": "DELIVERY",
+          "raw_score": 80,
+          "weight": 0.15,
+          "weighted_score": 12,
+          "rationale": "德国本地供货，具体展馆送达仍待确认"
+        },
+        {
+          "dimension_code": "QUALITY_RISK",
+          "raw_score": 75,
+          "weight": 0.1,
+          "weighted_score": 7.5,
+          "rationale": "商用结构与CE声明较好，仍需合规文件"
+        }
+      ]
+    },
+    {
+      "detail_id": "DETAIL-BOSCH-TAS107E",
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "supplier_id": "SUPPLIER-BOSCH-DE",
+      "product_url": "https://www.bosch-home.com/de/de/product/kaffeemaschinen/tassimo-kapselmaschinen/tassimo-happy/TAS107E",
+      "eligibility": "CONDITIONAL",
+      "specification_summary": [
+        {
+          "name": "饮品",
+          "value": "咖啡、拿铁、热巧克力、茶等70多种T DISC饮品",
+          "status": "CLAIMED"
+        },
+        {
+          "name": "供水",
+          "value": "内置水箱",
+          "status": "CLAIMED"
+        },
+        {
+          "name": "操作",
+          "value": "单杯一键制作",
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "展会吞吐",
+          "value": null,
+          "status": "UNKNOWN"
+        }
+      ],
+      "commercial": {
+        "moq": {
+          "value": 1,
+          "unit": "台"
+        },
+        "lead_time_days": null,
+        "invoice": "德国含税零售价",
+        "payment_terms": null,
+        "known_costs": [
+          {
+            "component": "ITEM_PRICE",
+            "amount": {
+              "amount": 39.99,
+              "currency": "EUR",
+              "tax_included": true
+            },
+            "notes": "不含尚未核实的小额订单运费"
+          }
+        ]
+      },
+      "supplier_snapshot": {
+        "supplier_type": "RETAILER",
+        "location": "Germany",
+        "rating": null,
+        "rating_count": null,
+        "transaction_signal": "品牌官方商店；页面产品评分4.8/5（6条），未作为供应商评分使用",
+        "certifications": []
+      },
+      "score_explanation": "五维底稿：匹配75、价格100、供应商80、交付85、质量风险60，加权总分82.25。",
+      "evidence_refs": [
+        "E-BOSCH-PRICE-RATING",
+        "E-BOSCH-DRINKS",
+        "E-BOSCH-SHIPPING"
+      ],
+      "risk_refs": [
+        "R-BOSCH-THROUGHPUT",
+        "R-BOSCH-CONSUMABLES"
+      ],
+      "score_breakdown": [
+        {
+          "dimension_code": "PRODUCT_MATCH",
+          "raw_score": 75,
+          "weight": 0.3,
+          "weighted_score": 22.5,
+          "rationale": "饮品丰富且有水箱，但家用单杯吞吐偏弱"
+        },
+        {
+          "dimension_code": "PRICE",
+          "raw_score": 100,
+          "weight": 0.25,
+          "weighted_score": 25,
+          "rationale": "购置价最低"
+        },
+        {
+          "dimension_code": "SUPPLIER",
+          "raw_score": 80,
+          "weight": 0.2,
+          "weighted_score": 16,
+          "rationale": "品牌官方商店，商家评分缺失"
+        },
+        {
+          "dimension_code": "DELIVERY",
+          "raw_score": 85,
+          "weight": 0.15,
+          "weighted_score": 12.75,
+          "rationale": "页面有货，小额订单运费待确认"
+        },
+        {
+          "dimension_code": "QUALITY_RISK",
+          "raw_score": 60,
+          "weight": 0.1,
+          "weighted_score": 6,
+          "rationale": "胶囊耗材和连续运行风险较高"
+        }
+      ]
+    },
+    {
+      "detail_id": "DETAIL-NESCAFE-ALEGRIA-630",
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "supplier_id": "SUPPLIER-AUTOMATEN-HOFMANN",
+      "product_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "eligibility": "CONDITIONAL",
+      "specification_summary": [
+        {
+          "name": "饮品",
+          "value": [
+            "Café Crème",
+            "Espresso",
+            "Cappuccino",
+            "Choco Creme",
+            "Latte Macchiato",
+            "热水"
+          ],
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "供水",
+          "value": "水箱，可选固定水路",
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "电源",
+          "value": "230V/50Hz/16A",
+          "status": "CONFIRMED"
+        },
+        {
+          "name": "产能",
+          "value": "80—180杯/小时",
+          "status": "CLAIMED"
+        },
+        {
+          "name": "设备状态",
+          "value": "翻新、按现状出售",
+          "status": "CONFIRMED"
+        }
+      ],
+      "commercial": {
+        "moq": {
+          "value": 1,
+          "unit": "台"
+        },
+        "lead_time_days": null,
+        "invoice": "页面价格未含19%增值税",
+        "payment_terms": null,
+        "known_costs": [
+          {
+            "component": "ITEM_PRICE",
+            "amount": {
+              "amount": 892.5,
+              "currency": "EUR",
+              "tax_included": true
+            },
+            "notes": "750欧元净价按19%增值税计算"
+          },
+          {
+            "component": "DOMESTIC_FREIGHT",
+            "amount": {
+              "amount": 82.11,
+              "currency": "EUR",
+              "tax_included": true
+            },
+            "notes": "69欧元净运费按19%增值税计算"
+          }
+        ]
+      },
+      "supplier_snapshot": {
+        "supplier_type": "RETAILER",
+        "location": "Offenbach, Germany",
+        "rating": null,
+        "rating_count": null,
+        "transaction_signal": "专业自动售货设备商，页面未提供数字评分",
+        "certifications": []
+      },
+      "score_explanation": "五维底稿：匹配95、价格55、供应商65、交付80、质量风险50，加权总分72.25。",
+      "evidence_refs": [
+        "E-NESCAFE-PRICE",
+        "E-NESCAFE-DRINKS",
+        "E-NESCAFE-POWER-WATER"
+      ],
+      "risk_refs": [
+        "R-NESCAFE-USED",
+        "R-NESCAFE-WARRANTY"
+      ],
+      "score_breakdown": [
+        {
+          "dimension_code": "PRODUCT_MATCH",
+          "raw_score": 95,
+          "weight": 0.3,
+          "weighted_score": 28.5,
+          "rationale": "六种饮品、水箱及高吞吐高度匹配"
+        },
+        {
+          "dimension_code": "PRICE",
+          "raw_score": 55,
+          "weight": 0.25,
+          "weighted_score": 13.75,
+          "rationale": "含税含运后接近预算上部"
+        },
+        {
+          "dimension_code": "SUPPLIER",
+          "raw_score": 65,
+          "weight": 0.2,
+          "weighted_score": 13,
+          "rationale": "专业设备商但缺少数字评价和保修说明"
+        },
+        {
+          "dimension_code": "DELIVERY",
+          "raw_score": 80,
+          "weight": 0.15,
+          "weighted_score": 12,
+          "rationale": "德国境内可发货，未来库存待确认"
+        },
+        {
+          "dimension_code": "QUALITY_RISK",
+          "raw_score": 50,
+          "weight": 0.1,
+          "weighted_score": 5,
+          "rationale": "翻新设备且按现状出售"
+        }
+      ]
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "candidate_id": "COFFEE-SIELAFF-SIAMONIE",
+      "platform": "Flavura Germany",
+      "product_title": "Sielaff Siamonie TS IN (01)",
+      "product_url": "https://www.flavura.de/katalog/produkt/sielaff-siamonie-ts-in-01-ihr-premium-heissgetraenkeautomat/",
+      "exclusion_reasons": [
+        "设备售价10,472欧元，按本报告汇率约82,115元人民币，显著超过1万元硬预算；运费另计"
+      ],
+      "evidence_refs": [
+        "E-SIELAFF-PRICE-SPEC"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "R-GGM-LEADTIME",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "category": "DELIVERY",
+      "severity": "MEDIUM",
+      "description": "页面当前可售不等于2026年11月仍有库存并能按展馆要求送达",
+      "mitigation": "下单前取得到货日期和送货地址书面确认",
+      "status": "OPEN"
+    },
+    {
+      "risk_id": "R-GGM-CONSUMABLES",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "category": "PRICE",
+      "severity": "MEDIUM",
+      "description": "粉料、桶装水和预计杯量尚未计入",
+      "mitigation": "按预计访客量制作耗材包清单",
+      "status": "OPEN"
+    },
+    {
+      "risk_id": "R-BOSCH-THROUGHPUT",
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "category": "QUALITY",
+      "severity": "HIGH",
+      "description": "家用单杯胶囊机可能无法承受展会高峰连续出杯",
+      "mitigation": "确认预计杯量并进行连续出杯测试",
+      "status": "OPEN"
+    },
+    {
+      "risk_id": "R-BOSCH-CONSUMABLES",
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "category": "PRICE",
+      "severity": "MEDIUM",
+      "description": "胶囊耗材可能显著提高使用总成本",
+      "mitigation": "以预计杯量计算T DISC总成本",
+      "status": "OPEN"
+    },
+    {
+      "risk_id": "R-NESCAFE-USED",
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "category": "QUALITY",
+      "severity": "HIGH",
+      "description": "设备为翻新机且按现状出售",
+      "mitigation": "索取翻新清单、运行视频和验收保证",
+      "status": "OPEN"
+    },
+    {
+      "risk_id": "R-NESCAFE-WARRANTY",
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "category": "SUPPLIER",
+      "severity": "HIGH",
+      "description": "页面未明确保修和退换条件",
+      "mitigation": "采购前书面确认保修、备件和故障响应",
+      "status": "OPEN"
+    }
+  ],
+  "confirmations": [
+    {
+      "confirmation_id": "CONF-EVENT-VOLUME",
+      "candidate_id": null,
+      "question": "预计每天和高峰每小时需要制作多少杯饮品？",
+      "owner": "BUYER",
+      "blocking": true,
+      "status": "OPEN",
+      "answer": null
+    },
+    {
+      "confirmation_id": "CONF-BOOTH-POWER",
+      "candidate_id": null,
+      "question": "展位可提供的插座功率、电流及吧台可用尺寸是多少？",
+      "owner": "BUYER",
+      "blocking": true,
+      "status": "OPEN",
+      "answer": null
+    },
+    {
+      "confirmation_id": "CONF-GGM-DELIVERY",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "question": "卖方能否在指定日期送至慕尼黑具体地址，且免费配送是否覆盖该地址？",
+      "owner": "SUPPLIER",
+      "blocking": true,
+      "status": "OPEN",
+      "answer": null
+    },
+    {
+      "confirmation_id": "CONF-COMPLIANCE",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "question": "请提供型号对应的EU Declaration of Conformity及德语使用资料。",
+      "owner": "SUPPLIER",
+      "blocking": true,
+      "status": "OPEN",
+      "answer": null
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E-GGM-PRICE",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "field_path": "/main_comparison_table/0/price",
+      "source_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "Bruttopreis inkl. 19% MwSt. 297,49 EUR; kostenloser Versand",
+      "normalized_value": {
+        "amount": 2332.74,
+        "currency": "CNY"
+      },
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-GGM-SPEC",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "field_path": "/candidate_details/0/specification_summary",
+      "source_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "Für Kaffee und heiße Schokolade; zwei Behälter; kontinuierliche Ausgabe",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-GGM-WATER-POWER",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "field_path": "/candidate_details/0/specification_summary",
+      "source_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "Gallonenflasche auf dem Gerät; 230V; 50Hz",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-GGM-SUPPLIER",
+      "candidate_id": "COFFEE-GGM-HAS2S",
+      "field_path": "/candidate_details/0/supplier_snapshot",
+      "source_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "SUPPLIER_PAGE",
+      "original_value": "TÜV Saarland: Preis/Leistung und Kundenzufriedenheit sehr gut",
+      "confidence": "MEDIUM",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-BOSCH-PRICE-RATING",
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "field_path": "/main_comparison_table/1",
+      "source_url": "https://www.bosch-home.com/de/de/product/kaffeemaschinen/tassimo-kapselmaschinen/tassimo-happy/TAS107E",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "39,99 EUR inkl. MwSt.; Produktbewertung 4.8 (6); auf Lager",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-BOSCH-DRINKS",
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "field_path": "/candidate_details/1/specification_summary",
+      "source_url": "https://www.bosch-home.com/de/de/category-page/kaffeemaschinen/tassimo-kapselmaschinen/tassimo-happy",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "Kaffee, Flat White und heiße Schokolade; über 70 Getränke",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-BOSCH-SHIPPING",
+      "candidate_id": "COFFEE-BOSCH-TAS107E",
+      "field_path": "/main_comparison_table/1/price/unknown_costs",
+      "source_url": "https://www.bosch-home.com/de/de/product/kaffeemaschinen/tassimo-kapselmaschinen/tassimo-happy/TAS107E",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "Lieferung inklusive ab 50 EUR",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-NESCAFE-PRICE",
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "field_path": "/main_comparison_table/2/price",
+      "source_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "750 EUR zzgl. MwSt.; Spedition 69 EUR zzgl. MwSt.",
+      "normalized_value": {
+        "amount": 7642.31,
+        "currency": "CNY"
+      },
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-NESCAFE-DRINKS",
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "field_path": "/candidate_details/2/specification_summary",
+      "source_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "Café Crème, Espresso, Cappuccino, Choco Creme, Latte Macchiato, Heißwasser",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-NESCAFE-POWER-WATER",
+      "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+      "field_path": "/candidate_details/2/specification_summary",
+      "source_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "230V/50Hz/16A; Wassertank; optional Festwasser; 80-180 pro Stunde",
+      "confidence": "HIGH",
+      "capture_reference": null
+    },
+    {
+      "evidence_id": "E-SIELAFF-PRICE-SPEC",
+      "candidate_id": "COFFEE-SIELAFF-SIAMONIE",
+      "field_path": "/excluded_candidates/0",
+      "source_url": "https://www.flavura.de/katalog/produkt/sielaff-siamonie-ts-in-01-ihr-premium-heissgetraenkeautomat/",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_type": "PRODUCT_PAGE",
+      "original_value": "10.472 EUR zzgl. Versand; 230V/50Hz; bis zu 20 Getränke",
+      "normalized_value": {
+        "amount": 82115.14,
+        "currency": "CNY"
+      },
+      "confidence": "HIGH",
+      "capture_reference": null
+    }
+  ],
+  "audit": {
+    "generated_by": "Procurement Price Comparison Skill regression test",
+    "method_version": "output-0.1-candidate.3-regression.1",
+    "assumptions": [
+      "人民币换算使用ECB 2026-08-24参考汇率1 EUR = 7.8414 CNY",
+      "Nescafé Alegria净价和运费均按德国19%增值税计算",
+      "本次回归只验证输出结构和初步决策可读性，不构成下单报价",
+      "产品评分未写入supplier_rating，避免与店铺或供应商评分混淆"
+    ]
+  }
+}
+

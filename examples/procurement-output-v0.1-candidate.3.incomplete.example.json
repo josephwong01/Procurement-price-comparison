@@ -1,0 +1,109 @@
+{
+  "output_version": "0.1-candidate.3",
+  "report_id": "REPORT-STRUCTURE-DEMO-003",
+  "generated_at": "2026-08-25T00:00:00Z",
+  "data_cutoff_at": null,
+  "requirement_reference": {
+    "requirement_id": "PR-BT-SPEAKER-GIFT-001",
+    "schema_version": "0.2",
+    "snapshot_reference": "cases/bluetooth-speaker-giveaway/requirement-v0.2.json"
+  },
+  "report_status": "INCOMPLETE",
+  "coverage": {
+    "channels_attempted": [],
+    "channels_succeeded": [],
+    "candidates_found": 0,
+    "candidates_eligible": 0,
+    "candidates_excluded": 0,
+    "duplicates_removed": 0,
+    "limitations": [
+      {
+        "code": "DATA_UNAVAILABLE",
+        "description": "结构示例不包含真实搜索或报价数据",
+        "impact": "HIGH"
+      }
+    ]
+  },
+  "executive_summary": {
+    "decision_status": "NO_RECOMMENDATION",
+    "summary": "该文件仅验证结构，尚未进行真实询源。",
+    "recommended_candidate_ids": [],
+    "recommendation_rationale": [],
+    "current_tendency": "BALANCED",
+    "scenario_picks": {
+      "lowest_cost": null,
+      "balanced": null,
+      "highest_configuration": null
+    }
+  },
+  "comparison_basis": {
+    "comparison_currency": "CNY",
+    "procurement_quantity": {
+      "value": 10,
+      "unit": "个"
+    },
+    "fulfillment_option_id": null,
+    "cost_basis": "DELIVERED_PRICE",
+    "unknown_cost_policy": "DO_NOT_TREAT_AS_ZERO",
+    "exchange_rates": []
+  },
+  "scoring_model": {
+    "model_name": "默认五维综合评分",
+    "score_scale": "0-100",
+    "dimensions": [
+      {
+        "code": "PRODUCT_MATCH",
+        "name": "产品匹配",
+        "weight": 0.3,
+        "description": "需求与关键规格匹配"
+      },
+      {
+        "code": "PRICE",
+        "name": "价格与总成本",
+        "weight": 0.25,
+        "description": "同口径总成本和未知费用"
+      },
+      {
+        "code": "SUPPLIER",
+        "name": "供应商",
+        "weight": 0.2,
+        "description": "评分、交易信号和资质"
+      },
+      {
+        "code": "DELIVERY",
+        "name": "交付",
+        "weight": 0.15,
+        "description": "交期和履约路径"
+      },
+      {
+        "code": "QUALITY_RISK",
+        "name": "质量与风险",
+        "weight": 0.1,
+        "description": "品质、售后、合规和信息完整度"
+      }
+    ],
+    "calculation_note": "默认均衡权重；形成真实报告时按项目倾向说明调整。"
+  },
+  "main_comparison_table": [],
+  "candidate_details": [],
+  "excluded_candidates": [],
+  "risks": [],
+  "confirmations": [
+    {
+      "confirmation_id": "CONF-DEMO-001",
+      "candidate_id": null,
+      "question": "完成真实询源后才能形成候选和推荐。",
+      "owner": "AGENT",
+      "blocking": true,
+      "status": "OPEN",
+      "answer": null
+    }
+  ],
+  "evidence": [],
+  "audit": {
+    "generated_by": "Procurement Price Comparison Skill",
+    "method_version": "output-0.1-candidate.3",
+    "assumptions": []
+  }
+}
+
