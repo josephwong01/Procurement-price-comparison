@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.2-candidate",
+  "requirement_id": "PR-BT-SPEAKER-GIFT-001",
+  "title": "展会抽奖礼品蓝牙音响",
+  "procurement_type": "STANDARD_PRODUCT",
+  "status": "SEARCH_READY",
+  "subject": {
+    "name": "蓝牙音响",
+    "category": "消费电子",
+    "description": "展会游戏抽奖客户礼品，优先支持Logo。",
+    "attributes": [
+      { "key": "bluetooth", "label": "蓝牙播放", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "portable", "label": "便携", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null }
+    ]
+  },
+  "use_case": { "purpose": "展会游戏抽奖礼品", "environment": "展会", "users_or_audience": "客户", "event_or_project": null },
+  "quantity": { "value": 10, "unit": "个" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 100, "currency": "CNY", "tax_included": null },
+    "total_ceiling": { "amount": 1000, "currency": "CNY", "tax_included": null },
+    "level": "HARD",
+    "pricing_basis": "DELIVERED_PRICE",
+    "included_costs": ["商品售价", "对应目的地配送"],
+    "excluded_costs": ["国内采购后转运德国费用"]
+  },
+  "fulfillment_options": [
+    {
+      "id": "CN_DOMESTIC",
+      "destination": "中国境内地址",
+      "channels": ["1688", "淘宝", "京东"],
+      "delivery_window": null,
+      "lead_time": null,
+      "cost_inclusions": ["售价", "国内包邮"],
+      "cost_exclusions": ["中国至德国转运"],
+      "level": "HARD"
+    },
+    {
+      "id": "DE_DIRECT",
+      "destination": "德国地址",
+      "channels": ["Amazon Germany"],
+      "delivery_window": null,
+      "lead_time": null,
+      "cost_inclusions": ["售价", "德国包邮"],
+      "cost_exclusions": [],
+      "level": "HARD"
+    }
+  ],
+  "commercial": { "moq_max": { "value": 10, "unit": "个" }, "invoice_required": null, "invoice_type": null, "tax_rate": null, "payment_terms": null },
+  "customization": {
+    "mode": "OPTIONAL",
+    "requirements": [
+      { "key": "logo", "label": "Logo定制", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": "核验10个MOQ" }
+    ],
+    "inputs": [{ "name": "Logo文件", "format": null, "status": "PENDING", "responsible_party": "BUYER" }],
+    "milestones": [],
+    "acceptance_criteria": []
+  },
+  "service": null,
+  "supplier_requirements": [],
+  "search_preferences": { "platforms": ["1688", "淘宝", "京东", "Amazon Germany"], "supplier_count_min": 5, "languages": ["zh-CN", "de", "en"] },
+  "constraints": [],
+  "readiness": { "blocking_questions": [], "warnings": ["到货日、地址、税费、续航功率和Logo工艺待确认"], "assumptions": ["Amazon价格需保留原币值和汇率"] },
+  "provenance": [],
+  "notes": ["由v0.1真实案例迁移。"]
+}

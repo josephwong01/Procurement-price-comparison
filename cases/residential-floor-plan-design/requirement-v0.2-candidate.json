@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.2-candidate",
+  "requirement_id": "PR-RESIDENTIAL-DESIGN-001",
+  "title": "150平方米商品房平面及室内装修设计",
+  "procurement_type": "SERVICE",
+  "status": "SEARCH_READY",
+  "subject": {
+    "name": "住宅平面及室内装修设计服务",
+    "category": "室内设计",
+    "description": "150平方米住宅平面、室内装修设计和3D渲染效果图。",
+    "attributes": [
+      { "key": "area", "label": "面积", "level": "HARD", "operator": "EQ", "value": 150, "unit": "m²", "tolerance": null, "notes": null }
+    ]
+  },
+  "use_case": { "purpose": "住宅室内空间规划与装修方案", "environment": "商品房", "users_or_audience": "住宅使用者", "event_or_project": null },
+  "quantity": { "value": 1, "unit": "项目" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 8000, "currency": "CNY", "tax_included": null },
+    "total_ceiling": { "amount": 8000, "currency": "CNY", "tax_included": null },
+    "level": "HARD",
+    "pricing_basis": "ALL_IN_SERVICE_FEE",
+    "included_costs": ["平面图", "室内装修设计", "3D渲染效果图"],
+    "excluded_costs": ["未说明的施工图", "现场服务", "无限次修改"]
+  },
+  "fulfillment_options": [
+    {
+      "id": "REMOTE_DELIVERY",
+      "destination": "线上交付",
+      "channels": ["设计服务平台", "设计工作室", "自由设计师"],
+      "delivery_window": null,
+      "lead_time": { "max_days": 14, "start_event": "PAYMENT_COMPLETED", "includes_revision": null, "includes_transport": false },
+      "cost_inclusions": ["约定设计交付物"],
+      "cost_exclusions": ["现场服务"],
+      "level": "HARD"
+    }
+  ],
+  "commercial": { "moq_max": { "value": 1, "unit": "项目" }, "invoice_required": null, "invoice_type": null, "tax_rate": null, "payment_terms": "支付后起算" },
+  "customization": null,
+  "service": {
+    "included_scope": ["平面图设计", "室内装修设计", "3D渲染效果图"],
+    "excluded_scope": ["可编辑3D模型源文件", "未说明的施工图", "现场施工服务"],
+    "client_inputs": [
+      { "name": "原始户型图", "format": null, "status": "AVAILABLE", "responsible_party": "BUYER" },
+      { "name": "现场视频和图片", "format": null, "status": "PENDING", "responsible_party": "BUYER" }
+    ],
+    "deliverables": [
+      { "name": "平面图", "quantity": null, "format": null, "editable_source_required": null, "required": true, "acceptance": "满足确认的布局需求" },
+      { "name": "3D渲染效果图", "quantity": null, "format": null, "editable_source_required": false, "required": true, "acceptance": "体现确认的室内装修方案" }
+    ],
+    "milestones": [
+      { "name": "需求和资料确认", "due_offset_days": null, "approval_required": true, "evidence_required": "确认记录" },
+      { "name": "最终交付", "due_offset_days": 14, "approval_required": true, "evidence_required": "交付文件" }
+    ],
+    "revision_policy": { "included_rounds": null, "extra_revision_pricing": null },
+    "intellectual_property": { "ownership": "UNKNOWN", "source_files_included": null, "confidentiality_required": null }
+  },
+  "supplier_requirements": [
+    { "key": "residential_experience", "label": "住宅设计经验", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": null }
+  ],
+  "search_preferences": { "platforms": ["设计服务平台", "设计工作室", "自由设计师"], "supplier_count_min": 5, "languages": ["zh-CN"] },
+  "constraints": [],
+  "readiness": { "blocking_questions": [], "warnings": ["风格、效果图数量、修改轮次、税费、知识产权和复尺责任待确认"], "assumptions": ["按一个项目理解"] },
+  "provenance": [],
+  "notes": ["由v0.1真实案例迁移。"]
+}

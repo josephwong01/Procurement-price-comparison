@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.2-candidate",
+  "requirement_id": "PR-IP-MASCOT-001",
+  "title": "高还原度定制IP人偶服",
+  "procurement_type": "CUSTOM_PRODUCT",
+  "status": "SEARCH_READY",
+  "subject": {
+    "name": "定制IP人偶服",
+    "category": "展会道具",
+    "description": "根据IP设计图制作高还原度人偶服。",
+    "attributes": [
+      { "key": "head", "label": "头部", "level": "HARD", "operator": "EQ", "value": "整块泡沫雕刻并外包高弹水晶毛绒布", "unit": null, "tolerance": null, "notes": null },
+      { "key": "body", "label": "身体", "level": "HARD", "operator": "EQ", "value": "海绵拼接", "unit": null, "tolerance": null, "notes": null },
+      { "key": "weight", "label": "重量", "level": "PREFERENCE", "operator": "EQ", "value": 10, "unit": "kg", "tolerance": 2, "notes": null },
+      { "key": "wearer_height", "label": "穿戴身高", "level": "HARD", "operator": "EQ", "value": 175, "unit": "cm", "tolerance": 3, "notes": null }
+    ]
+  },
+  "use_case": { "purpose": "展会IP展示与互动", "environment": "展会", "users_or_audience": "现场观众", "event_or_project": null },
+  "quantity": { "value": 1, "unit": "套" },
+  "budget": {
+    "unit_price_ceiling": { "amount": 5000, "currency": "CNY", "tax_included": null },
+    "total_ceiling": { "amount": 5000, "currency": "CNY", "tax_included": null },
+    "level": "HARD",
+    "pricing_basis": "DELIVERED_PRICE",
+    "included_costs": ["产品制作", "中国境内交付"],
+    "excluded_costs": ["中国至德国物流"]
+  },
+  "fulfillment_options": [
+    {
+      "id": "CN_DOMESTIC",
+      "destination": "中国境内（具体地址待定）",
+      "channels": ["1688", "淘宝", "中国定制厂家"],
+      "delivery_window": null,
+      "lead_time": { "max_days": 10, "start_event": "ORDER_PLACED", "includes_revision": null, "includes_transport": true },
+      "cost_inclusions": ["制作", "国内交付"],
+      "cost_exclusions": ["国际物流"],
+      "level": "HARD"
+    }
+  ],
+  "commercial": { "moq_max": { "value": 1, "unit": "套" }, "invoice_required": null, "invoice_type": null, "tax_rate": null, "payment_terms": null },
+  "customization": {
+    "mode": "REQUIRED",
+    "requirements": [
+      { "key": "high_restoration", "label": "高比例高还原", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null }
+    ],
+    "inputs": [
+      { "name": "IP设计图", "format": null, "status": "AVAILABLE", "responsible_party": "BUYER" },
+      { "name": "完整人体尺寸", "format": null, "status": "PENDING", "responsible_party": "BUYER" }
+    ],
+    "milestones": [
+      { "name": "效果确认", "due_offset_days": null, "approval_required": true, "evidence_required": "效果图或照片" },
+      { "name": "成品验收", "due_offset_days": 10, "approval_required": true, "evidence_required": "成品照片或视频" }
+    ],
+    "acceptance_criteria": [
+      { "criterion": "材料与工艺符合要求", "method": "照片或视频核验", "level": "HARD" },
+      { "criterion": "IP造型高还原", "method": "与设计图对照确认", "level": "HARD" }
+    ]
+  },
+  "service": null,
+  "supplier_requirements": [
+    { "key": "mascot_experience", "label": "同类经验", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": null }
+  ],
+  "search_preferences": { "platforms": ["1688", "淘宝", "中国定制厂家"], "supplier_count_min": 5, "languages": ["zh-CN"] },
+  "constraints": [],
+  "readiness": { "blocking_questions": [], "warnings": ["详细人体尺寸、验收偏差、税费和返工规则待确认"], "assumptions": ["重量容差暂按±2kg"] },
+  "provenance": [],
+  "notes": ["由v0.1真实案例迁移。"]
+}

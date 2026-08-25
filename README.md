@@ -4,7 +4,7 @@
 
 ## 当前阶段
 
-四类真实采购案例已完成 `Procurement Requirement Schema v0.1` 验证。当前下一步是汇总问题、修订 Schema，并以四例回归验证后冻结 v0.2；在此之前不进入后续输出结构或 Query Planner。
+`Requirement Schema v0.2` 候选版已经形成并完成四例关键契约回归。当前尚未冻结：仍需完整 Draft 2020-12 标准验证和人工字段审阅；在此之前不进入后续输出结构或 Query Planner。
 
 ## 核心流程
 
@@ -42,7 +42,7 @@
 │   └── procurement-requirement.example.json
 └── schemas/
     ├── common.schema.json
-    └── procurement-requirement.schema.json
+    ├── procurement-requirement.schema.json\n    └── procurement-requirement-v0.2-candidate.schema.json
 ```
 
 ## 使用原则

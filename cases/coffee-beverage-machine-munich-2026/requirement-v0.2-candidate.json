@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.2-candidate",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "title": "德国慕尼黑展会吧台咖啡饮料机",
+  "procurement_type": "EQUIPMENT",
+  "status": "SEARCH_READY",
+  "subject": {
+    "name": "商用咖啡饮料机",
+    "category": "商用餐饮设备",
+    "description": "一台设备优先制作常规咖啡和非咖啡饮料，可接受粉料型。",
+    "attributes": [
+      { "key": "coffee_capability", "label": "咖啡能力", "level": "HARD", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "non_coffee_beverage", "label": "非咖啡饮料", "level": "PREFERENCE", "operator": "EQ", "value": true, "unit": null, "tolerance": null, "notes": null },
+      { "key": "water_supply", "label": "供水", "level": "PREFERENCE", "operator": "IN", "value": ["内置水箱", "桶装水"], "unit": null, "tolerance": null, "notes": "不依赖固定上下水" },
+      { "key": "power", "label": "德国电源", "level": "PREFERENCE", "operator": "EQ", "value": "230V/50Hz", "unit": null, "tolerance": null, "notes": "购买前核验" }
+    ]
+  },
+  "use_case": { "purpose": "展会吧台提供饮品", "environment": "德国慕尼黑展会", "users_or_audience": "展会访客", "event_or_project": "2026年11月慕尼黑展会" },
+  "quantity": { "value": 1, "unit": "台" },
+  "budget": {
+    "unit_price_ceiling": null,
+    "total_ceiling": { "amount": 10000, "currency": "CNY", "tax_included": null },
+    "level": "HARD",
+    "pricing_basis": "LANDED_COST",
+    "included_costs": ["设备售价", "配送至慕尼黑费用"],
+    "excluded_costs": []
+  },
+  "fulfillment_options": [
+    {
+      "id": "DE_DIRECT",
+      "destination": "德国慕尼黑",
+      "channels": ["Amazon Germany", "德国本地电商", "欧洲供应商"],
+      "delivery_window": { "earliest_date": null, "latest_date": null, "month": "2026-11" },
+      "lead_time": null,
+      "cost_inclusions": ["设备售价", "配送至慕尼黑"],
+      "cost_exclusions": [],
+      "level": "HARD"
+    }
+  ],
+  "commercial": { "moq_max": { "value": 1, "unit": "台" }, "invoice_required": null, "invoice_type": null, "tax_rate": null, "payment_terms": null },
+  "customization": { "mode": "NONE", "requirements": [], "inputs": [], "milestones": [], "acceptance_criteria": [] },
+  "service": null,
+  "supplier_requirements": [
+    { "key": "eu_compliance", "label": "欧盟适用合规", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": null }
+  ],
+  "search_preferences": { "platforms": ["Amazon Germany", "德国本地电商", "欧洲商用设备供应商"], "supplier_count_min": 3, "languages": ["de", "en", "zh-CN"] },
+  "constraints": [],
+  "readiness": { "blocking_questions": [], "warnings": ["具体日期、吧台尺寸、功率、上下水和税费待确认"], "assumptions": ["预算币种暂记为CNY"] },
+  "provenance": [],
+  "notes": ["由v0.1真实案例迁移。"]
+}
