@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/josephwong01/Procurement-price-comparison/schemas/procurement-output-v0.1-candidate.schema.json",
+  "title": "Procurement Output v0.1 Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["output_version", "report_id", "generated_at", "requirement_reference", "report_status", "coverage", "executive_summary", "comparison_basis", "comparison_rows", "risks", "confirmations", "evidence", "approval", "audit"],
+  "properties": {
+    "output_version": { "const": "0.1-candidate" },
+    "report_id": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "data_cutoff_at": { "type": ["string", "null"], "format": "date-time" },
+    "requirement_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement_id", "schema_version", "snapshot_reference"],
+      "properties": {
+        "requirement_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "snapshot_reference": { "type": ["string", "null"] }
+      }
+    },
+    "report_status": { "enum": ["INCOMPLETE", "READY_FOR_REVIEW", "READY_FOR_APPROVAL", "FINAL"] },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["channels_attempted", "channels_succeeded", "candidates_found", "candidates_eligible", "candidates_excluded", "duplicates_removed", "limitations"],
+      "properties": {
+        "channels_attempted": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "channels_succeeded": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "candidates_found": { "type": "integer", "minimum": 0 },
+        "candidates_eligible": { "type": "integer", "minimum": 0 },
+        "candidates_excluded": { "type": "integer", "minimum": 0 },
+        "duplicates_removed": { "type": "integer", "minimum": 0 },
+        "limitations": { "type": "array", "items": { "$ref": "#/$defs/limitation" } }
+      }
+    },
+    "executive_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_status", "summary", "recommended_candidate_ids", "recommendation_rationale", "scenario_picks"],
+      "properties": {
+        "decision_status": { "enum": ["NO_RECOMMENDATION", "SHORTLIST_ONLY", "RECOMMENDED"] },
+        "summary": { "type": "string", "minLength": 1 },
+        "recommended_candidate_ids": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "recommendation_rationale": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "scenario_picks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lowest_cost", "balanced", "highest_configuration"],
+          "properties": {
+            "lowest_cost": { "type": ["string", "null"] },
+            "balanced": { "type": ["string", "null"] },
+            "highest_configuration": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "comparison_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["comparison_currency", "procurement_quantity", "fulfillment_option_id", "cost_basis", "unknown_cost_policy", "exchange_rates"],
+      "properties": {
+        "comparison_currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "procurement_quantity": { "$ref": "common.schema.json#/$defs/quantity" },
+        "fulfillment_option_id": { "type": ["string", "null"] },
+        "cost_basis": { "enum": ["DISPLAY_PRICE", "TAX_INCLUDED_PRICE", "DELIVERED_PRICE", "LANDED_COST", "ALL_IN_SERVICE_FEE"] },
+        "unknown_cost_policy": { "const": "DO_NOT_TREAT_AS_ZERO" },
+        "exchange_rates": { "type": "array", "items": { "$ref": "#/$defs/exchangeRate" } }
+      }
+    },
+    "comparison_rows": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/comparisonRow" }
+    },
+    "risks": { "type": "array", "items": { "$ref": "#/$defs/risk" } },
+    "confirmations": { "type": "array", "items": { "$ref": "#/$defs/confirmation" } },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requested_action", "selected_candidate_id", "decision", "approver", "decided_at", "comments"],
+      "properties": {
+        "requested_action": { "enum": ["REVIEW_SHORTLIST", "APPROVE_RFQ", "APPROVE_PURCHASE", "NO_ACTION"] },
+        "selected_candidate_id": { "type": ["string", "null"] },
+        "decision": { "enum": ["PENDING", "APPROVED", "REJECTED", "RETURNED"] },
+        "approver": { "type": ["string", "null"] },
+        "decided_at": { "type": ["string", "null"], "format": "date-time" },
+        "comments": { "type": ["string", "null"] }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated_by", "method_version", "assumptions", "exclusions"],
+      "properties": {
+        "generated_by": { "type": "string", "minLength": 1 },
+        "method_version": { "type": "string", "minLength": 1 },
+        "assumptions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "exclusions": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "report_status": { "enum": ["READY_FOR_REVIEW", "READY_FOR_APPROVAL", "FINAL"] } }, "required": ["report_status"] },
+      "then": {
+        "properties": {
+          "comparison_rows": { "minItems": 1 },
+          "evidence": { "minItems": 1 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "executive_summary": { "properties": { "decision_status": { "const": "RECOMMENDED" } } } } },
+      "then": {
+        "properties": {
+          "executive_summary": {
+            "properties": {
+              "recommended_candidate_ids": { "minItems": 1 },
+              "recommendation_rationale": { "minItems": 1 }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "limitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "description", "impact"],
+      "properties": {
+        "code": { "enum": ["LOGIN_REQUIRED", "DATA_UNAVAILABLE", "PRICE_REQUIRES_INQUIRY", "MANUAL_CONFIRMATION_REQUIRED", "CHANNEL_FAILED", "OTHER"] },
+        "description": { "type": "string", "minLength": 1 },
+        "impact": { "enum": ["LOW", "MEDIUM", "HIGH"] }
+      }
+    },
+    "exchangeRate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_currency", "to_currency", "rate", "observed_at", "source"],
+      "properties": {
+        "from_currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "to_currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "rate": { "type": "number", "exclusiveMinimum": 0 },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "source": { "type": "string", "minLength": 1 }
+      }
+    },
+    "comparisonRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rank", "candidate_id", "supplier_id", "eligibility", "platform", "product_title", "product_url", "supplier_name", "match", "pricing", "commercial", "supplier_snapshot", "scores", "evidence_refs", "risk_refs", "recommendation_role"],
+      "properties": {
+        "rank": { "type": ["integer", "null"], "minimum": 1 },
+        "candidate_id": { "type": "string", "minLength": 1 },
+        "supplier_id": { "type": ["string", "null"] },
+        "eligibility": { "enum": ["ELIGIBLE", "CONDITIONAL", "EXCLUDED"] },
+        "platform": { "type": "string", "minLength": 1 },
+        "product_title": { "type": "string", "minLength": 1 },
+        "product_url": { "type": "string", "format": "uri" },
+        "supplier_name": { "type": ["string", "null"] },
+        "match": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["score", "hard_failures", "unknown_requirements"],
+          "properties": {
+            "score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "hard_failures": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "unknown_requirements": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "pricing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["original_unit_price", "normalized_unit_cost", "normalized_total_cost", "known_costs", "unknown_costs", "confidence"],
+          "properties": {
+            "original_unit_price": { "oneOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
+            "normalized_unit_cost": { "oneOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
+            "normalized_total_cost": { "oneOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
+            "known_costs": { "type": "array", "items": { "$ref": "#/$defs/costLine" } },
+            "unknown_costs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "confidence": { "$ref": "common.schema.json#/$defs/confidence" }
+          }
+        },
+        "commercial": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["moq", "lead_time_days", "invoice", "payment_terms"],
+          "properties": {
+            "moq": { "oneOf": [{ "$ref": "common.schema.json#/$defs/quantity" }, { "type": "null" }] },
+            "lead_time_days": { "type": ["integer", "null"], "minimum": 0 },
+            "invoice": { "type": ["string", "null"] },
+            "payment_terms": { "type": ["string", "null"] }
+          }
+        },
+        "supplier_snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["supplier_type", "location", "rating", "transaction_signal", "certifications"],
+          "properties": {
+            "supplier_type": { "enum": ["FACTORY", "TRADER", "RETAILER", "SERVICE_PROVIDER", "INDIVIDUAL", "UNKNOWN"] },
+            "location": { "type": ["string", "null"] },
+            "rating": { "type": ["number", "null"], "minimum": 0, "maximum": 5 },
+            "transaction_signal": { "type": ["string", "null"] },
+            "certifications": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "scores": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["product_match", "price", "supplier", "delivery", "overall"],
+          "properties": {
+            "product_match": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "price": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "supplier": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "delivery": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "overall": { "type": ["number", "null"], "minimum": 0, "maximum": 100 }
+          }
+        },
+        "evidence_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "risk_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "recommendation_role": { "enum": ["LOWEST_COST", "BALANCED", "HIGHEST_CONFIGURATION", "SHORTLIST", "NONE"] }
+      }
+    },
+    "costLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "amount"],
+      "properties": {
+        "component": { "enum": ["ITEM_PRICE", "DOMESTIC_FREIGHT", "INTERNATIONAL_FREIGHT", "TAX", "CUSTOMIZATION", "PACKAGING", "SAMPLE", "MOLD", "PAYMENT_FEE", "INSTALLATION", "SERVICE_FEE", "OTHER"] },
+        "amount": { "$ref": "common.schema.json#/$defs/money" },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk_id", "candidate_id", "category", "severity", "description", "mitigation", "status"],
+      "properties": {
+        "risk_id": { "type": "string", "minLength": 1 },
+        "candidate_id": { "type": ["string", "null"] },
+        "category": { "enum": ["SPECIFICATION", "PRICE", "SUPPLIER", "DELIVERY", "COMPLIANCE", "QUALITY", "DATA_QUALITY", "OTHER"] },
+        "severity": { "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"] },
+        "description": { "type": "string", "minLength": 1 },
+        "mitigation": { "type": ["string", "null"] },
+        "status": { "enum": ["OPEN", "MITIGATED", "ACCEPTED", "CLOSED"] }
+      }
+    },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["confirmation_id", "candidate_id", "question", "owner", "blocking", "status"],
+      "properties": {
+        "confirmation_id": { "type": "string", "minLength": 1 },
+        "candidate_id": { "type": ["string", "null"] },
+        "question": { "type": "string", "minLength": 1 },
+        "owner": { "enum": ["BUYER", "SUPPLIER", "AGENT", "THIRD_PARTY"] },
+        "blocking": { "type": "boolean" },
+        "status": { "enum": ["OPEN", "ANSWERED", "NOT_APPLICABLE"] },
+        "answer": { "type": ["string", "null"] }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "candidate_id", "field_path", "source_url", "observed_at", "source_type", "original_value", "confidence"],
+      "properties": {
+        "evidence_id": { "type": "string", "minLength": 1 },
+        "candidate_id": { "type": ["string", "null"] },
+        "field_path": { "type": "string", "pattern": "^/" },
+        "source_url": { "type": "string", "format": "uri" },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "source_type": { "enum": ["PRODUCT_PAGE", "SUPPLIER_PAGE", "SEARCH_RESULT", "DOCUMENT", "HUMAN_CONFIRMATION"] },
+        "original_value": {},
+        "normalized_value": {},
+        "confidence": { "$ref": "common.schema.json#/$defs/confidence" },
+        "capture_reference": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

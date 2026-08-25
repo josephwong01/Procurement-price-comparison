@@ -4,7 +4,7 @@
 
 ## 当前阶段
 
-`Procurement Requirement Schema v0.2` 已完成业务确认、Draft 2020-12标准验证和四例回归，现已冻结为默认需求Schema。下一阶段是定义最终采购输出结构。
+`Procurement Requirement Schema v0.2` 已完成业务确认、Draft 2020-12标准验证和四例回归，现已冻结为默认需求Schema。当前正在定义最终采购输出结构，已形成v0.1候选Schema和无真实报价的结构示例，等待业务字段审阅。
 
 ## 核心流程
 

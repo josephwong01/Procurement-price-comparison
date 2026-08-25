@@ -1,0 +1,66 @@
+{
+  "output_version": "0.1-candidate",
+  "report_id": "REPORT-STRUCTURE-DEMO-001",
+  "generated_at": "2026-08-25T00:00:00Z",
+  "data_cutoff_at": null,
+  "requirement_reference": {
+    "requirement_id": "PR-BT-SPEAKER-GIFT-001",
+    "schema_version": "0.2",
+    "snapshot_reference": "cases/bluetooth-speaker-giveaway/requirement-v0.2.json"
+  },
+  "report_status": "INCOMPLETE",
+  "coverage": {
+    "channels_attempted": [],
+    "channels_succeeded": [],
+    "candidates_found": 0,
+    "candidates_eligible": 0,
+    "candidates_excluded": 0,
+    "duplicates_removed": 0,
+    "limitations": [
+      { "code": "DATA_UNAVAILABLE", "description": "结构示例不包含真实搜索或报价数据", "impact": "HIGH" }
+    ]
+  },
+  "executive_summary": {
+    "decision_status": "NO_RECOMMENDATION",
+    "summary": "该文件仅验证最终输出结构，尚未进行真实询源。",
+    "recommended_candidate_ids": [],
+    "recommendation_rationale": [],
+    "scenario_picks": { "lowest_cost": null, "balanced": null, "highest_configuration": null }
+  },
+  "comparison_basis": {
+    "comparison_currency": "CNY",
+    "procurement_quantity": { "value": 10, "unit": "个" },
+    "fulfillment_option_id": null,
+    "cost_basis": "DELIVERED_PRICE",
+    "unknown_cost_policy": "DO_NOT_TREAT_AS_ZERO",
+    "exchange_rates": []
+  },
+  "comparison_rows": [],
+  "risks": [],
+  "confirmations": [
+    {
+      "confirmation_id": "CONF-DEMO-001",
+      "candidate_id": null,
+      "question": "完成真实询源后才能形成候选和推荐。",
+      "owner": "AGENT",
+      "blocking": true,
+      "status": "OPEN",
+      "answer": null
+    }
+  ],
+  "evidence": [],
+  "approval": {
+    "requested_action": "NO_ACTION",
+    "selected_candidate_id": null,
+    "decision": "PENDING",
+    "approver": null,
+    "decided_at": null,
+    "comments": "结构验证示例，不可用于采购决策。"
+  },
+  "audit": {
+    "generated_by": "Procurement Price Comparison Skill",
+    "method_version": "output-0.1-candidate",
+    "assumptions": [],
+    "exclusions": ["真实商品、供应商、报价和证据"]
+  }
+}
