@@ -1,16 +1,36 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/josephwong01/Procurement-price-comparison/schemas/procurement-requirement-v0.2-candidate.schema.json",
-  "title": "Procurement Requirement v0.2 Candidate",
+  "title": "Procurement Requirement v0.2 Candidate 2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "requirement_id", "procurement_type", "status", "subject", "use_case", "quantity", "budget", "fulfillment_options", "readiness", "provenance"],
+  "required": ["schema_version", "requirement_id", "procurement_type", "status", "requester", "subject", "use_case", "quantity", "budget", "fulfillment_policy", "fulfillment_options", "acceptance_criteria", "readiness", "provenance"],
   "properties": {
-    "schema_version": { "const": "0.2-candidate" },
+    "schema_version": { "const": "0.2-candidate.2" },
     "requirement_id": { "type": "string", "minLength": 1 },
     "title": { "type": ["string", "null"] },
     "procurement_type": { "enum": ["STANDARD_PRODUCT", "CUSTOM_PRODUCT", "EQUIPMENT", "SERVICE"] },
     "status": { "enum": ["DRAFT", "NEEDS_CLARIFICATION", "SEARCH_READY", "COMPARISON_READY", "RFQ_READY"] },
+    "requester": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "department", "company"],
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "department": { "type": ["string", "null"] },
+        "company": { "type": ["string", "null"] },
+        "project_or_cost_center": { "type": ["string", "null"] }
+      }
+    },
+    "business_context": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "project_name": { "type": ["string", "null"] },
+        "cost_center": { "type": ["string", "null"] },
+        "approval_reference": { "type": ["string", "null"] }
+      }
+    },
     "subject": {
       "type": "object",
       "additionalProperties": false,
@@ -19,7 +39,17 @@
         "name": { "type": "string", "minLength": 1 },
         "category": { "type": ["string", "null"] },
         "description": { "type": ["string", "null"] },
-        "attributes": { "type": "array", "items": { "$ref": "#/$defs/constraint" } }
+        "attributes": { "type": "array", "items": { "$ref": "#/$defs/constraint" } },
+        "brand_policy": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["mode", "brands", "substitutes_allowed"],
+          "properties": {
+            "mode": { "enum": ["REQUIRED", "PREFERRED", "ANY", "UNKNOWN"] },
+            "brands": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+            "substitutes_allowed": { "type": ["boolean", "null"] }
+          }
+        }
       }
     },
     "use_case": {
@@ -37,14 +67,21 @@
     "budget": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["level", "pricing_basis", "included_costs", "excluded_costs"],
+      "required": ["level", "comparison_currency"],
       "properties": {
         "unit_price_ceiling": { "oneOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
         "total_ceiling": { "oneOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
         "level": { "$ref": "common.schema.json#/$defs/constraintLevel" },
-        "pricing_basis": { "enum": ["DISPLAY_PRICE", "TAX_INCLUDED_PRICE", "DELIVERED_PRICE", "LANDED_COST", "ALL_IN_SERVICE_FEE", "UNKNOWN"] },
-        "included_costs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-        "excluded_costs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+        "comparison_currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      }
+    },
+    "fulfillment_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection_rule", "primary_option_id"],
+      "properties": {
+        "selection_rule": { "enum": ["ANY_ONE", "ALL", "PRIMARY_WITH_FALLBACK"] },
+        "primary_option_id": { "type": ["string", "null"] }
       }
     },
     "fulfillment_options": {
@@ -53,15 +90,18 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "destination", "channels", "cost_inclusions", "cost_exclusions", "level"],
+        "required": ["id", "role", "destination", "channels", "pricing_basis", "cost_inclusions", "cost_exclusions"],
         "properties": {
           "id": { "type": "string", "minLength": 1 },
+          "role": { "enum": ["PRIMARY", "ALTERNATIVE", "FALLBACK"] },
           "destination": { "type": "string", "minLength": 1 },
           "channels": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
           "delivery_window": {
             "type": ["object", "null"],
             "additionalProperties": false,
+            "required": ["mode"],
             "properties": {
+              "mode": { "enum": ["MONTH", "DATE_RANGE", "DEADLINE", "UNKNOWN"] },
               "earliest_date": { "type": ["string", "null"], "format": "date" },
               "latest_date": { "type": ["string", "null"], "format": "date" },
               "month": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}$" }
@@ -72,15 +112,17 @@
             "additionalProperties": false,
             "required": ["max_days", "start_event"],
             "properties": {
-              "max_days": { "type": ["integer", "null"], "minimum": 0 },
-              "start_event": { "enum": ["ORDER_PLACED", "PAYMENT_COMPLETED", "DESIGN_CONFIRMED", "INPUTS_COMPLETE", "UNKNOWN"] },
+              "max_days": { "type": "integer", "minimum": 0 },
+              "start_event": { "enum": ["ORDER_PLACED", "PAYMENT_COMPLETED", "DEPOSIT_PAID", "CONTRACT_SIGNED", "DESIGN_CONFIRMED", "SAMPLE_APPROVED", "INPUTS_COMPLETE", "MATERIALS_RECEIVED", "OTHER", "UNKNOWN"] },
+              "start_event_other": { "type": ["string", "null"] },
               "includes_revision": { "type": ["boolean", "null"] },
               "includes_transport": { "type": ["boolean", "null"] }
             }
           },
-          "cost_inclusions": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-          "cost_exclusions": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-          "level": { "$ref": "common.schema.json#/$defs/constraintLevel" }
+          "pricing_basis": { "enum": ["DISPLAY_PRICE", "TAX_INCLUDED_PRICE", "DELIVERED_PRICE", "LANDED_COST", "ALL_IN_SERVICE_FEE", "UNKNOWN"] },
+          "cost_inclusions": { "type": "array", "items": { "$ref": "#/$defs/costComponent" }, "uniqueItems": true },
+          "cost_exclusions": { "type": "array", "items": { "$ref": "#/$defs/costComponent" }, "uniqueItems": true },
+          "other_cost_notes": { "type": ["string", "null"] }
         }
       }
     },
@@ -139,7 +181,8 @@
       }
     },
     "supplier_requirements": { "type": "array", "items": { "$ref": "#/$defs/constraint" } },
-    "search_preferences": {
+    "acceptance_criteria": { "type": "array", "items": { "$ref": "#/$defs/acceptanceCriterion" } },
+    "sourcing_preferences": {
       "type": ["object", "null"],
       "additionalProperties": false,
       "properties": {
@@ -159,10 +202,43 @@
         "assumptions": { "type": "array", "items": { "type": "string", "minLength": 1 } }
       }
     },
-    "provenance": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/provenanceEntry" } },
+    "provenance": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/provenanceEntry" } },
     "notes": { "type": "array", "items": { "type": "string" } }
   },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "NEEDS_CLARIFICATION" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "readiness": {
+            "properties": { "blocking_questions": { "minItems": 1 } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["SEARCH_READY", "COMPARISON_READY", "RFQ_READY"] } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "readiness": {
+            "properties": { "blocking_questions": { "maxItems": 0 } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "procurement_type": { "const": "SERVICE" } }, "required": ["procurement_type"] },
+      "then": { "properties": { "service": { "type": "object" } }, "required": ["service"] }
+    },
+    {
+      "if": { "properties": { "procurement_type": { "const": "CUSTOM_PRODUCT" } }, "required": ["procurement_type"] },
+      "then": { "properties": { "customization": { "type": "object", "properties": { "mode": { "const": "REQUIRED" } } } }, "required": ["customization"] }
+    }
+  ],
   "$defs": {
+    "costComponent": {
+      "enum": ["ITEM_PRICE", "DOMESTIC_FREIGHT", "INTERNATIONAL_FREIGHT", "TAX", "CUSTOMIZATION", "PACKAGING", "SAMPLE", "MOLD", "PAYMENT_FEE", "INSTALLATION", "SERVICE_FEE"]
+    },
     "constraint": {
       "type": "object",
       "additionalProperties": false,
@@ -176,6 +252,25 @@
         "unit": { "type": ["string", "null"] },
         "tolerance": { "type": ["number", "null"], "minimum": 0 },
         "notes": { "type": ["string", "null"] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "operator": { "enum": ["IN", "NOT_IN"] } }, "required": ["operator"] },
+          "then": { "properties": { "value": { "type": "array", "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "operator": { "const": "RANGE" } }, "required": ["operator"] },
+          "then": { "properties": { "value": { "$ref": "#/$defs/rangeValue" } } }
+        }
+      ]
+    },
+    "rangeValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" }
       }
     },
     "inputItem": {
@@ -216,7 +311,7 @@
       "required": ["name", "required"],
       "properties": {
         "name": { "type": "string", "minLength": 1 },
-        "quantity": { "type": ["integer", "null"], "minimum": 1 },
+        "quantity": { "oneOf": [{ "$ref": "common.schema.json#/$defs/quantity" }, { "type": "null" }] },
         "format": { "type": ["string", "null"] },
         "editable_source_required": { "type": ["boolean", "null"] },
         "required": { "type": "boolean" },

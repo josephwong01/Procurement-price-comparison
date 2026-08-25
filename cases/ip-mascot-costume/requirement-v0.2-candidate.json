@@ -1,9 +1,11 @@
 {
-  "schema_version": "0.2-candidate",
+  "schema_version": "0.2-candidate.2",
   "requirement_id": "PR-IP-MASCOT-001",
   "title": "高还原度定制IP人偶服",
   "procurement_type": "CUSTOM_PRODUCT",
   "status": "SEARCH_READY",
+  "requester": { "name": null, "department": "采购部", "company": null, "project_or_cost_center": null },
+  "business_context": null,
   "subject": {
     "name": "定制IP人偶服",
     "category": "展会道具",
@@ -13,7 +15,8 @@
       { "key": "body", "label": "身体", "level": "HARD", "operator": "EQ", "value": "海绵拼接", "unit": null, "tolerance": null, "notes": null },
       { "key": "weight", "label": "重量", "level": "PREFERENCE", "operator": "EQ", "value": 10, "unit": "kg", "tolerance": 2, "notes": null },
       { "key": "wearer_height", "label": "穿戴身高", "level": "HARD", "operator": "EQ", "value": 175, "unit": "cm", "tolerance": 3, "notes": null }
-    ]
+    ],
+    "brand_policy": { "mode": "ANY", "brands": [], "substitutes_allowed": true }
   },
   "use_case": { "purpose": "展会IP展示与互动", "environment": "展会", "users_or_audience": "现场观众", "event_or_project": null },
   "quantity": { "value": 1, "unit": "套" },
@@ -21,20 +24,21 @@
     "unit_price_ceiling": { "amount": 5000, "currency": "CNY", "tax_included": null },
     "total_ceiling": { "amount": 5000, "currency": "CNY", "tax_included": null },
     "level": "HARD",
-    "pricing_basis": "DELIVERED_PRICE",
-    "included_costs": ["产品制作", "中国境内交付"],
-    "excluded_costs": ["中国至德国物流"]
+    "comparison_currency": "CNY"
   },
+  "fulfillment_policy": { "selection_rule": "ANY_ONE", "primary_option_id": "CN_DOMESTIC" },
   "fulfillment_options": [
     {
       "id": "CN_DOMESTIC",
+      "role": "PRIMARY",
       "destination": "中国境内（具体地址待定）",
       "channels": ["1688", "淘宝", "中国定制厂家"],
       "delivery_window": null,
-      "lead_time": { "max_days": 10, "start_event": "ORDER_PLACED", "includes_revision": null, "includes_transport": true },
-      "cost_inclusions": ["制作", "国内交付"],
-      "cost_exclusions": ["国际物流"],
-      "level": "HARD"
+      "lead_time": { "max_days": 10, "start_event": "ORDER_PLACED", "start_event_other": null, "includes_revision": null, "includes_transport": true },
+      "pricing_basis": "DELIVERED_PRICE",
+      "cost_inclusions": ["ITEM_PRICE", "CUSTOMIZATION", "DOMESTIC_FREIGHT"],
+      "cost_exclusions": ["INTERNATIONAL_FREIGHT"],
+      "other_cost_notes": null
     }
   ],
   "commercial": { "moq_max": { "value": 1, "unit": "套" }, "invoice_required": null, "invoice_type": null, "tax_rate": null, "payment_terms": null },
@@ -57,12 +61,17 @@
     ]
   },
   "service": null,
+  "acceptance_criteria": [
+    { "criterion": "材料工艺符合需求且IP造型高还原", "method": "与设计图及成品照片或视频对照", "level": "HARD" }
+  ],
   "supplier_requirements": [
     { "key": "mascot_experience", "label": "同类经验", "level": "PREFERENCE", "operator": "EXISTS", "value": true, "unit": null, "tolerance": null, "notes": null }
   ],
-  "search_preferences": { "platforms": ["1688", "淘宝", "中国定制厂家"], "supplier_count_min": 5, "languages": ["zh-CN"] },
+  "sourcing_preferences": { "platforms": ["1688", "淘宝", "中国定制厂家"], "supplier_count_min": 5, "languages": ["zh-CN"] },
   "constraints": [],
   "readiness": { "blocking_questions": [], "warnings": ["详细人体尺寸、验收偏差、税费和返工规则待确认"], "assumptions": ["重量容差暂按±2kg"] },
-  "provenance": [],
+  "provenance": [
+    { "field_path": "/subject", "source_type": "USER_EXPLICIT", "source_reference": "项目对话", "original_text": "头部整块泡沫雕刻，外包高弹水晶毛绒布料，身体海绵拼接", "recorded_at": null, "confidence": "HIGH", "inference_basis": null }
+  ],
   "notes": ["由v0.1真实案例迁移。"]
 }
