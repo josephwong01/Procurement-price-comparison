@@ -4,7 +4,7 @@
 
 ## 当前阶段
 
-`Requirement Schema v0.2-candidate.2` 已按人工字段审阅结果修订并完成四例关键契约回归。当前尚未冻结：仍需完整 Draft 2020-12 标准验证和最终人工确认。
+`Procurement Requirement Schema v0.2` 已完成业务确认、Draft 2020-12标准验证和四例回归，现已冻结为默认需求Schema。下一阶段是定义最终采购输出结构。
 
 ## 核心流程
 
@@ -42,7 +42,7 @@
 │   └── procurement-requirement.example.json
 └── schemas/
     ├── common.schema.json
-    ├── procurement-requirement.schema.json\n    └── procurement-requirement-v0.2-candidate.schema.json
+    ├── procurement-requirement-v0.1.schema.json\n    ├── procurement-requirement-v0.2-candidate.schema.json\n    └── procurement-requirement.schema.json
 ```
 
 ## 使用原则

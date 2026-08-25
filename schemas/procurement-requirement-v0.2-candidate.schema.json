@@ -105,7 +105,24 @@
               "earliest_date": { "type": ["string", "null"], "format": "date" },
               "latest_date": { "type": ["string", "null"], "format": "date" },
               "month": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}$" }
-            }
+            },
+            "allOf": [
+              {
+                "if": { "properties": { "mode": { "const": "MONTH" } }, "required": ["mode"] },
+                "then": { "required": ["month"], "properties": { "month": { "type": "string" } } }
+              },
+              {
+                "if": { "properties": { "mode": { "const": "DATE_RANGE" } }, "required": ["mode"] },
+                "then": {
+                  "required": ["earliest_date", "latest_date"],
+                  "properties": { "earliest_date": { "type": "string" }, "latest_date": { "type": "string" } }
+                }
+              },
+              {
+                "if": { "properties": { "mode": { "const": "DEADLINE" } }, "required": ["mode"] },
+                "then": { "required": ["latest_date"], "properties": { "latest_date": { "type": "string" } } }
+              }
+            ]
           },
           "lead_time": {
             "type": ["object", "null"],
@@ -237,7 +254,7 @@
   ],
   "$defs": {
     "costComponent": {
-      "enum": ["ITEM_PRICE", "DOMESTIC_FREIGHT", "INTERNATIONAL_FREIGHT", "TAX", "CUSTOMIZATION", "PACKAGING", "SAMPLE", "MOLD", "PAYMENT_FEE", "INSTALLATION", "SERVICE_FEE"]
+      "enum": ["ITEM_PRICE", "DOMESTIC_FREIGHT", "INTERNATIONAL_FREIGHT", "TAX", "CUSTOMIZATION", "PACKAGING", "SAMPLE", "MOLD", "PAYMENT_FEE", "INSTALLATION", "SERVICE_FEE", "OTHER"]
     },
     "constraint": {
       "type": "object",
