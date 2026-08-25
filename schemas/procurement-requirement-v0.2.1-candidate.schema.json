@@ -1,0 +1,1303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/josephwong01/Procurement-price-comparison/schemas/procurement-requirement-v0.2.1-candidate.schema.json",
+  "title": "Procurement Requirement v0.2.1 Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "requirement_id",
+    "procurement_type",
+    "status",
+    "requester",
+    "subject",
+    "use_case",
+    "quantity",
+    "budget",
+    "fulfillment_policy",
+    "fulfillment_options",
+    "acceptance_criteria",
+    "readiness",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2.1-candidate"
+    },
+    "requirement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "procurement_type": {
+      "enum": [
+        "STANDARD_PRODUCT",
+        "CUSTOM_PRODUCT",
+        "EQUIPMENT",
+        "SERVICE"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "NEEDS_CLARIFICATION",
+        "SEARCH_READY",
+        "COMPARISON_READY",
+        "RFQ_READY"
+      ]
+    },
+    "requester": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "department",
+        "company"
+      ],
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "department": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "company": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_or_cost_center": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "business_context": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "project_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cost_center": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approval_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "category",
+        "description",
+        "attributes"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/constraint"
+          }
+        },
+        "brand_policy": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "brands",
+            "substitutes_allowed"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "REQUIRED",
+                "PREFERRED",
+                "ANY",
+                "UNKNOWN"
+              ]
+            },
+            "brands": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            },
+            "substitutes_allowed": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "use_case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose"
+      ],
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "users_or_audience": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_or_project": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "quantity": {
+      "$ref": "common.schema.json#/$defs/quantity"
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "comparison_currency"
+      ],
+      "properties": {
+        "unit_price_ceiling": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/money"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total_ceiling": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/money"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "level": {
+          "$ref": "common.schema.json#/$defs/constraintLevel"
+        },
+        "comparison_currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "fulfillment_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selection_rule",
+        "primary_option_id"
+      ],
+      "properties": {
+        "selection_rule": {
+          "enum": [
+            "ANY_ONE",
+            "ALL",
+            "PRIMARY_WITH_FALLBACK"
+          ]
+        },
+        "primary_option_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "fulfillment_options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role",
+          "destination",
+          "channels",
+          "pricing_basis",
+          "cost_inclusions",
+          "cost_exclusions"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "PRIMARY",
+              "ALTERNATIVE",
+              "FALLBACK"
+            ]
+          },
+          "destination": {
+            "type": "string",
+            "minLength": 1
+          },
+          "channels": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "delivery_window": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "mode"
+            ],
+            "properties": {
+              "mode": {
+                "enum": [
+                  "MONTH",
+                  "DATE_RANGE",
+                  "DEADLINE",
+                  "UNKNOWN"
+                ]
+              },
+              "earliest_date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "latest_date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "month": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}$"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "mode": {
+                      "const": "MONTH"
+                    }
+                  },
+                  "required": [
+                    "mode"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "month"
+                  ],
+                  "properties": {
+                    "month": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "mode": {
+                      "const": "DATE_RANGE"
+                    }
+                  },
+                  "required": [
+                    "mode"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "earliest_date",
+                    "latest_date"
+                  ],
+                  "properties": {
+                    "earliest_date": {
+                      "type": "string"
+                    },
+                    "latest_date": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "mode": {
+                      "const": "DEADLINE"
+                    }
+                  },
+                  "required": [
+                    "mode"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "latest_date"
+                  ],
+                  "properties": {
+                    "latest_date": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "lead_time": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "max_days",
+              "start_event"
+            ],
+            "properties": {
+              "max_days": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "start_event": {
+                "enum": [
+                  "ORDER_PLACED",
+                  "PAYMENT_COMPLETED",
+                  "DEPOSIT_PAID",
+                  "CONTRACT_SIGNED",
+                  "DESIGN_CONFIRMED",
+                  "SAMPLE_APPROVED",
+                  "INPUTS_COMPLETE",
+                  "MATERIALS_RECEIVED",
+                  "OTHER",
+                  "UNKNOWN"
+                ]
+              },
+              "start_event_other": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "includes_revision": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "includes_transport": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "pricing_basis": {
+            "enum": [
+              "DISPLAY_PRICE",
+              "TAX_INCLUDED_PRICE",
+              "DELIVERED_PRICE",
+              "LANDED_COST",
+              "ALL_IN_SERVICE_FEE",
+              "UNKNOWN"
+            ]
+          },
+          "cost_inclusions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/costComponent"
+            },
+            "uniqueItems": true
+          },
+          "cost_exclusions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/costComponent"
+            },
+            "uniqueItems": true
+          },
+          "other_cost_notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "commercial": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "moq_max": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "invoice_required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "invoice_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tax_rate": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "payment_terms": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "customization": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "requirements",
+        "inputs",
+        "milestones",
+        "acceptance_criteria"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "NONE",
+            "OPTIONAL",
+            "REQUIRED"
+          ]
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/constraint"
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/inputItem"
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/milestone"
+          }
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/acceptanceCriterion"
+          }
+        }
+      }
+    },
+    "service": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "included_scope",
+        "excluded_scope",
+        "client_inputs",
+        "deliverables",
+        "milestones",
+        "revision_policy",
+        "intellectual_property"
+      ],
+      "properties": {
+        "included_scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "excluded_scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "client_inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/inputItem"
+          }
+        },
+        "deliverables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/deliverable"
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/milestone"
+          }
+        },
+        "revision_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "included_rounds",
+            "extra_revision_pricing"
+          ],
+          "properties": {
+            "included_rounds": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "extra_revision_pricing": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "intellectual_property": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ownership",
+            "source_files_included",
+            "confidentiality_required"
+          ],
+          "properties": {
+            "ownership": {
+              "enum": [
+                "BUYER",
+                "SUPPLIER",
+                "LICENSED",
+                "SHARED",
+                "UNKNOWN"
+              ]
+            },
+            "source_files_included": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "confidentiality_required": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "supplier_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/constraint"
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/acceptanceCriterion"
+      }
+    },
+    "sourcing_preferences": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "supplier_count_min": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/constraint"
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blocking_questions",
+        "warnings",
+        "assumptions"
+      ],
+      "properties": {
+        "blocking_questions": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/provenanceEntry"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourcing_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "must_search_platforms",
+        "preferred_platforms",
+        "excluded_platforms",
+        "supplemental_discovery"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "ONLY_LISTED",
+            "REQUIRED_PLUS_DISCOVERY",
+            "OPEN"
+          ]
+        },
+        "must_search_platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/platformTarget"
+          },
+          "uniqueItems": true
+        },
+        "preferred_platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/platformTarget"
+          },
+          "uniqueItems": true
+        },
+        "excluded_platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/platformTarget"
+          },
+          "uniqueItems": true
+        },
+        "supplemental_discovery": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "min_platforms",
+            "max_platforms",
+            "selection_criteria"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "min_platforms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "max_platforms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "selection_criteria": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NEEDS_CLARIFICATION"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "readiness": {
+            "properties": {
+              "blocking_questions": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "SEARCH_READY",
+              "COMPARISON_READY",
+              "RFQ_READY"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "readiness": {
+            "properties": {
+              "blocking_questions": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "procurement_type": {
+            "const": "SERVICE"
+          }
+        },
+        "required": [
+          "procurement_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "service": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "service"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "procurement_type": {
+            "const": "CUSTOM_PRODUCT"
+          }
+        },
+        "required": [
+          "procurement_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "customization": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "const": "REQUIRED"
+              }
+            }
+          }
+        },
+        "required": [
+          "customization"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "costComponent": {
+      "enum": [
+        "ITEM_PRICE",
+        "DOMESTIC_FREIGHT",
+        "INTERNATIONAL_FREIGHT",
+        "TAX",
+        "CUSTOMIZATION",
+        "PACKAGING",
+        "SAMPLE",
+        "MOLD",
+        "PAYMENT_FEE",
+        "INSTALLATION",
+        "SERVICE_FEE",
+        "OTHER"
+      ]
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "level",
+        "operator",
+        "value"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "level": {
+          "$ref": "common.schema.json#/$defs/constraintLevel"
+        },
+        "operator": {
+          "enum": [
+            "EQ",
+            "NE",
+            "GT",
+            "GTE",
+            "LT",
+            "LTE",
+            "IN",
+            "NOT_IN",
+            "CONTAINS",
+            "EXISTS",
+            "RANGE"
+          ]
+        },
+        "value": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tolerance": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operator": {
+                "enum": [
+                  "IN",
+                  "NOT_IN"
+                ]
+              }
+            },
+            "required": [
+              "operator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operator": {
+                "const": "RANGE"
+              }
+            },
+            "required": [
+              "operator"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/rangeValue"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "rangeValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      }
+    },
+    "inputItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status",
+        "responsible_party"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "AVAILABLE",
+            "PENDING",
+            "NOT_REQUIRED",
+            "UNKNOWN"
+          ]
+        },
+        "responsible_party": {
+          "enum": [
+            "BUYER",
+            "SUPPLIER",
+            "THIRD_PARTY",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "approval_required"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "due_offset_days": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "approval_required": {
+          "type": "boolean"
+        },
+        "evidence_required": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "acceptanceCriterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion",
+        "method",
+        "level"
+      ],
+      "properties": {
+        "criterion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "level": {
+          "$ref": "common.schema.json#/$defs/constraintLevel"
+        }
+      }
+    },
+    "deliverable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "required"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "editable_source_required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "acceptance": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "platformTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "market",
+        "channel_type",
+        "canonical_url"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "channel_type": {
+          "enum": [
+            "MARKETPLACE",
+            "RETAILER",
+            "PRICE_COMPARISON",
+            "SUPPLIER_DIRECTORY",
+            "MANUFACTURER_STORE",
+            "OTHER"
+          ]
+        },
+        "canonical_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    }
+  }
+}
+

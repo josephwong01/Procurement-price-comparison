@@ -1,0 +1,137 @@
+{
+  "regression_id": "REG-COFFEE-PLATFORM-SCOPE-001",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "requirement_schema_version": "0.2.1-candidate",
+  "tested_at": "2026-08-25T08:00:00Z",
+  "policy": {
+    "mode": "REQUIRED_PLUS_DISCOVERY",
+    "required_platform_count": 5,
+    "supplemental_min": 1,
+    "supplemental_max": 3,
+    "supplemental_actual": 2
+  },
+  "platform_coverage": [
+    {
+      "platform_id": "amazon-de",
+      "platform_name": "Amazon",
+      "market": "DE",
+      "origin": "USER_SPECIFIED",
+      "status": "SUCCEEDED",
+      "candidate_count": 1,
+      "evidence_url": "https://www.amazon.de/DeLonghi-ECAM-22-110-B-Kaffeevollautomat-Milchaufsch%C3%A4umd%C3%BCse/dp/B00400OMU0",
+      "notes": "找到可核验价格、库存和德国商品页；页面电压字段显示120V，与德国使用要求冲突，候选只能标为待确认。"
+    },
+    {
+      "platform_id": "taobao-cn",
+      "platform_name": "淘宝",
+      "market": "CN",
+      "origin": "USER_SPECIFIED",
+      "status": "ACCESS_BLOCKED",
+      "candidate_count": 0,
+      "evidence_url": "https://s.taobao.com/search?q=%E5%95%86%E7%94%A8%E5%92%96%E5%95%A1%E9%A5%AE%E6%96%99%E6%9C%BA",
+      "notes": "普通网页抓取失败，浏览器安全策略也禁止直接访问搜索页；未取得可核验商品级结果。"
+    },
+    {
+      "platform_id": "1688-cn",
+      "platform_name": "1688",
+      "market": "CN",
+      "origin": "USER_SPECIFIED",
+      "status": "ACCESS_BLOCKED",
+      "candidate_count": 0,
+      "evidence_url": "https://s.1688.com/selloffer/offer_search.htm?keywords=%E5%95%86%E7%94%A8%E5%92%96%E5%95%A1%E9%A5%AE%E6%96%99%E6%9C%BA",
+      "notes": "普通网页抓取失败，浏览器安全策略也禁止直接访问搜索页；未取得可核验商品级结果。"
+    },
+    {
+      "platform_id": "jd-cn",
+      "platform_name": "京东-中国",
+      "market": "CN",
+      "origin": "USER_SPECIFIED",
+      "status": "PARTIAL",
+      "candidate_count": 0,
+      "evidence_url": "https://www.jd.com/chanpin/2628977.html",
+      "notes": "公开索引可确认咖啡奶茶一体机品类和商品名称，但直接搜索跳转登录页，无法稳定取得逐项价格及商品详情链接。"
+    },
+    {
+      "platform_id": "jd-de-joybuy",
+      "platform_name": "京东-德国（Joybuy Germany）",
+      "market": "DE",
+      "origin": "USER_SPECIFIED",
+      "status": "SUCCEEDED",
+      "candidate_count": 1,
+      "evidence_url": "https://m.joybuy.de/store/100001843",
+      "notes": "已确认Joybuy是JD.com在欧洲的新零售平台且覆盖德国；找到德国在售咖啡机及价格。"
+    },
+    {
+      "platform_id": "ggm-gastro-de",
+      "platform_name": "GGM Gastro Germany",
+      "market": "DE",
+      "origin": "AGENT_SUPPLEMENTAL",
+      "status": "SUCCEEDED",
+      "candidate_count": 1,
+      "evidence_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "notes": "补充德国商用餐饮设备电商，提供更符合展会场景的双粉料机。"
+    },
+    {
+      "platform_id": "automaten-hofmann-de",
+      "platform_name": "Automaten Hofmann",
+      "market": "DE",
+      "origin": "AGENT_SUPPLEMENTAL",
+      "status": "SUCCEEDED",
+      "candidate_count": 1,
+      "evidence_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "notes": "补充德国专业自动售货设备商，提供较高吞吐的翻新设备价格层级。"
+    }
+  ],
+  "candidate_snapshot": [
+    {
+      "candidate_id": "PLAT-AMAZON-DE-MAGNIFICA-S",
+      "platform_id": "amazon-de",
+      "product_title": "De'Longhi Magnifica S ECAM22.110.B",
+      "product_url": "https://www.amazon.de/DeLonghi-ECAM-22-110-B-Kaffeevollautomat-Milchaufsch%C3%A4umd%C3%BCse/dp/B00400OMU0",
+      "observed_price": { "amount": 294.90, "currency": "EUR", "tax_included": true },
+      "disposition": "CONDITIONAL",
+      "reason": "内置1.8L水箱且能制作咖啡和手动奶饮；但页面电压字段显示120V，必须确认德国230V版本，且非咖啡饮料能力有限。"
+    },
+    {
+      "candidate_id": "PLAT-JOYBUY-DE-MAGNIFICA-EVO",
+      "platform_id": "jd-de-joybuy",
+      "product_title": "De'Longhi Magnifica Evo ECAM290.61.SB",
+      "product_url": "https://m.joybuy.de/dp/delonghi-magnifica-evo-ecam29061sb-kaffeevollautomat-silber/10364381",
+      "observed_price": { "amount": 339.99, "currency": "EUR", "tax_included": true },
+      "disposition": "CONDITIONAL",
+      "reason": "德国本地平台、价格与销量信号可核验；主要为咖啡和奶咖，非咖啡饮料能力仍需核实。"
+    },
+    {
+      "candidate_id": "PLAT-GGM-HAS2S",
+      "platform_id": "ggm-gastro-de",
+      "product_title": "GGM Gastro HAS2S 双粉料热饮机",
+      "product_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "observed_price": { "amount": 297.49, "currency": "EUR", "tax_included": true },
+      "disposition": "ELIGIBLE",
+      "reason": "咖啡和热巧克力、桶装水、230V/50Hz及连续出杯均可核验，当前最符合展会场景。"
+    },
+    {
+      "candidate_id": "PLAT-HOFMANN-ALEGRIA",
+      "platform_id": "automaten-hofmann-de",
+      "product_title": "Nescafé Alegria 6/30 翻新机",
+      "product_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "observed_price": { "amount": 750, "currency": "EUR", "tax_included": false },
+      "disposition": "CONDITIONAL",
+      "reason": "饮品和吞吐更强，但为翻新设备，税费、运费、保修和设备状态需确认。"
+    }
+  ],
+  "assertions": {
+    "all_required_platforms_attempted": true,
+    "supplemental_platform_count_within_range": true,
+    "failed_or_blocked_platforms_not_reported_as_success": true,
+    "all_candidates_have_platform_and_product_url": true,
+    "platform_scope_policy_result": "PASS_WITH_LIMITATIONS"
+  },
+  "limitations": [
+    "淘宝和1688未取得商品级结果，不属于成功搜索。",
+    "京东中国仅完成公开索引层面的品类核验，不属于完整商品询源。",
+    "中国平台商品若后续纳入比价，还需单独计算运至德国的国际运输、税费、插头和合规成本。",
+    "本次测试验证平台范围策略，不构成2026年11月锁价或库存承诺。"
+  ]
+}
+
