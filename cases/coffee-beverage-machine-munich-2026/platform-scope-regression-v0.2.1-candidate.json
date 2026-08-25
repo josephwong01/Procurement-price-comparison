@@ -127,10 +127,46 @@
     "all_candidates_have_platform_and_product_url": true,
     "platform_scope_policy_result": "PASS_WITH_LIMITATIONS"
   },
+  "access_strategy_assessment": {
+    "github_projects_reviewed": [
+      {
+        "repository": "Python3WebSpider/TaobaoProduct",
+        "approach": "Selenium",
+        "last_code_push": "2020-05-02",
+        "decision": "REFERENCE_ONLY",
+        "reason": "依赖浏览器页面结构且长期未更新，不能证明当前淘宝页面可稳定采集。"
+      },
+      {
+        "repository": "resphinas/1688-selenium-spider",
+        "approach": "Selenium",
+        "last_code_push": "2023-04-20",
+        "decision": "REFERENCE_ONLY",
+        "reason": "可作为人工登录后的采集思路，但不能绕过当前访问安全策略。"
+      },
+      {
+        "repository": "chisdiva/JdSpider",
+        "approach": "Scrapy + Selenium",
+        "last_code_push": "2022-05-06",
+        "decision": "REFERENCE_ONLY",
+        "reason": "详情页当前仍要求登录，旧选择器和价格接口不能视为可用。"
+      }
+    ],
+    "screenshot_result": "JD_DETAIL_REDIRECTED_TO_LOGIN",
+    "safe_next_method": "由用户在其已登录浏览器中打开商品搜索结果后，再执行可视读取和截图取证；不处理或导出Cookie。"
+  },
+  "china_to_munich_transport_estimate": {
+    "assumed_packed_weight_kg": { "min": 35, "max": 60 },
+    "assumed_volume_cbm": { "min": 0.2, "max": 0.35 },
+    "planning_amount": { "amount": 3000, "currency": "CNY" },
+    "reasonable_range": { "min": 2000, "max": 5000, "currency": "CNY" },
+    "included": ["中国提货", "国际运输", "德国末端派送的粗略缓冲"],
+    "excluded": ["进口增值税", "可能的关税", "展馆进馆物流", "特殊木箱和保险"],
+    "basis": "单台小批量运输存在最低收费；公开2026年线路参考约为空运6美元/公斤、铁路拼箱约148—210美元/立方米，规划值额外加入两端操作及末端派送缓冲。"
+  },
   "limitations": [
     "淘宝和1688未取得商品级结果，不属于成功搜索。",
     "京东中国仅完成公开索引层面的品类核验，不属于完整商品询源。",
-    "中国平台商品若后续纳入比价，还需单独计算运至德国的国际运输、税费、插头和合规成本。",
+    "中国平台商品若后续纳入比价，暂按3000元运输规划值计算；进口税费、插头和合规成本仍需单列。",
     "本次测试验证平台范围策略，不构成2026年11月锁价或库存承诺。"
   ]
 }

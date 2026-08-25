@@ -23,6 +23,20 @@
 
 Agent补充平台数为2，符合1—3个平台要求。
 
+## 访问限制复核
+
+GitHub上存在淘宝、1688和京东的浏览器自动化项目，但不能直接作为当前可用的“绕过方案”：
+
+| 平台 | 参考项目 | 技术路线 | 最近代码推送 | 结论 |
+| --- | --- | --- | --- | --- |
+| 淘宝 | [Python3WebSpider/TaobaoProduct](https://github.com/Python3WebSpider/TaobaoProduct) | Selenium | 2020-05-02 | 仅供思路参考，页面结构和验证机制已可能变化 |
+| 1688 | [resphinas/1688-selenium-spider](https://github.com/resphinas/1688-selenium-spider) | Selenium | 2023-04-20 | 需要真实浏览器环境，不能绕过当前安全限制 |
+| 京东中国 | [chisdiva/JdSpider](https://github.com/chisdiva/JdSpider) | Scrapy＋Selenium | 2022-05-06 | 当前商品详情仍跳转登录页，旧采集逻辑不能直接采用 |
+
+可视浏览器复核显示：京东公开分类页能列出13件相关商品和详情链接，但具体价格字段为空；进入商品详情后跳转个人/企业用户登录页面。因此截图能证明登录阻断，不能证明商品价格。淘宝搜索页被浏览器安全策略明确禁止，不能通过脚本、备用浏览器或间接请求规避。
+
+安全可行的后续方案是：用户在自己的浏览器登录相应平台并打开搜索结果，再由Agent读取当前可见页面和截图留证；不读取、导出或复用Cookie。
+
 ## 候选快照
 
 | 商品 | 来源平台 | 页面价格 | 判断 |
@@ -31,6 +45,17 @@ Agent补充平台数为2，符合1—3个平台要求。
 | [De'Longhi Magnifica Evo ECAM290.61.SB](https://m.joybuy.de/dp/delonghi-magnifica-evo-ecam29061sb-kaffeevollautomat-silber/10364381) | Joybuy Germany | €339.99 | 条件候选：德国本地可买，非咖啡饮料能力待确认 |
 | [GGM Gastro HAS2S](https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s) | GGM Gastro Germany | €297.49含税 | 当前综合匹配最好：咖啡＋热巧克力、桶装水、230V/50Hz |
 | [Nescafé Alegria 6/30](https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/) | Automaten Hofmann | €750未税＋运费 | 条件候选：吞吐较高，但为翻新机 |
+
+## 中国至慕尼黑运输规划值
+
+对中国平台候选，暂按一台包装后35—60kg、0.20—0.35m³估算：
+
+- 运输规划值：人民币3,000元/台；
+- 合理区间：人民币2,000—5,000元/台；
+- 包含：中国提货、国际运输、德国末端派送的粗略缓冲；
+- 不包含：德国进口增值税、可能的关税、展馆进馆物流、特殊木箱和保险。
+
+公开线路参考中，2026年中国至德国普通空运约6美元/公斤，铁路拼箱约148—210美元/立方米；单台货物还会受到最低收费、报关、两端操作和末端派送影响，所以不能直接用重量或体积单价相乘。本回归统一用3,000元作为可比价的占位成本。
 
 ## Schema结论
 
@@ -47,6 +72,6 @@ Agent补充平台数为2，符合1—3个平台要求。
 
 - 淘宝和1688商品级搜索未完成，原因是访问限制；
 - 京东中国商品级价格和详情采集未完成，原因是登录限制；
-- 中国平台到德国的运输、税费、合规和插头转换成本未计算；
+- 中国平台到德国运输已加入3,000元规划值，但税费、合规和插头转换成本仍未计算；
 - 当前价格不是2026年11月锁价或库存承诺。
 
