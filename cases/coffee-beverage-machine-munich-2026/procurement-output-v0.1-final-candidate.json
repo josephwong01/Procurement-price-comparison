@@ -1,0 +1,284 @@
+{
+  "output_version": "0.1-final-candidate",
+  "report_id": "REPORT-2026-MUNICH-COFFEE-FINAL-CANDIDATE",
+  "generated_at": "2026-08-25T10:20:00Z",
+  "report_status": "RECOMMENDED_PENDING_PREPURCHASE_VALIDATION",
+  "requirement_reference": {
+    "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+    "requirement_schema_version": "0.2.1-candidate",
+    "quantity": 1,
+    "destination": "Munich, Germany",
+    "event_time": "2026-11",
+    "budget_ceiling_cny": 10000,
+    "preference": "低成本导向下的综合判断",
+    "preferred_water": "桶装水或内置水箱，不依赖固定上下水",
+    "pending_power_requirement": "Germany 230V/50Hz"
+  },
+  "coverage": {
+    "required_platforms": ["Amazon Germany", "Taobao", "1688", "JD China", "JD Germany / Joybuy"],
+    "supplemental_platforms": ["GGM Gastro Germany", "Bosch Germany", "Automaten Hofmann"],
+    "platform_status": [
+      {"platform": "Amazon Germany", "status": "PARTIAL_SUCCESS", "note": "取得1条可核验商品；慕尼黑配送待复核"},
+      {"platform": "Taobao", "status": "SUCCEEDED", "note": "两轮搜索20条，详情3条"},
+      {"platform": "1688", "status": "SUCCEEDED", "note": "两轮搜索20条，详情2条"},
+      {"platform": "JD China", "status": "SUCCEEDED_RETAINED", "note": "保留此前3条登录态真实候选"},
+      {"platform": "JD Germany / Joybuy", "status": "SUCCEEDED", "note": "取得KRUPS和DeLonghi德国候选"},
+      {"platform": "German supplier websites", "status": "SUCCEEDED_RETAINED", "note": "保留Candidate.3中的商用和翻新设备候选"}
+    ],
+    "limitations": [
+      "2026年11月库存和最终价格必须在下单前刷新",
+      "中国平台国际运输均为约数，不得视为承运商报价",
+      "搜索页最低价已按详情SKU纠正；尚未锁定的SKU不得作为最终报价",
+      "产品评分、店铺评分和供应商评分分开记录，不混用",
+      "Amazon候选的慕尼黑配送尚未锁定"
+    ]
+  },
+  "comparison_basis": {
+    "currency": "CNY",
+    "eur_to_cny": 7.8414,
+    "cost_basis": "ESTIMATED_DELIVERED_PRICE",
+    "unknown_cost_policy": "DO_NOT_TREAT_AS_ZERO",
+    "china_to_munich_freight_estimate_cny": 3000,
+    "freight_estimate_note": "按单台商用台式设备粗估；重量、尺寸、税费和清关信息齐备后重算"
+  },
+  "demand_plan": {
+    "basis": "用户提供的展位饮品估算，并结合electronica官方2024客流与2026开放时间校准",
+    "official_context": {
+      "electronica_2024_visitors": "about 80,000",
+      "electronica_2024_exhibitors": 3480,
+      "electronica_2026_dates": "2026-11-10 to 2026-11-13",
+      "visitor_hours": {
+        "2026-11-10": "09:00-18:00",
+        "2026-11-11": "09:00-18:00",
+        "2026-11-12": "09:00-18:00",
+        "2026-11-13": "09:00-15:00"
+      }
+    },
+    "scenarios_including_20_percent_buffer": [
+      {"scenario": "LOW", "total_servings": 264, "interpretation": "普通位置、自然流量较低"},
+      {"scenario": "BASELINE", "total_servings": 516, "interpretation": "约36平方米普通位置、有洽谈区、无专职咖啡师"},
+      {"scenario": "HIGH", "total_servings": 792, "interpretation": "较好位置或预约会议较多"}
+    ],
+    "baseline_daily_servings_before_buffer": [120, 120, 120, 70],
+    "baseline_mix_after_buffer": {
+      "coffee_servings": 310,
+      "tea_servings": 103,
+      "soft_drink_servings": 103,
+      "bottled_water_units": 774
+    },
+    "baseline_peak_demand": "约20杯/小时；高情景约30杯/小时",
+    "equipment_implication": "单台家用胶囊机在基准高峰下可接受但偏临界；商用连续出杯设备更稳妥。若最终选择KRUPS，建议另备一台同型或低价胶囊机作为冗余，但不自动改变当前采购数量1台。"
+  },
+  "scoring_model": {
+    "score_scale": "0-100",
+    "dimensions": [
+      {"code": "PRODUCT_MATCH", "weight": 0.3},
+      {"code": "PRICE", "weight": 0.25},
+      {"code": "SUPPLIER", "weight": 0.2},
+      {"code": "DELIVERY", "weight": 0.15},
+      {"code": "QUALITY_RISK", "weight": 0.1}
+    ],
+    "display_rule": "主表只显示单一总分"
+  },
+  "decision_summary": {
+    "decision_status": "RECOMMENDED",
+    "recommended_for_confirmation": "GGM-HAS2S",
+    "lowest_cost": "BOSCH-TAS107E",
+    "balanced": "JOYBUY-KRUPS-KP3408",
+    "commercial_machine_choice": "GGM-HAS2S",
+    "china_platform_choice": "TB-MIAOQUE-3C3H",
+    "highest_throughput": "NESCAFE-ALEGRIA-630",
+    "summary": "结合基准约516份饮品和约20杯/小时高峰需求，优先确认GGM HAS2S商用机；用独立茶包热水和瓶装软饮补足其两种程序。用户已接受家用胶囊机，因此Joybuy KRUPS Genio S Plus保留为低成本备选；用户也接受中国采购，妙雀台式3冷3热保留为中国渠道备选。"
+  },
+  "main_comparison_table": [
+    {
+      "rank": 1,
+      "candidate_id": "GGM-HAS2S",
+      "platform": "GGM Gastro Germany",
+      "product_title": "HAS2S 双粉料热饮机",
+      "product_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "selected_sku": "HAS2S",
+      "display_price": {"amount": 297.49, "currency": "EUR"},
+      "estimated_delivered_cny": 2332.74,
+      "supplier_rating": null,
+      "supplier_signal": "德国专业餐饮设备商；页面有TÜV客户满意度信号",
+      "overall_score": 84.25,
+      "advantages": ["商用结构", "咖啡和热巧克力", "机顶桶装水", "230V/50Hz", "德国本地供货"],
+      "disadvantages": ["仅两个饮料程序", "依赖速溶粉料", "2026年库存待确认"],
+      "confidence": "HIGH"
+    },
+    {
+      "rank": 2,
+      "candidate_id": "JOYBUY-KRUPS-KP3408",
+      "platform": "JD Germany / Joybuy",
+      "product_title": "KRUPS NESCAFÉ Dolce Gusto Genio S Plus KP3408",
+      "product_url": "https://m.joybuy.de/dp/krups-nescaf%C3%A9-dolce-gusto-genio-s/10388599",
+      "selected_sku": "KP3408",
+      "display_price": {"amount": 129.99, "currency": "EUR"},
+      "estimated_delivered_cny": 1019.3,
+      "supplier_rating": null,
+      "supplier_signal": "Joybuy德国自营配送信号；30+售出；2年制造商保修",
+      "overall_score": 83.7,
+      "advantages": ["30+冷热饮品", "咖啡、拿铁、茶和热巧克力", "0.8L内置水箱", "德国免费配送", "成本低"],
+      "disadvantages": ["家用胶囊机", "高峰吞吐待测试", "胶囊耗材未计入", "无商品数字评分"],
+      "confidence": "HIGH"
+    },
+    {
+      "rank": 3,
+      "candidate_id": "BOSCH-TAS107E",
+      "platform": "Bosch Germany official store",
+      "product_title": "TASSIMO HAPPY friendly TAS107E",
+      "product_url": "https://www.bosch-home.com/de/de/product/kaffeemaschinen/tassimo-kapselmaschinen/tassimo-happy/TAS107E",
+      "selected_sku": "TAS107E",
+      "display_price": {"amount": 39.99, "currency": "EUR"},
+      "estimated_delivered_cny": null,
+      "supplier_rating": null,
+      "supplier_signal": "Bosch德国官方商店；页面产品评分4.8/5不作为商家评分",
+      "overall_score": 82.25,
+      "advantages": ["购置成本最低", "咖啡、巧克力和茶等胶囊饮品", "内置水箱", "设备紧凑"],
+      "disadvantages": ["小额订单运费未知", "家用单杯吞吐偏弱", "耗材成本未计入"],
+      "confidence": "MEDIUM"
+    },
+    {
+      "rank": 4,
+      "candidate_id": "JOYBUY-DELONGHI-ECAM21116",
+      "platform": "JD Germany / Joybuy",
+      "product_title": "DeLonghi Magnifica S ECAM21.116.SB",
+      "product_url": "https://m.joybuy.de/dp/10364293?requestIdentity=storePick",
+      "selected_sku": "ECAM21.116.SB",
+      "display_price": {"amount": 254, "currency": "EUR"},
+      "estimated_delivered_cny": 1991.72,
+      "supplier_rating": {"subject": "PRODUCT", "score": 4.9, "scale_max": 5, "count_signal": "40+"},
+      "supplier_signal": "700+售出；德国免费配送；2年制造商保修",
+      "overall_score": 80.75,
+      "advantages": ["德国本地快速配送", "销量和评价信号强", "1.8L水箱", "咖啡豆和咖啡粉", "品牌售后"],
+      "disadvantages": ["非多通道饮料机", "奶饮需要人工操作", "不能直接制作果汁或热巧克力"],
+      "confidence": "HIGH"
+    },
+    {
+      "rank": 5,
+      "candidate_id": "TB-MIAOQUE-3C3H",
+      "platform": "Taobao",
+      "product_title": "妙雀台式3冷3热咖啡奶茶果汁饮料机",
+      "product_url": "https://item.taobao.com/item.htm?id=565058058111",
+      "selected_sku": "台式3冷3热+冷热水 电子制冷",
+      "display_price": {"amount": 2480, "currency": "CNY"},
+      "estimated_delivered_cny": 5480,
+      "supplier_rating": {"subject": "STORE", "score": 99.68, "scale_max": 100, "count": null},
+      "supplier_signal": "妙雀官方品牌店；总售300；2年保修",
+      "overall_score": 77.1,
+      "advantages": ["冷热饮品通道明确", "内置水泵信号", "111V—240V", "1600W", "中国候选中信息最完整"],
+      "disadvantages": ["50Hz未明确", "桶装水连接方式待确认", "国际运输为估算", "德国合规文件待确认"],
+      "confidence": "MEDIUM"
+    },
+    {
+      "rank": 6,
+      "candidate_id": "JD-CN-MIAOQUE",
+      "platform": "JD China",
+      "product_title": "妙雀商用咖啡饮料机",
+      "product_url": "https://item.jd.com/10125691765315.html",
+      "selected_sku": null,
+      "display_price": {"amount": 1480, "currency": "CNY"},
+      "estimated_delivered_cny": 4480,
+      "supplier_rating": {"subject": "STORE", "score": 100, "scale_max": 100, "count": null},
+      "supplier_signal": "900+销量信号；店铺好评100%",
+      "overall_score": 74,
+      "advantages": ["京东平台", "价格较低", "店铺信号良好", "与妙雀品类匹配"],
+      "disadvantages": ["具体SKU尚未锁定", "搜索价可能是基础款", "国际运输和50Hz待确认"],
+      "confidence": "LOW"
+    },
+    {
+      "rank": 7,
+      "candidate_id": "NESCAFE-ALEGRIA-630",
+      "platform": "Automaten Hofmann",
+      "product_title": "Nescafé Alegria 6/30 翻新热饮系统",
+      "product_url": "https://automaten-hofmann.com/automaten/heissgetraenkeautomat-nescafe-alegria-6-30-gebraucht/",
+      "selected_sku": "Alegria 6/30 refurbished",
+      "display_price": {"amount": 750, "currency": "EUR", "tax_included": false},
+      "estimated_delivered_cny": 7642.31,
+      "supplier_rating": null,
+      "supplier_signal": "德国专业自动售货设备商",
+      "overall_score": 72.25,
+      "advantages": ["六种饮品", "80—180杯/小时", "水箱或固定水路", "230V/50Hz", "德国境内供货"],
+      "disadvantages": ["翻新二手机", "按现状出售", "保修不明确", "接近预算上部"],
+      "confidence": "MEDIUM"
+    },
+    {
+      "rank": 8,
+      "candidate_id": "1688-DONPER-30SCW",
+      "platform": "1688",
+      "product_title": "东贝冷热速溶咖啡奶茶果汁现调机",
+      "product_url": "https://detail.1688.com/offer/730288359108.html",
+      "selected_sku": "30SCW(2+1)，暂定待供应商确认",
+      "display_price": {"amount": 4100, "currency": "CNY"},
+      "estimated_delivered_cny": 7100,
+      "supplier_rating": {"subject": "SUPPLIER", "score": 92, "scale_max": 100, "count": 39},
+      "supplier_signal": "诚信通、工厂；服务4.5；复购率46.73%",
+      "overall_score": 71.5,
+      "advantages": ["商用现调机", "冷热和多饮品方向匹配", "工厂与诚信通信号", "一年质保终身维护"],
+      "disadvantages": ["SKU功能尚未书面确认", "电压频率未知", "运输成本高且为估算", "页面仅售4台"],
+      "confidence": "LOW"
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "candidate_id": "TB-YIMEIKE-1000-BAIT",
+      "platform": "Taobao",
+      "product_url": "https://item.taobao.com/item.htm?id=837677146430",
+      "reason": "搜索页¥1000对应咖啡粉和奶茶粉套餐，不是机器；机器SKU为¥1410"
+    },
+    {
+      "candidate_id": "TB-MIAOQUE-1620-SINGLE-HOT",
+      "platform": "Taobao",
+      "product_url": "https://item.taobao.com/item.htm?id=565058058111",
+      "reason": "¥1620对应家用小型单热款，不满足冷热展会场景"
+    },
+    {
+      "candidate_id": "1688-DEMASHI-902879994482",
+      "platform": "1688",
+      "product_url": "https://detail.1688.com/offer/902879994482.html",
+      "reason": "页面可确认冷热饮料混合机，但未确认能够自动冲调咖啡，暂不进入主表"
+    },
+    {
+      "candidate_id": "AMAZON-DELONGHI-ECAM22110",
+      "platform": "Amazon Germany",
+      "product_url": "https://www.amazon.de/DeLonghi-ECAM-22-110-B-Kaffeevollautomat-Milchaufsch%C3%A4umd%C3%BCse/dp/B00400OMU0",
+      "reason": "与Joybuy DeLonghi候选功能高度重复，Joybuy当前价格更低且德国配送信息更完整"
+    },
+    {
+      "candidate_id": "JOYBUY-HIBREW-H2B",
+      "platform": "JD Germany / Joybuy",
+      "product_url": "https://m.joybuy.de/dp/10367835?ref_sku=10367835&requestIdentity=recommendProductDetailPage",
+      "reason": "不同页面的配送状态相互冲突，暂不纳入"
+    },
+    {
+      "candidate_id": "SIELAFF-SIAMONIE",
+      "platform": "Flavura Germany",
+      "product_url": "https://www.flavura.de/katalog/produkt/sielaff-siamonie-ts-in-01-ihr-premium-heissgetraenkeautomat/",
+      "reason": "售价约10472欧元，显著超过1万元人民币硬预算"
+    }
+  ],
+  "user_decisions": [
+    {"code": "D1", "status": "CONFIRMED", "decision": "接受家用胶囊机作为低成本方案"},
+    {"code": "D2", "status": "CONFIRMED", "decision": "接受中国采购及其国际运输、清关和售后不确定性"},
+    {"code": "D3", "status": "CONFIRMED_DEFAULT", "decision": "电源、供水和耗材无额外特殊要求，沿用德国230V/50Hz及独立供水优先规则"},
+    {"code": "D4", "status": "PLANNING_BASELINE_ACCEPTED", "decision": "采用低/基准/高三档饮品需求估算，最终随展位信息调整"}
+  ],
+  "pre_purchase_checks": [
+    {"code": "P1", "blocking": true, "check": "取得所选设备2026年11月库存、最终含税价和送达日期"},
+    {"code": "P2", "blocking": true, "check": "书面确认所选SKU支持230V/50Hz及桶装水或内置水箱"},
+    {"code": "P3", "blocking": true, "check": "按最终预计杯量确认胶囊或粉料清单和总成本"},
+    {"code": "P4", "blocking": false, "check": "如选择家用胶囊机，决定是否增加第二台作为高峰和故障冗余"}
+  ],
+  "audit": {
+    "source_artifacts": [
+      "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json",
+      "cases/coffee-beverage-machine-munich-2026/api-sourcing-regression-2026-08-25.json"
+    ],
+    "price_correction_rule": "只有锁定具体SKU后的价格可以进入主表",
+    "not_a_quote": true,
+    "not_ready_for_purchase": true,
+    "user_confirmations_recorded_at": "2026-08-26",
+    "demand_estimate_is_planning_assumption": true
+  }
+}
