@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1-candidate",
+  "schema_version": "0.1",
   "candidate_id": "FIXTURE-DESIGN-SERVICE-001",
   "requirement_id": "PR-RESIDENTIAL-FLOOR-PLAN-DESIGN",
   "procurement_type": "SERVICE",

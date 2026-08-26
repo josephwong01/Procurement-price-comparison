@@ -17,6 +17,7 @@ from typing import Any
 
 
 ALLOWED_TYPES = {"STANDARD_PRODUCT", "EQUIPMENT", "CUSTOM_PRODUCT", "SERVICE"}
+ALLOWED_SCHEMA_VERSIONS = {"0.1"}
 RANKABLE_STATUSES = {"ELIGIBLE"}
 LEAD_TIME_DAY_TYPES = {"CALENDAR_DAYS", "WORKING_DAYS", "UNKNOWN"}
 LEAD_TIME_SCOPES = {"PRODUCTION", "DISPATCH", "FINAL_DELIVERY", "SERVICE_DELIVERY", "UNKNOWN"}
@@ -79,6 +80,8 @@ def candidate_signature(candidate: dict[str, Any]) -> tuple[Any, ...] | None:
 
 def validate_candidate(candidate: dict[str, Any], label: str) -> list[str]:
     errors: list[str] = []
+    if candidate.get("schema_version") not in ALLOWED_SCHEMA_VERSIONS:
+        errors.append(f"{label}: unsupported schema_version {candidate.get('schema_version')!r}")
     procurement_type = candidate.get("procurement_type")
     category_kind = candidate.get("category_data", {}).get("kind")
     status = candidate.get("candidate_status")
