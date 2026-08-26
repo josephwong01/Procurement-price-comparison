@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "FIXTURE-IP-MASCOT-001",
+  "requirement_id": "PR-IP-MASCOT-COSTUME",
+  "procurement_type": "CUSTOM_PRODUCT",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "IP人偶服定制（Schema测试候选）",
+    "brand": null,
+    "model": null,
+    "selected_sku": null,
+    "variant": "适配约175cm穿戴人员，1套",
+    "condition": "MADE_TO_ORDER",
+    "listing_type": "REQUEST_FOR_QUOTE"
+  },
+  "source": {
+    "platform_code": "FIXTURE",
+    "platform_name": "Schema Test Fixture",
+    "platform_type": "MARKETPLACE",
+    "product_url": "https://example.com/fixtures/ip-mascot-costume",
+    "seller_url": null,
+    "market_country": "CN",
+    "observed_at": "2026-08-26T00:00:00Z",
+    "access_method": "MANUAL"
+  },
+  "supplier": {
+    "supplier_id": null,
+    "name": null,
+    "supplier_type": "UNKNOWN",
+    "location": null,
+    "rating": null,
+    "signals": [],
+    "certifications": [],
+    "verification_status": "UNVERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 1,
+    "moq": null,
+    "search_display_price": null,
+    "selected_sku_price": null,
+    "quoted_price": null,
+    "cost_components": [],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["定制全包价", "修改费用", "国内运费"],
+    "commercial_terms": {
+      "lead_time_days": null,
+      "lead_time_start_event": "ORDER",
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "UNAVAILABLE",
+    "price_observed_at": null
+  },
+  "requirement_match": {
+    "overall_result": "UNKNOWN",
+    "criteria": [
+      {
+        "criterion_id": "CR-MATERIAL",
+        "criterion": "头部整块泡沫雕刻并外包高弹水晶毛绒，身体海绵拼接",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "等待工艺方案",
+        "evidence_refs": []
+      },
+      {
+        "criterion_id": "CR-LEAD-TIME",
+        "criterion": "下单后约10天交付",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "等待供应商承诺",
+        "evidence_refs": []
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "CUSTOM_PRODUCT",
+    "attributes": [
+      {
+        "key": "target_weight_kg",
+        "label": "目标重量",
+        "value": 10,
+        "unit": "kg",
+        "confidence": "HIGH",
+        "evidence_refs": ["EV-MASCOT-REQUIREMENT"]
+      }
+    ],
+    "materials": ["头部整块泡沫", "高弹水晶毛绒布料", "身体海绵"],
+    "processes": ["泡沫雕刻", "高比例高还原制作"],
+    "design_input": "用户提供设计图；必要时补充穿戴尺寸",
+    "sample_policy": null,
+    "revision_rounds": null,
+    "acceptance_method": "按设计图、材料、工艺、尺寸、重量和穿戴效果验收"
+  },
+  "assessment": {
+    "advantages": [],
+    "disadvantages": ["尚未取得供应商工艺方案和报价"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-MASCOT-REQUIREMENT",
+      "evidence_type": "MANUAL_NOTE",
+      "source_url": null,
+      "captured_at": "2026-08-26T00:00:00Z",
+      "supports": ["category_data.materials", "category_data.processes", "category_data.attributes", "offer.purchase_quantity"],
+      "excerpt": "需求：1套IP人偶服，约10kg，下单后10天，预算5000元以内",
+      "content_hash": null,
+      "confidence": "HIGH"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T00:00:00Z",
+    "updated_at": "2026-08-26T00:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": null,
+    "overall_confidence": "UNVERIFIED",
+    "assumptions": ["仅用于Schema回归，不是实际供应商方案或采购推荐"]
+  }
+}

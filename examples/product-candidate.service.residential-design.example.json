@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "FIXTURE-DESIGN-SERVICE-001",
+  "requirement_id": "PR-RESIDENTIAL-FLOOR-PLAN-DESIGN",
+  "procurement_type": "SERVICE",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "150平方米住宅室内设计服务（Schema测试候选）",
+    "brand": null,
+    "model": null,
+    "selected_sku": null,
+    "variant": "平面图、3D模型与渲染效果图",
+    "condition": "NOT_APPLICABLE",
+    "listing_type": "SERVICE_PROFILE"
+  },
+  "source": {
+    "platform_code": "FIXTURE",
+    "platform_name": "Schema Test Fixture",
+    "platform_type": "SERVICE_PLATFORM",
+    "product_url": "https://example.com/fixtures/residential-design-service",
+    "seller_url": null,
+    "market_country": "CN",
+    "observed_at": "2026-08-26T00:00:00Z",
+    "access_method": "MANUAL"
+  },
+  "supplier": {
+    "supplier_id": null,
+    "name": null,
+    "supplier_type": "SERVICE_PROVIDER",
+    "location": null,
+    "rating": null,
+    "signals": [],
+    "certifications": [],
+    "verification_status": "UNVERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 1,
+    "moq": null,
+    "search_display_price": null,
+    "selected_sku_price": null,
+    "quoted_price": null,
+    "cost_components": [],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["150平方米全包服务报价", "超出修改轮次费用"],
+    "commercial_terms": {
+      "lead_time_days": null,
+      "lead_time_start_event": "PAYMENT",
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "UNAVAILABLE",
+    "price_observed_at": null
+  },
+  "requirement_match": {
+    "overall_result": "UNKNOWN",
+    "criteria": [
+      {
+        "criterion_id": "CR-SCOPE",
+        "criterion": "包含室内装修设计、平面图、3D模型和渲染效果图",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "等待服务方案",
+        "evidence_refs": []
+      },
+      {
+        "criterion_id": "CR-TIMELINE",
+        "criterion": "支付后2周交付",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "等待服务商承诺",
+        "evidence_refs": []
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "SERVICE",
+    "attributes": [
+      {
+        "key": "area_sqm",
+        "label": "设计面积",
+        "value": 150,
+        "unit": "m2",
+        "confidence": "HIGH",
+        "evidence_refs": ["EV-DESIGN-REQUIREMENT"]
+      }
+    ],
+    "scope": ["室内装修设计", "住宅平面布局设计", "3D建模与渲染"],
+    "deliverables": ["平面图", "3D模型图", "渲染效果图"],
+    "milestones": [],
+    "revision_rounds": null,
+    "source_files_included": null,
+    "ip_terms": null
+  },
+  "assessment": {
+    "advantages": [],
+    "disadvantages": ["尚未取得作品集、服务范围和报价"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-DESIGN-REQUIREMENT",
+      "evidence_type": "MANUAL_NOTE",
+      "source_url": null,
+      "captured_at": "2026-08-26T00:00:00Z",
+      "supports": ["category_data.scope", "category_data.deliverables", "category_data.attributes"],
+      "excerpt": "需求：150平方米住宅室内设计，预算8000元全包，支付后2周交付",
+      "content_hash": null,
+      "confidence": "HIGH"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T00:00:00Z",
+    "updated_at": "2026-08-26T00:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": null,
+    "overall_confidence": "UNVERIFIED",
+    "assumptions": ["仅用于Schema回归，不是实际服务商方案或采购推荐"]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "FIXTURE-SPEAKER-001",
+  "requirement_id": "PR-BLUETOOTH-SPEAKER-GIVEAWAY",
+  "procurement_type": "STANDARD_PRODUCT",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "便携蓝牙音响（Schema测试候选）",
+    "brand": null,
+    "model": null,
+    "selected_sku": null,
+    "variant": "支持Logo定制，10个",
+    "condition": "NEW",
+    "listing_type": "REQUEST_FOR_QUOTE"
+  },
+  "source": {
+    "platform_code": "FIXTURE",
+    "platform_name": "Schema Test Fixture",
+    "platform_type": "MARKETPLACE",
+    "product_url": "https://example.com/fixtures/bluetooth-speaker",
+    "seller_url": null,
+    "market_country": "CN",
+    "observed_at": "2026-08-26T00:00:00Z",
+    "access_method": "MANUAL"
+  },
+  "supplier": {
+    "supplier_id": null,
+    "name": null,
+    "supplier_type": "UNKNOWN",
+    "location": null,
+    "rating": null,
+    "signals": [],
+    "certifications": [],
+    "verification_status": "UNVERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 10,
+    "moq": null,
+    "search_display_price": null,
+    "selected_sku_price": null,
+    "quoted_price": null,
+    "cost_components": [],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["单价", "Logo定制费", "国内包邮条件"],
+    "commercial_terms": {
+      "lead_time_days": null,
+      "lead_time_start_event": "ORDER",
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "UNAVAILABLE",
+    "price_observed_at": null
+  },
+  "requirement_match": {
+    "overall_result": "UNKNOWN",
+    "criteria": [
+      {
+        "criterion_id": "CR-UNIT-PRICE",
+        "criterion": "单价约100元且包邮",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "等待真实SKU或报价",
+        "evidence_refs": []
+      },
+      {
+        "criterion_id": "CR-LOGO",
+        "criterion": "最好支持Logo定制",
+        "level": "SOFT",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "等待供应商确认",
+        "evidence_refs": []
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "STANDARD_PRODUCT",
+    "attributes": [
+      {
+        "key": "bluetooth_version",
+        "label": "蓝牙版本",
+        "value": null,
+        "unit": null,
+        "confidence": "UNVERIFIED",
+        "evidence_refs": []
+      }
+    ],
+    "packaging": null,
+    "customization": "Logo定制为偏好条件"
+  },
+  "assessment": {
+    "advantages": [],
+    "disadvantages": ["尚未锁定SKU和供应商"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-SPEAKER-REQUIREMENT",
+      "evidence_type": "MANUAL_NOTE",
+      "source_url": null,
+      "captured_at": "2026-08-26T00:00:00Z",
+      "supports": ["requirement_id", "offer.purchase_quantity", "category_data.customization"],
+      "excerpt": "需求：蓝牙音响10个，约100元/个，作为展会礼品，最好定制Logo",
+      "content_hash": null,
+      "confidence": "HIGH"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T00:00:00Z",
+    "updated_at": "2026-08-26T00:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": null,
+    "overall_confidence": "UNVERIFIED",
+    "assumptions": ["仅用于Schema回归，不是实际商品候选或采购推荐"]
+  }
+}

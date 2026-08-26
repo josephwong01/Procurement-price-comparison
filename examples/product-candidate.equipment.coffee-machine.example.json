@@ -1,0 +1,167 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "GGM-HAS2S-DE-MUNICH-2026",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "procurement_type": "EQUIPMENT",
+  "candidate_status": "ELIGIBLE",
+  "identity": {
+    "title": "HAS2S 双粉料热饮机",
+    "brand": "GGM Gastro",
+    "model": "HAS2S",
+    "selected_sku": "HAS2S",
+    "variant": "2 programs / 2 powder containers / black",
+    "condition": "NEW",
+    "listing_type": "PRODUCT_PAGE"
+  },
+  "source": {
+    "platform_code": "GGM-DE",
+    "platform_name": "GGM Gastro Germany",
+    "platform_type": "SUPPLIER_WEBSITE",
+    "product_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+    "seller_url": "https://www.ggmgastro.com/",
+    "market_country": "DE",
+    "observed_at": "2026-08-25T10:20:00Z",
+    "access_method": "PUBLIC_WEB"
+  },
+  "supplier": {
+    "supplier_id": "SUP-GGM-GASTRO-DE",
+    "name": "GGM Gastro International GmbH",
+    "supplier_type": "RETAILER",
+    "location": "Germany",
+    "rating": null,
+    "signals": ["德国专业餐饮设备商", "页面展示第三方客户满意度信号"],
+    "certifications": [],
+    "verification_status": "PARTIALLY_VERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 1,
+    "moq": 1,
+    "search_display_price": null,
+    "selected_sku_price": {
+      "money": { "amount": 297.49, "currency": "EUR" },
+      "price_type": "SELECTED_SKU",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "HIGH",
+      "evidence_refs": ["EV-GGM-HAS2S-PAGE"]
+    },
+    "quoted_price": null,
+    "cost_components": [
+      {
+        "code": "PRODUCT",
+        "label": "设备页面价格",
+        "amount": { "amount": 297.49, "currency": "EUR" },
+        "basis": "LISTED",
+        "confidence": "HIGH"
+      }
+    ],
+    "normalized_total_cost": { "amount": 2332.74, "currency": "CNY" },
+    "comparison_currency": "CNY",
+    "unknown_costs": ["2026年11月实际库存", "最终含税价格", "送达展位的运费"],
+    "commercial_terms": {
+      "lead_time_days": null,
+      "lead_time_start_event": "ORDER",
+      "after_sales": "德国境内供应商，具体条款下单前确认",
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "PARTIAL",
+    "price_observed_at": "2026-08-25T10:20:00Z"
+  },
+  "requirement_match": {
+    "overall_result": "PARTIAL",
+    "criteria": [
+      {
+        "criterion_id": "CR-POWER",
+        "criterion": "适配德国230V/50Hz",
+        "level": "SOFT",
+        "result": "PASS",
+        "observed_value": "230V/50Hz",
+        "note": null,
+        "evidence_refs": ["EV-GGM-HAS2S-PAGE"]
+      },
+      {
+        "criterion_id": "CR-WATER",
+        "criterion": "不依赖固定上下水",
+        "level": "SOFT",
+        "result": "PASS",
+        "observed_value": "机顶桶装水",
+        "note": null,
+        "evidence_refs": ["EV-GGM-HAS2S-PAGE"]
+      },
+      {
+        "criterion_id": "CR-DRINKS",
+        "criterion": "制作咖啡和常规饮料",
+        "level": "HARD",
+        "result": "PARTIAL",
+        "observed_value": ["咖啡", "热巧克力"],
+        "note": "茶和软饮需要独立补充",
+        "evidence_refs": ["EV-GGM-HAS2S-PAGE"]
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "EQUIPMENT",
+    "attributes": [
+      {
+        "key": "drink_programs",
+        "label": "饮品程序数",
+        "value": 2,
+        "unit": null,
+        "confidence": "HIGH",
+        "evidence_refs": ["EV-GGM-HAS2S-PAGE"]
+      }
+    ],
+    "power": "230V/50Hz",
+    "water_supply": "机顶桶装水",
+    "capacity": "基准情景约20杯/小时，实际连续出杯能力下单前验证",
+    "dimensions": null,
+    "installation_required": false,
+    "consumables": ["速溶咖啡粉", "热巧克力粉", "杯具", "清洁耗材"]
+  },
+  "assessment": {
+    "advantages": ["商用结构", "德国本地供应", "230V/50Hz", "机顶桶装水"],
+    "disadvantages": ["只有两个饮品程序", "耗材成本尚未核算", "2026年库存未确认"],
+    "risks": [
+      {
+        "risk_id": "R-GGM-AVAILABILITY",
+        "category": "DELIVERY",
+        "severity": "MEDIUM",
+        "description": "2026年11月库存和送达日期尚未确认",
+        "mitigation": "展前取得书面库存与交期确认",
+        "status": "OPEN"
+      }
+    ],
+    "score_dimensions": [
+      { "code": "PRODUCT_MATCH", "score": 85, "weight": 0.30, "reason": "商用结构匹配，但饮品种类有限" },
+      { "code": "PRICE", "score": 88, "weight": 0.25, "reason": "设备价格明显低于预算上限" },
+      { "code": "SUPPLIER", "score": 80, "weight": 0.20, "reason": "德国专业供应商，数字评分缺失" },
+      { "code": "DELIVERY", "score": 85, "weight": 0.15, "reason": "德国境内履约，但未来库存待确认" },
+      { "code": "QUALITY_RISK", "score": 80, "weight": 0.10, "reason": "关键规格可核验，售后条款待确认" }
+    ],
+    "overall_score": 84.25,
+    "recommendation_role": "PRIMARY",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-GGM-HAS2S-PAGE",
+      "evidence_type": "WEB_PAGE",
+      "source_url": "https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s",
+      "captured_at": "2026-08-25T10:20:00Z",
+      "supports": ["identity.selected_sku", "offer.selected_sku_price", "category_data.power", "category_data.water_supply"],
+      "excerpt": "页面显示HAS2S、297.49欧元、230V/50Hz、两程序和机顶桶装水信息",
+      "content_hash": null,
+      "confidence": "HIGH"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T00:00:00Z",
+    "updated_at": "2026-08-26T00:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": "COFFEE-MUNICH-2026-FINAL-CANDIDATE",
+    "overall_confidence": "MEDIUM",
+    "assumptions": ["汇率沿用最终Candidate比较基准", "运费、税费和2026年库存未按零处理"]
+  }
+}
