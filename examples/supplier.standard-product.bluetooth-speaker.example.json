@@ -1,0 +1,15 @@
+{
+"schema_version": "0.1",
+  "supplier_id": "SUP-FIXTURE-SPEAKER-001",
+  "record_status": "PENDING_VALIDATION",
+  "identity": {"legal_name": null, "display_name": "蓝牙音响店铺（测试）", "supplier_type": "UNKNOWN", "legal_entity_status": "UNVERIFIED", "country": "CN", "region": null, "address": null, "website": null},
+  "platform_profiles": [{"profile_id": "PROFILE-SPEAKER-001", "platform_code": "FIXTURE", "store_id": null, "store_name": "蓝牙音响店铺（测试）", "store_url": "https://example.com/store/speaker", "relationship_to_supplier": "UNVERIFIED", "verification_status": "UNVERIFIED", "ratings": [], "observed_at": "2026-08-26T00:00:00Z", "evidence_refs": ["EV-SUP-SPEAKER-001"]}],
+  "business_signals": [],
+  "capabilities": {"supported_procurement_types": ["STANDARD_PRODUCT"], "items": [{"code": "LOGO_CUSTOMIZATION", "description": "Logo定制", "status": "UNKNOWN", "confidence": "UNVERIFIED", "evidence_refs": []}], "service_regions": [], "lead_time_claim": null},
+  "qualifications": [],
+  "assessment": {"advantages": [], "disadvantages": ["主体、评分和定制能力未核实"], "risks": [{"risk_id": "R-SPEAKER-001", "category": "DATA_QUALITY", "severity": "MEDIUM", "description": "供应商资料不足", "mitigation": "下单前核实主体和Logo打样能力", "status": "OPEN", "evidence_refs": []}], "overall_score": null, "score_status": "NOT_SCORED", "exclusion_reasons": []},
+  "pending_confirmations": [{"field_path": "capabilities.items.LOGO_CUSTOMIZATION", "question": "10件是否支持Logo定制，费用和交期是多少？", "priority": "HIGH", "blocking": true}],
+  "evidence": [{"evidence_id": "EV-SUP-SPEAKER-001", "evidence_type": "MANUAL_NOTE", "source_url": "https://example.com/store/speaker", "captured_at": "2026-08-26T00:00:00Z", "supports": ["platform_profiles"], "excerpt": "仅用于Schema回归的标准品供应商Fixture", "content_hash": null, "confidence": "UNVERIFIED"}],
+  "provenance": {"created_at": "2026-08-26T00:00:00Z", "updated_at": "2026-08-26T00:00:00Z", "created_by": "Procurement-price-comparison Agent", "collection_run_id": null, "overall_confidence": "UNVERIFIED", "assumptions": ["非真实采购推荐"]}
+}
+

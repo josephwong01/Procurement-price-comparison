@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/josephwong01/Procurement-price-comparison/schemas/supplier-v0.1.schema.json",
+  "title": "Supplier Schema v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "supplier_id", "record_status", "identity", "platform_profiles", "business_signals", "capabilities", "qualifications", "assessment", "pending_confirmations", "evidence", "provenance"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "supplier_id": { "$ref": "#/$defs/nonEmptyString" },
+    "record_status": { "enum": ["DISCOVERED", "PENDING_VALIDATION", "ELIGIBLE", "EXCLUDED", "STALE"] },
+    "identity": { "$ref": "#/$defs/identity" },
+    "platform_profiles": { "type": "array", "items": { "$ref": "#/$defs/platformProfile" }, "minItems": 1 },
+    "business_signals": { "type": "array", "items": { "$ref": "#/$defs/signal" } },
+    "capabilities": { "$ref": "#/$defs/capabilities" },
+    "qualifications": { "type": "array", "items": { "$ref": "#/$defs/qualification" } },
+    "assessment": { "$ref": "#/$defs/assessment" },
+    "pending_confirmations": { "type": "array", "items": { "$ref": "#/$defs/pendingConfirmation" } },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" }, "minItems": 1 },
+    "provenance": { "$ref": "#/$defs/provenance" }
+  },
+  "allOf": [{
+    "if": { "properties": { "record_status": { "const": "EXCLUDED" } }, "required": ["record_status"] },
+    "then": { "properties": { "assessment": { "properties": { "exclusion_reasons": { "minItems": 1 } } } } }
+  }],
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "nullableString": { "type": ["string", "null"] },
+    "confidence": { "enum": ["HIGH", "MEDIUM", "LOW", "UNVERIFIED"] },
+    "identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["legal_name", "display_name", "supplier_type", "legal_entity_status", "country", "region", "address", "website"],
+      "properties": {
+        "legal_name": { "$ref": "#/$defs/nullableString" },
+        "display_name": { "$ref": "#/$defs/nullableString" },
+        "supplier_type": { "enum": ["FACTORY", "TRADER", "RETAILER", "BRAND", "SERVICE_PROVIDER", "INDIVIDUAL", "UNKNOWN"] },
+        "legal_entity_status": { "enum": ["VERIFIED", "PARTIALLY_VERIFIED", "UNVERIFIED", "NOT_APPLICABLE"] },
+        "country": { "type": ["string", "null"], "pattern": "^[A-Z]{2}$" },
+        "region": { "$ref": "#/$defs/nullableString" },
+        "address": { "$ref": "#/$defs/nullableString" },
+        "website": { "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }] }
+      }
+    },
+    "rating": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metric_code", "raw_value", "raw_scale_max", "normalized_score", "count", "observed_at", "evidence_refs"],
+      "properties": {
+        "metric_code": { "$ref": "#/$defs/nonEmptyString" },
+        "raw_value": { "type": ["number", "string", "null"] },
+        "raw_scale_max": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "normalized_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "count": { "type": ["integer", "null"], "minimum": 0 },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "evidence_refs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "platformProfile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile_id", "platform_code", "store_id", "store_name", "store_url", "relationship_to_supplier", "verification_status", "ratings", "observed_at", "evidence_refs"],
+      "properties": {
+        "profile_id": { "$ref": "#/$defs/nonEmptyString" },
+        "platform_code": { "$ref": "#/$defs/nonEmptyString" },
+        "store_id": { "$ref": "#/$defs/nullableString" },
+        "store_name": { "$ref": "#/$defs/nullableString" },
+        "store_url": { "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }] },
+        "relationship_to_supplier": { "enum": ["VERIFIED_SAME_ENTITY", "CLAIMED_SAME_ENTITY", "POSSIBLE_MATCH", "UNVERIFIED", "NOT_APPLICABLE"] },
+        "verification_status": { "enum": ["VERIFIED", "PARTIALLY_VERIFIED", "UNVERIFIED"] },
+        "ratings": { "type": "array", "items": { "$ref": "#/$defs/rating" } },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "evidence_refs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "signal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["signal_code", "subject_profile_id", "raw_value", "normalized_value", "unit", "period", "confidence", "observed_at", "evidence_refs"],
+      "properties": {
+        "signal_code": { "enum": ["SALES_COUNT", "TRANSACTION_COUNT", "YEARS_ON_PLATFORM", "REPEAT_BUYER_RATE", "RESPONSE_RATE", "ON_TIME_DELIVERY_RATE", "CASE_COUNT", "OTHER"] },
+        "subject_profile_id": { "type": ["string", "null"] },
+        "raw_value": {},
+        "normalized_value": { "type": ["number", "string", "null"] },
+        "unit": { "$ref": "#/$defs/nullableString" },
+        "period": { "$ref": "#/$defs/nullableString" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "evidence_refs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "capabilityItem": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "description", "status", "confidence", "evidence_refs"],
+      "properties": {
+        "code": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "status": { "enum": ["CONFIRMED", "CLAIMED", "PARTIAL", "UNKNOWN", "NOT_APPLICABLE"] },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "evidence_refs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true }
+      }
+    },
+    "capabilities": {
+      "type": "object", "additionalProperties": false,
+      "required": ["supported_procurement_types", "items", "service_regions", "lead_time_claim"],
+      "properties": {
+        "supported_procurement_types": { "type": "array", "items": { "enum": ["STANDARD_PRODUCT", "EQUIPMENT", "CUSTOM_PRODUCT", "SERVICE"] }, "minItems": 1, "uniqueItems": true },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/capabilityItem" } },
+        "service_regions": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true },
+        "lead_time_claim": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "qualification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "qualification_type", "issuer", "identifier", "valid_until", "verification_status", "evidence_refs"],
+      "properties": {
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "qualification_type": { "enum": ["BUSINESS_LICENSE", "PLATFORM_VERIFICATION", "CERTIFICATION", "TEST_REPORT", "INSURANCE", "PORTFOLIO", "OTHER"] },
+        "issuer": { "$ref": "#/$defs/nullableString" },
+        "identifier": { "$ref": "#/$defs/nullableString" },
+        "valid_until": { "type": ["string", "null"], "format": "date" },
+        "verification_status": { "enum": ["VERIFIED", "PARTIALLY_VERIFIED", "UNVERIFIED", "EXPIRED"] },
+        "evidence_refs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "risk": {
+      "type": "object", "additionalProperties": false,
+      "required": ["risk_id", "category", "severity", "description", "mitigation", "status", "evidence_refs"],
+      "properties": {
+        "risk_id": { "$ref": "#/$defs/nonEmptyString" },
+        "category": { "enum": ["IDENTITY", "CAPABILITY", "QUALITY", "DELIVERY", "COMPLIANCE", "REPUTATION", "DATA_QUALITY", "OTHER"] },
+        "severity": { "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"] },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "mitigation": { "$ref": "#/$defs/nullableString" },
+        "status": { "enum": ["OPEN", "MITIGATED", "ACCEPTED", "CLOSED"] },
+        "evidence_refs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true }
+      }
+    },
+    "assessment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["advantages", "disadvantages", "risks", "overall_score", "score_status", "exclusion_reasons"],
+      "properties": {
+        "advantages": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true },
+        "disadvantages": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true },
+        "risks": { "type": "array", "items": { "$ref": "#/$defs/risk" } },
+        "overall_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "score_status": { "enum": ["NOT_SCORED", "PROVISIONAL", "FINAL"] },
+        "exclusion_reasons": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true }
+      }
+    },
+    "pendingConfirmation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["field_path", "question", "priority", "blocking"],
+      "properties": {
+        "field_path": { "$ref": "#/$defs/nonEmptyString" },
+        "question": { "$ref": "#/$defs/nonEmptyString" },
+        "priority": { "enum": ["LOW", "MEDIUM", "HIGH"] },
+        "blocking": { "type": "boolean" }
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_id", "evidence_type", "source_url", "captured_at", "supports", "excerpt", "content_hash", "confidence"],
+      "properties": {
+        "evidence_id": { "$ref": "#/$defs/nonEmptyString" },
+        "evidence_type": { "enum": ["API_RESPONSE", "WEB_PAGE", "SCREENSHOT", "DOCUMENT", "PLATFORM_BADGE", "MANUAL_NOTE"] },
+        "source_url": { "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }] },
+        "captured_at": { "type": "string", "format": "date-time" },
+        "supports": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "minItems": 1, "uniqueItems": true },
+        "excerpt": { "$ref": "#/$defs/nullableString" },
+        "content_hash": { "$ref": "#/$defs/nullableString" },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["created_at", "updated_at", "created_by", "collection_run_id", "overall_confidence", "assumptions"],
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "created_by": { "$ref": "#/$defs/nonEmptyString" },
+        "collection_run_id": { "$ref": "#/$defs/nullableString" },
+        "overall_confidence": { "$ref": "#/$defs/confidence" },
+        "assumptions": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true }
+      }
+    }
+  }
+}
+
+
+

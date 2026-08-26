@@ -1,0 +1,13 @@
+{
+"schema_version":"0.1","supplier_id":"SUPPLIER-GGM-GASTRO","record_status":"PENDING_VALIDATION",
+  "identity":{"legal_name":null,"display_name":"GGM Gastro","supplier_type":"RETAILER","legal_entity_status":"UNVERIFIED","country":"DE","region":null,"address":null,"website":"https://www.ggmgastro.com/"},
+  "platform_profiles":[{"profile_id":"PROFILE-GGM-WEB-DE","platform_code":"GGM-GASTRO-DE","store_id":null,"store_name":"GGM Gastro Germany","store_url":"https://www.ggmgastro.com/de-de-eur/","relationship_to_supplier":"CLAIMED_SAME_ENTITY","verification_status":"PARTIALLY_VERIFIED","ratings":[],"observed_at":"2026-08-25T06:00:00Z","evidence_refs":["EV-SUP-GGM"]}],
+  "business_signals":[],
+  "capabilities":{"supported_procurement_types":["EQUIPMENT"],"items":[{"code":"GERMANY_DELIVERY","description":"德国站点销售并宣称免费配送","status":"CLAIMED","confidence":"MEDIUM","evidence_refs":["EV-SUP-GGM"]},{"code":"COMMERCIAL_CATERING_EQUIPMENT","description":"商用餐饮设备供应","status":"CLAIMED","confidence":"MEDIUM","evidence_refs":["EV-SUP-GGM"]}],"service_regions":["DE"],"lead_time_claim":null},
+  "qualifications":[{"name":"TÜV Saarland客户满意度评价信号","qualification_type":"OTHER","issuer":"TÜV Saarland","identifier":null,"valid_until":null,"verification_status":"UNVERIFIED","evidence_refs":["EV-SUP-GGM"]}],
+  "assessment":{"advantages":["德国本地站点和配送信号","商用设备品类匹配"],"disadvantages":["法律主体、数字化店铺评分和2026年履约能力未核实"],"risks":[],"overall_score":null,"score_status":"NOT_SCORED","exclusion_reasons":[]},
+  "pending_confirmations":[{"field_path":"capabilities.items.GERMANY_DELIVERY","question":"能否在指定日期送达慕尼黑，免费配送是否覆盖具体地址？","priority":"HIGH","blocking":true},{"field_path":"qualifications","question":"能否提供型号对应的EU符合性声明和德语资料？","priority":"HIGH","blocking":true}],
+  "evidence":[{"evidence_id":"EV-SUP-GGM","evidence_type":"WEB_PAGE","source_url":"https://www.ggmgastro.com/de-de-eur/heissgetraenkeautomat-2-programme-digital-2-pulverbehaelter-schwarz-has2s","captured_at":"2026-08-25T06:00:00Z","supports":["identity","platform_profiles","capabilities","qualifications"],"excerpt":"德国站点页面显示商用热饮机、免费配送及TÜV Saarland满意度文字信号","content_hash":null,"confidence":"MEDIUM"}],
+  "provenance":{"created_at":"2026-08-26T00:00:00Z","updated_at":"2026-08-26T00:00:00Z","created_by":"Procurement-price-comparison Agent","collection_run_id":null,"overall_confidence":"LOW","assumptions":["轻量真实回归，未重新询盘或核验法律主体"]}
+}
+

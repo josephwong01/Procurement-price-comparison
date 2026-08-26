@@ -1,0 +1,15 @@
+{
+"schema_version": "0.1",
+  "supplier_id": "SUP-FIXTURE-COFFEE-001",
+  "record_status": "PENDING_VALIDATION",
+  "identity": {"legal_name": null, "display_name": "咖啡设备商家（测试）", "supplier_type": "RETAILER", "legal_entity_status": "UNVERIFIED", "country": "DE", "region": null, "address": null, "website": null},
+  "platform_profiles": [{"profile_id": "PROFILE-COFFEE-001", "platform_code": "AMAZON-DE", "store_id": null, "store_name": "咖啡设备商家（测试）", "store_url": "https://example.com/store/coffee", "relationship_to_supplier": "UNVERIFIED", "verification_status": "UNVERIFIED", "ratings": [{"metric_code": "STORE_RATING", "raw_value": 4.5, "raw_scale_max": 5, "normalized_score": 90, "count": 100, "observed_at": "2026-08-26T00:00:00Z", "evidence_refs": ["EV-SUP-COFFEE-001"]}], "observed_at": "2026-08-26T00:00:00Z", "evidence_refs": ["EV-SUP-COFFEE-001"]}],
+  "business_signals": [],
+  "capabilities": {"supported_procurement_types": ["EQUIPMENT"], "items": [{"code": "GERMANY_DELIVERY", "description": "德国境内配送", "status": "CLAIMED", "confidence": "LOW", "evidence_refs": ["EV-SUP-COFFEE-001"]}], "service_regions": ["DE"], "lead_time_claim": null},
+  "qualifications": [],
+  "assessment": {"advantages": ["存在德国配送信号"], "disadvantages": ["主体关系未核实"], "risks": [], "overall_score": null, "score_status": "NOT_SCORED", "exclusion_reasons": []},
+  "pending_confirmations": [{"field_path": "identity.legal_name", "question": "平台店铺对应的法律主体是什么？", "priority": "MEDIUM", "blocking": false}],
+  "evidence": [{"evidence_id": "EV-SUP-COFFEE-001", "evidence_type": "MANUAL_NOTE", "source_url": "https://example.com/store/coffee", "captured_at": "2026-08-26T00:00:00Z", "supports": ["platform_profiles", "capabilities"], "excerpt": "仅用于Schema回归的设备供应商Fixture", "content_hash": null, "confidence": "LOW"}],
+  "provenance": {"created_at": "2026-08-26T00:00:00Z", "updated_at": "2026-08-26T00:00:00Z", "created_by": "Procurement-price-comparison Agent", "collection_run_id": null, "overall_confidence": "LOW", "assumptions": ["评分为结构测试数据"]}
+}
+

@@ -1,0 +1,15 @@
+{
+"schema_version": "0.1",
+  "supplier_id": "SUP-FIXTURE-DESIGN-001",
+  "record_status": "PENDING_VALIDATION",
+  "identity": {"legal_name": null, "display_name": "住宅设计服务商（测试）", "supplier_type": "SERVICE_PROVIDER", "legal_entity_status": "UNVERIFIED", "country": "CN", "region": null, "address": null, "website": null},
+  "platform_profiles": [{"profile_id": "PROFILE-DESIGN-001", "platform_code": "TAOBAO-CN", "store_id": null, "store_name": "住宅设计服务商（测试）", "store_url": "https://example.com/store/design", "relationship_to_supplier": "UNVERIFIED", "verification_status": "UNVERIFIED", "ratings": [], "observed_at": "2026-08-26T00:00:00Z", "evidence_refs": ["EV-SUP-DESIGN-001"]}],
+  "business_signals": [],
+  "capabilities": {"supported_procurement_types": ["SERVICE"], "items": [{"code": "INTERIOR_DESIGN", "description": "住宅平面图、3D建模与效果图", "status": "CLAIMED", "confidence": "LOW", "evidence_refs": ["EV-SUP-DESIGN-001"]}], "service_regions": ["REMOTE"], "lead_time_claim": null},
+  "qualifications": [{"name": "公开作品展示", "qualification_type": "PORTFOLIO", "issuer": null, "identifier": null, "valid_until": null, "verification_status": "UNVERIFIED", "evidence_refs": ["EV-SUP-DESIGN-001"]}],
+  "assessment": {"advantages": ["服务描述覆盖平面与3D效果图"], "disadvantages": ["作品质量、修改轮次和两周交付未确认"], "risks": [], "overall_score": null, "score_status": "NOT_SCORED", "exclusion_reasons": []},
+  "pending_confirmations": [{"field_path": "capabilities.lead_time_claim", "question": "支付后两周能否交付全部成果，包含几轮修改？", "priority": "HIGH", "blocking": true}],
+  "evidence": [{"evidence_id": "EV-SUP-DESIGN-001", "evidence_type": "MANUAL_NOTE", "source_url": "https://example.com/store/design", "captured_at": "2026-08-26T00:00:00Z", "supports": ["platform_profiles", "capabilities", "qualifications"], "excerpt": "仅用于Schema回归的服务商Fixture", "content_hash": null, "confidence": "LOW"}],
+  "provenance": {"created_at": "2026-08-26T00:00:00Z", "updated_at": "2026-08-26T00:00:00Z", "created_by": "Procurement-price-comparison Agent", "collection_run_id": null, "overall_confidence": "LOW", "assumptions": ["未联系服务商"]}
+}
+
