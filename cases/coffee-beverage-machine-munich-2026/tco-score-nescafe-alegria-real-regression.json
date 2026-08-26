@@ -1,0 +1,159 @@
+{
+"schema_version": "0.1",
+  "calculation_id": "TCO-REAL-NESCAFE-ALEGRIA",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "candidate_id": "COFFEE-NESCAFE-ALEGRIA-630",
+  "calculation_status": "PARTIAL",
+  "comparison_currency": "CNY",
+  "exchange_rates": [
+    {
+      "from_currency": "EUR",
+      "to_currency": "CNY",
+      "rate": 7.8414,
+      "rate_type": "APPROXIMATE_REFERENCE",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_note": "咖啡机回归使用的采购比较参考汇率",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "cost_components": [
+    {
+      "code": "ITEM_PRICE",
+      "label": "翻新设备未税价格",
+      "original_amount": {
+        "amount": 750,
+        "currency": "EUR"
+      },
+      "converted_cny": 5881.05,
+      "included_in_tco": true,
+      "basis": "LISTED",
+      "confidence": "HIGH",
+      "evidence_refs": [
+        "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+      ]
+    },
+    {
+      "code": "OTHER",
+      "label": "估算税费及德国境内运输",
+      "original_amount": {
+        "amount": 1761.26,
+        "currency": "CNY"
+      },
+      "converted_cny": 1761.26,
+      "included_in_tco": true,
+      "basis": "ESTIMATED",
+      "confidence": "MEDIUM",
+      "evidence_refs": [
+        "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+      ]
+    }
+  ],
+  "known_cost_total_cny": 7642.31,
+  "estimated_tco_cny": 7642.31,
+  "unknown_costs": [
+    {
+      "code": "CONSUMABLES",
+      "description": "展会耗材",
+      "materiality": "MEDIUM",
+      "blocking": false,
+      "treatment": "SCENARIO_ESTIMATE_PENDING"
+    },
+    {
+      "code": "REFURBISHED_MAINTENANCE",
+      "description": "翻新设备后续维修成本",
+      "materiality": "MEDIUM",
+      "blocking": false,
+      "treatment": "QUOTE_REQUIRED"
+    }
+  ],
+  "price_display": {
+    "display_text": "¥7,642（原价 €750.00）",
+    "cny_amount": 7642.31,
+    "original_amount": {
+      "amount": 750,
+      "currency": "EUR"
+    },
+    "is_estimate": true,
+    "rounding_rule": "NEAREST_YUAN"
+  },
+  "scoring": {
+    "profile": "BALANCED",
+    "dimensions": [
+      {
+        "code": "PRODUCT_MATCH",
+        "score": 95,
+        "weight": 0.3,
+        "weighted_score": 28.5,
+        "reason": "六种饮品、水箱及高吞吐匹配",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "PRICE",
+        "score": 55,
+        "weight": 0.25,
+        "weighted_score": 13.75,
+        "reason": "含税含运后接近预算上部",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "SUPPLIER",
+        "score": 65,
+        "weight": 0.2,
+        "weighted_score": 13,
+        "reason": "专业设备商但评价和保修不足",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "DELIVERY",
+        "score": 80,
+        "weight": 0.15,
+        "weighted_score": 12,
+        "reason": "德国境内可发货，未来库存待确认",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "QUALITY_RISK",
+        "score": 50,
+        "weight": 0.1,
+        "weighted_score": 5,
+        "reason": "翻新且按现状出售",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      }
+    ],
+    "overall_score": 72.25,
+    "score_status": "PROVISIONAL",
+    "score_explanation": "沿用咖啡机Candidate.3五维评分底稿，以统一TCO结构回放"
+  },
+  "ranking": {
+    "eligible": true,
+    "blocking_reasons": [],
+    "rank": null,
+    "recommendation_role": "PREMIUM"
+  },
+  "provenance": {
+    "created_at": "2026-08-26T12:30:00Z",
+    "updated_at": "2026-08-26T12:30:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "model_version": "0.1-candidate",
+    "overall_confidence": "MEDIUM",
+    "assumptions": [
+      "税费和运输采用既有估算口径"
+    ]
+  }
+}
+

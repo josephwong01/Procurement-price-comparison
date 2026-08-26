@@ -1,0 +1,144 @@
+{
+"schema_version": "0.1",
+  "calculation_id": "TCO-REAL-GGM-HAS2S",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "candidate_id": "COFFEE-GGM-HAS2S",
+  "calculation_status": "PARTIAL",
+  "comparison_currency": "CNY",
+  "exchange_rates": [
+    {
+      "from_currency": "EUR",
+      "to_currency": "CNY",
+      "rate": 7.8414,
+      "rate_type": "APPROXIMATE_REFERENCE",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_note": "咖啡机回归使用的采购比较参考汇率",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "cost_components": [
+    {
+      "code": "ITEM_PRICE",
+      "label": "含税设备价格",
+      "original_amount": {
+        "amount": 297.49,
+        "currency": "EUR"
+      },
+      "converted_cny": 2332.74,
+      "included_in_tco": true,
+      "basis": "LISTED",
+      "confidence": "HIGH",
+      "evidence_refs": [
+        "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+      ]
+    }
+  ],
+  "known_cost_total_cny": 2332.74,
+  "estimated_tco_cny": 2332.74,
+  "unknown_costs": [
+    {
+      "code": "CONSUMABLES",
+      "description": "首次粉料和桶装水",
+      "materiality": "MEDIUM",
+      "blocking": false,
+      "treatment": "SCENARIO_ESTIMATE_PENDING"
+    },
+    {
+      "code": "LAST_MILE",
+      "description": "展馆末端搬运或特殊地址附加费",
+      "materiality": "LOW",
+      "blocking": false,
+      "treatment": "QUOTE_REQUIRED"
+    }
+  ],
+  "price_display": {
+    "display_text": "¥2,333（原价 €297.49）",
+    "cny_amount": 2332.74,
+    "original_amount": {
+      "amount": 297.49,
+      "currency": "EUR"
+    },
+    "is_estimate": true,
+    "rounding_rule": "NEAREST_YUAN"
+  },
+  "scoring": {
+    "profile": "BALANCED",
+    "dimensions": [
+      {
+        "code": "PRODUCT_MATCH",
+        "score": 95,
+        "weight": 0.3,
+        "weighted_score": 28.5,
+        "reason": "咖啡、热巧克力、桶装水及德国电源匹配",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "PRICE",
+        "score": 85,
+        "weight": 0.25,
+        "weighted_score": 21.25,
+        "reason": "含税价格较低且有免费配送信号",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "SUPPLIER",
+        "score": 75,
+        "weight": 0.2,
+        "weighted_score": 15,
+        "reason": "主体明确但缺数字评分",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "DELIVERY",
+        "score": 80,
+        "weight": 0.15,
+        "weighted_score": 12,
+        "reason": "德国本地供货，展馆送达待确认",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "QUALITY_RISK",
+        "score": 75,
+        "weight": 0.1,
+        "weighted_score": 7.5,
+        "reason": "商用结构较好，合规文件待确认",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      }
+    ],
+    "overall_score": 84.25,
+    "score_status": "PROVISIONAL",
+    "score_explanation": "沿用咖啡机Candidate.3五维评分底稿，以统一TCO结构回放"
+  },
+  "ranking": {
+    "eligible": true,
+    "blocking_reasons": [],
+    "rank": null,
+    "recommendation_role": "PRIMARY"
+  },
+  "provenance": {
+    "created_at": "2026-08-26T12:30:00Z",
+    "updated_at": "2026-08-26T12:30:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "model_version": "0.1-candidate",
+    "overall_confidence": "MEDIUM",
+    "assumptions": [
+      "未知耗材和末端费用未按零处理"
+    ]
+  }
+}
+

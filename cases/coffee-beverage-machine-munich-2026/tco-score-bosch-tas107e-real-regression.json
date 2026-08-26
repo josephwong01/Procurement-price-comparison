@@ -1,0 +1,144 @@
+{
+"schema_version": "0.1",
+  "calculation_id": "TCO-REAL-BOSCH-TAS107E",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "candidate_id": "COFFEE-BOSCH-TAS107E",
+  "calculation_status": "PARTIAL",
+  "comparison_currency": "CNY",
+  "exchange_rates": [
+    {
+      "from_currency": "EUR",
+      "to_currency": "CNY",
+      "rate": 7.8414,
+      "rate_type": "APPROXIMATE_REFERENCE",
+      "observed_at": "2026-08-25T06:00:00Z",
+      "source_note": "咖啡机回归使用的采购比较参考汇率",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "cost_components": [
+    {
+      "code": "ITEM_PRICE",
+      "label": "设备官网价格",
+      "original_amount": {
+        "amount": 39.99,
+        "currency": "EUR"
+      },
+      "converted_cny": 313.58,
+      "included_in_tco": true,
+      "basis": "LISTED",
+      "confidence": "HIGH",
+      "evidence_refs": [
+        "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+      ]
+    }
+  ],
+  "known_cost_total_cny": 313.58,
+  "estimated_tco_cny": 313.58,
+  "unknown_costs": [
+    {
+      "code": "SMALL_ORDER_SHIPPING",
+      "description": "低于50欧元订单实际运费",
+      "materiality": "LOW",
+      "blocking": false,
+      "treatment": "QUOTE_REQUIRED"
+    },
+    {
+      "code": "CONSUMABLES",
+      "description": "展会期间T DISC胶囊耗材",
+      "materiality": "MEDIUM",
+      "blocking": false,
+      "treatment": "SCENARIO_ESTIMATE_PENDING"
+    }
+  ],
+  "price_display": {
+    "display_text": "¥314（原价 €39.99）",
+    "cny_amount": 313.58,
+    "original_amount": {
+      "amount": 39.99,
+      "currency": "EUR"
+    },
+    "is_estimate": true,
+    "rounding_rule": "NEAREST_YUAN"
+  },
+  "scoring": {
+    "profile": "BALANCED",
+    "dimensions": [
+      {
+        "code": "PRODUCT_MATCH",
+        "score": 75,
+        "weight": 0.3,
+        "weighted_score": 22.5,
+        "reason": "饮品丰富但家用单杯吞吐偏弱",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "PRICE",
+        "score": 100,
+        "weight": 0.25,
+        "weighted_score": 25,
+        "reason": "购置价最低",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "SUPPLIER",
+        "score": 80,
+        "weight": 0.2,
+        "weighted_score": 16,
+        "reason": "品牌官方商店",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "DELIVERY",
+        "score": 85,
+        "weight": 0.15,
+        "weighted_score": 12.75,
+        "reason": "页面有货，小额运费待确认",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      },
+      {
+        "code": "QUALITY_RISK",
+        "score": 60,
+        "weight": 0.1,
+        "weighted_score": 6,
+        "reason": "胶囊耗材和连续运行风险较高",
+        "confidence": "MEDIUM",
+        "evidence_refs": [
+          "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json"
+        ]
+      }
+    ],
+    "overall_score": 82.25,
+    "score_status": "PROVISIONAL",
+    "score_explanation": "沿用咖啡机Candidate.3五维评分底稿，以统一TCO结构回放"
+  },
+  "ranking": {
+    "eligible": true,
+    "blocking_reasons": [],
+    "rank": null,
+    "recommendation_role": "LOWEST_COST"
+  },
+  "provenance": {
+    "created_at": "2026-08-26T12:30:00Z",
+    "updated_at": "2026-08-26T12:30:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "model_version": "0.1-candidate",
+    "overall_confidence": "MEDIUM",
+    "assumptions": [
+      "当前比较价未包含小额订单运费和耗材"
+    ]
+  }
+}
+
