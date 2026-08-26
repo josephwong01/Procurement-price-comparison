@@ -1,0 +1,180 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "1688-665824648569-QTY10",
+  "requirement_id": "PR-BLUETOOTH-SPEAKER-GIVEAWAY",
+  "procurement_type": "STANDARD_PRODUCT",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "卡通宇航员水晶球蓝牙音箱来图定制Logo",
+    "brand": null,
+    "model": null,
+    "selected_sku": "10-4999件阶梯价；具体造型/颜色待确认",
+    "variant": "卡通造型，支持来图与Logo定制",
+    "condition": "NEW",
+    "listing_type": "PRODUCT_PAGE"
+  },
+  "source": {
+    "platform_code": "1688-CN",
+    "platform_name": "1688",
+    "platform_type": "MARKETPLACE",
+    "product_url": "https://detail.1688.com/offer/665824648569.html",
+    "seller_url": "https://m.1688.com/winport/b2b-22005938062918855e.html?__existtitle__=1",
+    "market_country": "CN",
+    "observed_at": "2026-08-26T02:19:24Z",
+    "access_method": "API"
+  },
+  "supplier": {
+    "supplier_id": "b2b-22005938062918855e",
+    "name": null,
+    "supplier_type": "UNKNOWN",
+    "location": "Guangdong, China",
+    "rating": null,
+    "signals": ["详情页复购率56.61%", "支持Logo和来图定制", "10件起进入35.8元价格档"],
+    "certifications": [],
+    "verification_status": "PARTIALLY_VERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 10,
+    "moq": 10,
+    "search_display_price": {
+      "money": { "amount": 35.8, "currency": "CNY" },
+      "price_type": "SEARCH_DISPLAY",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "MEDIUM",
+      "evidence_refs": ["EV-1688-SEARCH-665824648569"]
+    },
+    "selected_sku_price": {
+      "money": { "amount": 35.8, "currency": "CNY" },
+      "price_type": "SELECTED_SKU",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "MEDIUM",
+      "evidence_refs": ["EV-1688-DETAIL-665824648569"]
+    },
+    "quoted_price": null,
+    "cost_components": [
+      {
+        "code": "PRODUCT_SUBTOTAL",
+        "label": "10个商品小计",
+        "amount": { "amount": 358, "currency": "CNY" },
+        "basis": "CALCULATED",
+        "confidence": "MEDIUM"
+      }
+    ],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["Logo定制费", "国内运费", "税费口径"],
+    "commercial_terms": {
+      "lead_time": {
+        "min_days": 8,
+        "max_days": 15,
+        "day_type": "UNKNOWN",
+        "scope": "PRODUCTION",
+        "start_event": "ORDER_PLACED",
+        "confidence": "MEDIUM"
+      },
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "PARTIAL",
+    "price_observed_at": "2026-08-26T02:19:24Z"
+  },
+  "requirement_match": {
+    "overall_result": "PARTIAL",
+    "criteria": [
+      {
+        "criterion_id": "CR-QTY",
+        "criterion": "数量10个",
+        "level": "HARD",
+        "result": "PASS",
+        "observed_value": "MOQ 10",
+        "note": null,
+        "evidence_refs": ["EV-1688-DETAIL-665824648569"]
+      },
+      {
+        "criterion_id": "CR-UNIT-PRICE",
+        "criterion": "约100元/个且包邮",
+        "level": "HARD",
+        "result": "PARTIAL",
+        "observed_value": "35.8元/个，运费未知",
+        "note": "商品价满足，包邮未确认",
+        "evidence_refs": ["EV-1688-DETAIL-665824648569"]
+      },
+      {
+        "criterion_id": "CR-LOGO",
+        "criterion": "最好支持Logo定制",
+        "level": "SOFT",
+        "result": "PASS",
+        "observed_value": "页面标示支持Logo/来图定制",
+        "note": "费用和效果图待确认",
+        "evidence_refs": ["EV-1688-DETAIL-665824648569"]
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "STANDARD_PRODUCT",
+    "attributes": [
+      {
+        "key": "bluetooth_version",
+        "label": "蓝牙版本",
+        "value": "5.0",
+        "unit": null,
+        "confidence": "MEDIUM",
+        "evidence_refs": ["EV-1688-DETAIL-665824648569"]
+      },
+      {
+        "key": "battery_life_hours",
+        "label": "续航时间",
+        "value": 6,
+        "unit": "hour",
+        "confidence": "MEDIUM",
+        "evidence_refs": ["EV-1688-DETAIL-665824648569"]
+      }
+    ],
+    "packaging": "页面称支持定制包装，具体方案待确认",
+    "customization": "支持Logo、来图及OEM定制"
+  },
+  "assessment": {
+    "advantages": ["10个达到起订量", "商品单价显著低于预算", "支持Logo定制", "蓝牙5.0、约6小时续航"],
+    "disadvantages": ["Logo费用和国内运费未知", "具体颜色SKU未锁定", "供应商名称与资质信息待复核"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-1688-SEARCH-665824648569",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://detail.1688.com/offer/665824648569.html",
+      "captured_at": "2026-08-26T02:19:24Z",
+      "supports": ["source.product_url", "offer.search_display_price", "supplier.supplier_id"],
+      "excerpt": "关键词搜索返回offer 665824648569、35.8元、10件起价格档",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    },
+    {
+      "evidence_id": "EV-1688-DETAIL-665824648569",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://detail.1688.com/offer/665824648569.html",
+      "captured_at": "2026-08-26T02:25:00Z",
+      "supports": ["identity.selected_sku", "offer.selected_sku_price", "offer.commercial_terms.lead_time", "category_data.attributes", "category_data.customization"],
+      "excerpt": "详情返回10件起35.8元、蓝牙5.0、约6小时续航、支持Logo/OEM及8-15天加工期",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T02:30:00Z",
+    "updated_at": "2026-08-26T02:30:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": "1688-search:14pEmgCzVugTmoUI3;detail:hdSM3Rp16hBZuOHcI",
+    "overall_confidence": "MEDIUM",
+    "assumptions": ["35.8元按10个数量档计算", "未知费用不按零处理", "API中文文本存在编码显示问题，关键数值和商品ID已核对"]
+  }
+}

@@ -18,6 +18,13 @@ from typing import Any
 
 ALLOWED_TYPES = {"STANDARD_PRODUCT", "EQUIPMENT", "CUSTOM_PRODUCT", "SERVICE"}
 RANKABLE_STATUSES = {"ELIGIBLE"}
+LEAD_TIME_DAY_TYPES = {"CALENDAR_DAYS", "WORKING_DAYS", "UNKNOWN"}
+LEAD_TIME_SCOPES = {"PRODUCTION", "DISPATCH", "FINAL_DELIVERY", "SERVICE_DELIVERY", "UNKNOWN"}
+LEAD_TIME_START_EVENTS = {
+    "ORDER_PLACED", "PAYMENT_COMPLETED", "DEPOSIT_PAID", "CONTRACT_SIGNED",
+    "DESIGN_CONFIRMED", "SAMPLE_APPROVED", "INPUTS_COMPLETE", "MATERIALS_RECEIVED",
+    "OTHER", "UNKNOWN"
+}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -126,10 +133,22 @@ def validate_candidate(candidate: dict[str, Any], label: str) -> list[str]:
         errors.append(f"{label}: non-eligible candidate must not be scored or ranked")
 
     commercial_terms = candidate.get("offer", {}).get("commercial_terms", {})
-    if "lead_time_days" not in commercial_terms:
-        errors.append(f"{label}: offer.commercial_terms.lead_time_days is required")
-    if "lead_time_start_event" not in commercial_terms:
-        errors.append(f"{label}: offer.commercial_terms.lead_time_start_event is required")
+    if "lead_time" not in commercial_terms:
+        errors.append(f"{label}: offer.commercial_terms.lead_time is required")
+    lead_time = commercial_terms.get("lead_time")
+    if isinstance(lead_time, dict):
+        min_days = lead_time.get("min_days")
+        max_days = lead_time.get("max_days")
+        if min_days is None and max_days is None:
+            errors.append(f"{label}: lead_time must include min_days or max_days")
+        if isinstance(min_days, int) and isinstance(max_days, int) and min_days > max_days:
+            errors.append(f"{label}: lead_time.min_days cannot exceed max_days")
+        if lead_time.get("day_type") not in LEAD_TIME_DAY_TYPES:
+            errors.append(f"{label}: invalid lead_time.day_type")
+        if lead_time.get("scope") not in LEAD_TIME_SCOPES:
+            errors.append(f"{label}: invalid lead_time.scope")
+        if lead_time.get("start_event") not in LEAD_TIME_START_EVENTS:
+            errors.append(f"{label}: invalid lead_time.start_event")
 
     return errors
 

@@ -1,0 +1,170 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "TAOBAO-1005370435991-DESIGN-SERVICE",
+  "requirement_id": "PR-RESIDENTIAL-FLOOR-PLAN-DESIGN",
+  "procurement_type": "SERVICE",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "住宅全屋装修效果图、施工图与3D建模服务",
+    "brand": null,
+    "model": null,
+    "selected_sku": null,
+    "variant": "150平方米全包方案待询盘",
+    "condition": "NOT_APPLICABLE",
+    "listing_type": "SERVICE_PROFILE"
+  },
+  "source": {
+    "platform_code": "TAOBAO-CN",
+    "platform_name": "Taobao",
+    "platform_type": "SERVICE_PLATFORM",
+    "product_url": "https://item.taobao.com/item.htm?id=1005370435991",
+    "seller_url": "https://shop474475096.taobao.com/",
+    "market_country": "CN",
+    "observed_at": "2026-08-26T03:00:00Z",
+    "access_method": "API"
+  },
+  "supplier": {
+    "supplier_id": "2221388302698",
+    "name": "淘宝店铺474475096",
+    "supplier_type": "SERVICE_PROVIDER",
+    "location": null,
+    "rating": {
+      "subject": "STORE",
+      "score": 100,
+      "scale_max": 100,
+      "count": null,
+      "source_url": "https://item.taobao.com/item.htm?id=1005370435991",
+      "observed_at": "2026-08-26T03:00:00Z"
+    },
+    "signals": ["搜索店铺好评率100%", "详情返回总售400", "商品标题覆盖效果图、施工图和3D建模"],
+    "certifications": [],
+    "verification_status": "PARTIALLY_VERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 1,
+    "moq": null,
+    "search_display_price": {
+      "money": { "amount": 50, "currency": "CNY" },
+      "price_type": "SEARCH_DISPLAY",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "LOW",
+      "evidence_refs": ["EV-DESIGN-TB-SEARCH"]
+    },
+    "selected_sku_price": null,
+    "quoted_price": null,
+    "cost_components": [],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["150平方米全包设计费", "修改轮次费用", "源文件费用", "税费"],
+    "commercial_terms": {
+      "lead_time": null,
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "PARTIAL",
+    "price_observed_at": "2026-08-26T03:05:00Z"
+  },
+  "requirement_match": {
+    "overall_result": "PARTIAL",
+    "criteria": [
+      {
+        "criterion_id": "CR-SCOPE",
+        "criterion": "包含室内装修设计、平面图、3D模型和渲染效果图",
+        "level": "HARD",
+        "result": "PARTIAL",
+        "observed_value": "标题覆盖装修效果图、施工图和3D建模",
+        "note": "平面布局设计深度和具体交付清单待确认",
+        "evidence_refs": ["EV-DESIGN-TB-DETAIL"]
+      },
+      {
+        "criterion_id": "CR-BUDGET",
+        "criterion": "150平方米全包预算8000元",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": "页面展示50元，但没有对应150平方米全包SKU",
+        "note": "不得将入口价视为总报价",
+        "evidence_refs": ["EV-DESIGN-TB-DETAIL"]
+      },
+      {
+        "criterion_id": "CR-TIMELINE",
+        "criterion": "支付后2周交付",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "页面未提供可确认交期",
+        "evidence_refs": []
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "SERVICE",
+    "attributes": [
+      {
+        "key": "area_sqm",
+        "label": "目标设计面积",
+        "value": 150,
+        "unit": "m2",
+        "confidence": "HIGH",
+        "evidence_refs": ["EV-DESIGN-REQUIREMENT"]
+      }
+    ],
+    "scope": ["住宅全屋装修设计", "效果图设计", "施工图设计", "3D建模"],
+    "deliverables": ["装修效果图（标题信号）", "施工图（标题信号）", "3D模型（标题信号）"],
+    "milestones": [],
+    "revision_rounds": null,
+    "source_files_included": null,
+    "ip_terms": null
+  },
+  "assessment": {
+    "advantages": ["服务标题与需求范围高度相关", "店铺好评率信号100%", "详情销量信号400"],
+    "disadvantages": ["50元只是入口价而非150平方米全包价", "交付清单、修改次数、源文件和2周交期均未确认"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-DESIGN-REQUIREMENT",
+      "evidence_type": "MANUAL_NOTE",
+      "source_url": null,
+      "captured_at": "2026-08-26T03:00:00Z",
+      "supports": ["category_data.attributes"],
+      "excerpt": "用户需求面积150平方米",
+      "content_hash": null,
+      "confidence": "HIGH"
+    },
+    {
+      "evidence_id": "EV-DESIGN-TB-SEARCH",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://item.taobao.com/item.htm?id=1005370435991",
+      "captured_at": "2026-08-26T03:00:00Z",
+      "supports": ["source", "supplier.rating", "offer.search_display_price"],
+      "excerpt": "搜索结果返回商品1005370435991、50元入口价、店铺好评率100%及1000+搜索销量信号",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    },
+    {
+      "evidence_id": "EV-DESIGN-TB-DETAIL",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://item.taobao.com/item.htm?id=1005370435991",
+      "captured_at": "2026-08-26T03:05:00Z",
+      "supports": ["identity", "supplier.signals", "requirement_match", "category_data.scope", "category_data.deliverables"],
+      "excerpt": "详情返回50元、总售400，标题包含全屋装修效果图、施工图和3D建模；未返回150平方米全包SKU",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T03:10:00Z",
+    "updated_at": "2026-08-26T03:10:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": "taobao-search:xBCzOoUGGfjWL4hZ5;detail:GXHGlkIYWvoHL07TB",
+    "overall_confidence": "LOW",
+    "assumptions": ["本候选只用于跑通真实服务流程", "未询盘，50元不视为150平方米全包报价", "API中文文本存在编码显示问题，仅保留可交叉确认的信息"]
+  }
+}

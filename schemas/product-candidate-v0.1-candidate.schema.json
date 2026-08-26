@@ -164,10 +164,29 @@
     },
     "commercialTerms": {
       "type": "object", "additionalProperties": false,
-      "required": ["lead_time_days", "lead_time_start_event", "after_sales", "payment_terms", "valid_until"],
+      "required": ["lead_time", "after_sales", "payment_terms", "valid_until"],
       "properties": {
-        "lead_time_days": { "type": ["integer", "null"], "minimum": 0 },
-        "lead_time_start_event": { "enum": ["ORDER", "PAYMENT", "DESIGN_CONFIRMATION", "MATERIAL_RECEIPT", "OTHER", "UNKNOWN", "NOT_APPLICABLE"] },
+        "lead_time": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object", "additionalProperties": false,
+              "required": ["min_days", "max_days", "day_type", "scope", "start_event", "confidence"],
+              "properties": {
+                "min_days": { "type": ["integer", "null"], "minimum": 0 },
+                "max_days": { "type": ["integer", "null"], "minimum": 0 },
+                "day_type": { "enum": ["CALENDAR_DAYS", "WORKING_DAYS", "UNKNOWN"] },
+                "scope": { "enum": ["PRODUCTION", "DISPATCH", "FINAL_DELIVERY", "SERVICE_DELIVERY", "UNKNOWN"] },
+                "start_event": { "enum": ["ORDER_PLACED", "PAYMENT_COMPLETED", "DEPOSIT_PAID", "CONTRACT_SIGNED", "DESIGN_CONFIRMED", "SAMPLE_APPROVED", "INPUTS_COMPLETE", "MATERIALS_RECEIVED", "OTHER", "UNKNOWN"] },
+                "confidence": { "$ref": "#/$defs/confidence" }
+              },
+              "anyOf": [
+                { "properties": { "min_days": { "type": "integer" } } },
+                { "properties": { "max_days": { "type": "integer" } } }
+              ]
+            }
+          ]
+        },
         "after_sales": { "$ref": "#/$defs/nullableString" },
         "payment_terms": { "$ref": "#/$defs/nullableString" },
         "valid_until": { "type": ["string", "null"], "format": "date" }

@@ -44,8 +44,7 @@
     "comparison_currency": "CNY",
     "unknown_costs": ["单价", "Logo定制费", "国内包邮条件"],
     "commercial_terms": {
-      "lead_time_days": null,
-      "lead_time_start_event": "ORDER",
+      "lead_time": null,
       "after_sales": null,
       "payment_terms": null,
       "valid_until": null

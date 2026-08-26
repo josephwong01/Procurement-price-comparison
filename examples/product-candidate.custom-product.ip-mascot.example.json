@@ -44,8 +44,7 @@
     "comparison_currency": "CNY",
     "unknown_costs": ["定制全包价", "修改费用", "国内运费"],
     "commercial_terms": {
-      "lead_time_days": null,
-      "lead_time_start_event": "ORDER",
+      "lead_time": null,
       "after_sales": null,
       "payment_terms": null,
       "valid_until": null

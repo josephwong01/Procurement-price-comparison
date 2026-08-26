@@ -21,7 +21,8 @@
 - 主表价格必须优先来自 `selected_sku_price` 或 `quoted_price`；`search_display_price` 仅用于发现和纠错。
 - 运费、税费或清关费未知时列入 `unknown_costs`，不得按零处理。
 - 本阶段不设置独立履约方案对象，也不因履约方式不同拆分 Candidate；已知运输费用仍记录在 `offer.cost_components`。
-- 交期、交期起算点、售后、付款条件和报价有效期属于报价商业条件，记录在 `offer.commercial_terms`，但不构成独立履约方案。当前版本按人工审阅结论不设置库存和保修字段。
+- 交期区间、天数口径、范围和起算点记录在 `offer.commercial_terms.lead_time`，但不构成独立履约方案。`min_days`/`max_days` 表达区间，`day_type` 区分自然日/工作日，`scope` 区分生产、发货、最终交付或服务交付；起算事件与 Requirement Schema 共用枚举。当前版本按人工审阅结论不设置库存和保修字段。
+- 固定交期使用相同的 `min_days` 和 `max_days`；只有上限时允许 `min_days=null`；完全未知时必须使用 `lead_time=null`，不允许交期对象中的上下限同时为空。
 - `supplier.rating.subject` 必须区分 `SUPPLIER`、`STORE` 和 `PRODUCT`；产品评分不能冒充商家评分。
 - 关键价格和关键规格通过 `evidence_refs` 指向证据；允许暂时未知，但必须降低可信度。
 - `candidate_status=EXCLUDED` 时必须提供至少一个 `exclusion_reasons`。

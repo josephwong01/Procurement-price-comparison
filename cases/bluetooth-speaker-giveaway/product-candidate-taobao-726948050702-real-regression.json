@@ -1,0 +1,180 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "TAOBAO-726948050702-BLUE-QTY10",
+  "requirement_id": "PR-BLUETOOTH-SPEAKER-GIVEAWAY",
+  "procurement_type": "STANDARD_PRODUCT",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "RECCI锐思 RSK-W26 蓝牙音箱企业礼品定制Logo",
+    "brand": "RECCI",
+    "model": "RSK-W26",
+    "selected_sku": "5266969924720",
+    "variant": "蓝色",
+    "condition": "NEW",
+    "listing_type": "PRODUCT_PAGE"
+  },
+  "source": {
+    "platform_code": "TAOBAO-CN",
+    "platform_name": "Taobao",
+    "platform_type": "MARKETPLACE",
+    "product_url": "https://item.taobao.com/item.htm?id=726948050702",
+    "seller_url": "https://shop257498860.taobao.com/",
+    "market_country": "CN",
+    "observed_at": "2026-08-26T02:19:24Z",
+    "access_method": "API"
+  },
+  "supplier": {
+    "supplier_id": "2215377569695",
+    "name": "RECCI锐思礼品工厂店",
+    "supplier_type": "RETAILER",
+    "location": "Dongguan, Guangdong, China",
+    "rating": {
+      "subject": "STORE",
+      "score": 99.72,
+      "scale_max": 100,
+      "count": null,
+      "source_url": "https://item.taobao.com/item.htm?id=726948050702",
+      "observed_at": "2026-08-26T02:19:24Z"
+    },
+    "signals": ["店铺好评率99.72%", "商品详情返回总售2", "标题标示企业礼品定制Logo"],
+    "certifications": [],
+    "verification_status": "PARTIALLY_VERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 10,
+    "moq": null,
+    "search_display_price": {
+      "money": { "amount": 78, "currency": "CNY" },
+      "price_type": "SEARCH_DISPLAY",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "MEDIUM",
+      "evidence_refs": ["EV-TB-SEARCH-726948050702"]
+    },
+    "selected_sku_price": {
+      "money": { "amount": 78, "currency": "CNY" },
+      "price_type": "SELECTED_SKU",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "HIGH",
+      "evidence_refs": ["EV-TB-DETAIL-726948050702"]
+    },
+    "quoted_price": null,
+    "cost_components": [
+      {
+        "code": "PRODUCT_SUBTOTAL",
+        "label": "10个商品小计",
+        "amount": { "amount": 780, "currency": "CNY" },
+        "basis": "CALCULATED",
+        "confidence": "HIGH"
+      }
+    ],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["Logo定制费", "国内运费", "税费口径"],
+    "commercial_terms": {
+      "lead_time": null,
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "PARTIAL",
+    "price_observed_at": "2026-08-26T02:25:00Z"
+  },
+  "requirement_match": {
+    "overall_result": "PARTIAL",
+    "criteria": [
+      {
+        "criterion_id": "CR-QTY",
+        "criterion": "数量10个",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": "商品库存信号充足，但10个定制MOQ待确认",
+        "note": null,
+        "evidence_refs": ["EV-TB-DETAIL-726948050702"]
+      },
+      {
+        "criterion_id": "CR-UNIT-PRICE",
+        "criterion": "约100元/个且包邮",
+        "level": "HARD",
+        "result": "PARTIAL",
+        "observed_value": "蓝色SKU 78元/个，运费未知",
+        "note": "商品价满足，包邮未确认",
+        "evidence_refs": ["EV-TB-DETAIL-726948050702"]
+      },
+      {
+        "criterion_id": "CR-LOGO",
+        "criterion": "最好支持Logo定制",
+        "level": "SOFT",
+        "result": "PARTIAL",
+        "observed_value": "商品标题标示定制Logo",
+        "note": "10个数量是否承接及费用待客服确认",
+        "evidence_refs": ["EV-TB-DETAIL-726948050702"]
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "STANDARD_PRODUCT",
+    "attributes": [
+      {
+        "key": "connectivity",
+        "label": "连接方式",
+        "value": "Bluetooth",
+        "unit": null,
+        "confidence": "HIGH",
+        "evidence_refs": ["EV-TB-DETAIL-726948050702"]
+      },
+      {
+        "key": "water_resistance",
+        "label": "防水属性",
+        "value": "页面标示防水，等级未给出",
+        "unit": null,
+        "confidence": "MEDIUM",
+        "evidence_refs": ["EV-TB-DETAIL-726948050702"]
+      }
+    ],
+    "packaging": null,
+    "customization": "标题标示企业礼品定制Logo，MOQ与费用待确认"
+  },
+  "assessment": {
+    "advantages": ["蓝色SKU和78元价格已由详情锁定", "品牌与型号明确", "店铺好评率99.72%", "标题匹配企业礼品和Logo定制"],
+    "disadvantages": ["Logo MOQ和费用未知", "国内运费未知", "商品销量信号仅2"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-TB-SEARCH-726948050702",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://item.taobao.com/item.htm?id=726948050702",
+      "captured_at": "2026-08-26T02:19:24Z",
+      "supports": ["source.product_url", "offer.search_display_price", "supplier.rating"],
+      "excerpt": "关键词搜索返回RECCI RSK-W26、78元和店铺好评率99.72%",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    },
+    {
+      "evidence_id": "EV-TB-DETAIL-726948050702",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://item.taobao.com/item.htm?id=726948050702",
+      "captured_at": "2026-08-26T02:25:00Z",
+      "supports": ["identity.brand", "identity.model", "identity.selected_sku", "offer.selected_sku_price", "category_data.attributes", "category_data.customization"],
+      "excerpt": "详情返回品牌Recci、型号RSK-W26、蓝色SKU 5266969924720、价格78元及蓝牙连接属性",
+      "content_hash": null,
+      "confidence": "HIGH"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T02:30:00Z",
+    "updated_at": "2026-08-26T02:30:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": "taobao-search:ze7AJWJmw088Ft8Yu;detail:Zjm9RFTial7ixtjLf",
+    "overall_confidence": "MEDIUM",
+    "assumptions": ["10个按单件SKU价计算", "Logo费和运费未知，不按零处理", "API中文文本存在编码显示问题，品牌、型号、SKU和关键数值已核对"]
+  }
+}

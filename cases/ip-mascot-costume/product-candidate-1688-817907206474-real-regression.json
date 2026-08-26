@@ -1,0 +1,170 @@
+{
+  "schema_version": "0.1-candidate",
+  "candidate_id": "1688-817907206474-MASCOT",
+  "requirement_id": "PR-IP-MASCOT-COSTUME",
+  "procurement_type": "CUSTOM_PRODUCT",
+  "candidate_status": "PENDING_VALIDATION",
+  "identity": {
+    "title": "活动用卡通人偶服定制：泡沫/EVA表演服",
+    "brand": null,
+    "model": null,
+    "selected_sku": null,
+    "variant": "来图定制，具体造型待询盘",
+    "condition": "MADE_TO_ORDER",
+    "listing_type": "PRODUCT_PAGE"
+  },
+  "source": {
+    "platform_code": "1688-CN",
+    "platform_name": "1688",
+    "platform_type": "MARKETPLACE",
+    "product_url": "https://detail.1688.com/offer/817907206474.html",
+    "seller_url": "https://m.1688.com/winport/b2b-2218283287713f8e88.html?__existtitle__=1",
+    "market_country": "CN",
+    "observed_at": "2026-08-26T03:00:00Z",
+    "access_method": "API"
+  },
+  "supplier": {
+    "supplier_id": "b2b-2218283287713f8e88",
+    "name": null,
+    "supplier_type": "UNKNOWN",
+    "location": "Dongguan, Guangdong, China",
+    "rating": null,
+    "signals": ["1688认证信号", "搜索结果显示成交20+", "搜索结果订购信号29"],
+    "certifications": [],
+    "verification_status": "PARTIALLY_VERIFIED"
+  },
+  "offer": {
+    "purchase_quantity": 1,
+    "moq": 1,
+    "search_display_price": {
+      "money": { "amount": 500, "currency": "CNY" },
+      "price_type": "SEARCH_DISPLAY",
+      "quantity_basis": 1,
+      "tax_status": "UNKNOWN",
+      "shipping_included": null,
+      "confidence": "LOW",
+      "evidence_refs": ["EV-MASCOT-1688-SEARCH"]
+    },
+    "selected_sku_price": null,
+    "quoted_price": null,
+    "cost_components": [],
+    "normalized_total_cost": null,
+    "comparison_currency": "CNY",
+    "unknown_costs": ["完整定制造价", "设计与修改费用", "国内运费", "税费"],
+    "commercial_terms": {
+      "lead_time": null,
+      "after_sales": null,
+      "payment_terms": null,
+      "valid_until": null
+    },
+    "price_status": "PARTIAL",
+    "price_observed_at": "2026-08-26T03:00:00Z"
+  },
+  "requirement_match": {
+    "overall_result": "PARTIAL",
+    "criteria": [
+      {
+        "criterion_id": "CR-QTY",
+        "criterion": "数量1套",
+        "level": "HARD",
+        "result": "PASS",
+        "observed_value": "1件起",
+        "note": null,
+        "evidence_refs": ["EV-MASCOT-1688-DETAIL"]
+      },
+      {
+        "criterion_id": "CR-MATERIAL",
+        "criterion": "头部整块泡沫雕刻、毛绒外包、身体海绵拼接",
+        "level": "HARD",
+        "result": "PARTIAL",
+        "observed_value": "标题含泡沫/EVA定制信号",
+        "note": "整块泡沫、具体毛绒和身体海绵工艺未确认",
+        "evidence_refs": ["EV-MASCOT-1688-DETAIL"]
+      },
+      {
+        "criterion_id": "CR-BUDGET",
+        "criterion": "预算5000元以内",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": "页面显示500元，但未锁定具体设计和完整报价",
+        "note": "不得把搜索/起始价当作全包价",
+        "evidence_refs": ["EV-MASCOT-1688-DETAIL"]
+      },
+      {
+        "criterion_id": "CR-LEAD-TIME",
+        "criterion": "下单后约10天",
+        "level": "HARD",
+        "result": "UNKNOWN",
+        "observed_value": null,
+        "note": "页面未提供可确认交期",
+        "evidence_refs": []
+      }
+    ]
+  },
+  "category_data": {
+    "kind": "CUSTOM_PRODUCT",
+    "attributes": [
+      {
+        "key": "wearer_height_cm",
+        "label": "适配穿戴身高",
+        "value": null,
+        "unit": "cm",
+        "confidence": "UNVERIFIED",
+        "evidence_refs": []
+      },
+      {
+        "key": "finished_weight_kg",
+        "label": "成品重量",
+        "value": null,
+        "unit": "kg",
+        "confidence": "UNVERIFIED",
+        "evidence_refs": []
+      }
+    ],
+    "materials": ["泡沫（标题信号）", "EVA（标题信号）"],
+    "processes": ["来图定制"],
+    "design_input": "用户提供IP设计图",
+    "sample_policy": null,
+    "revision_rounds": null,
+    "acceptance_method": "待按设计还原度、材料、重量、尺寸和穿戴效果确认"
+  },
+  "assessment": {
+    "advantages": ["支持1件起定制", "标题匹配泡沫/EVA人偶服", "平台存在认证与成交信号"],
+    "disadvantages": ["500元不是锁定设计后的正式报价", "关键材料、重量、175cm适配和10天交期均未确认"],
+    "risks": [],
+    "score_dimensions": [],
+    "overall_score": null,
+    "recommendation_role": "NONE",
+    "exclusion_reasons": []
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-MASCOT-1688-SEARCH",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://detail.1688.com/offer/817907206474.html",
+      "captured_at": "2026-08-26T03:00:00Z",
+      "supports": ["source", "supplier.signals", "offer.search_display_price"],
+      "excerpt": "搜索结果返回offer 817907206474、500元、1件起及认证/成交信号",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    },
+    {
+      "evidence_id": "EV-MASCOT-1688-DETAIL",
+      "evidence_type": "API_RESPONSE",
+      "source_url": "https://detail.1688.com/offer/817907206474.html",
+      "captured_at": "2026-08-26T03:05:00Z",
+      "supports": ["identity", "offer.moq", "requirement_match", "category_data.materials", "category_data.processes"],
+      "excerpt": "详情返回1件起500元价格档、泡沫/EVA人偶服及来图加工信号；未返回锁定造型SKU",
+      "content_hash": null,
+      "confidence": "MEDIUM"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T03:10:00Z",
+    "updated_at": "2026-08-26T03:10:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "collection_run_id": "1688-search:RYtM1QmTx2XUBX7Ue;detail:94dhq3LOQgCqnH0mP",
+    "overall_confidence": "LOW",
+    "assumptions": ["本候选只用于跑通真实定制品流程", "未询盘，页面价格不视为完整定制报价", "API中文文本存在编码显示问题，仅保留可交叉确认的信息"]
+  }
+}

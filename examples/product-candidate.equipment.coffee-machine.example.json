@@ -60,8 +60,7 @@
     "comparison_currency": "CNY",
     "unknown_costs": ["2026年11月实际库存", "最终含税价格", "送达展位的运费"],
     "commercial_terms": {
-      "lead_time_days": null,
-      "lead_time_start_event": "ORDER",
+      "lead_time": null,
       "after_sales": "德国境内供应商，具体条款下单前确认",
       "payment_terms": null,
       "valid_until": null

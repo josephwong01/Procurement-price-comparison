@@ -44,8 +44,7 @@
     "comparison_currency": "CNY",
     "unknown_costs": ["150平方米全包服务报价", "超出修改轮次费用"],
     "commercial_terms": {
-      "lead_time_days": null,
-      "lead_time_start_event": "PAYMENT",
+      "lead_time": null,
       "after_sales": null,
       "payment_terms": null,
       "valid_until": null
