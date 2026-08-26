@@ -17,15 +17,16 @@ Build a reviewable procurement shortlist without pretending that unknown data is
 6. Match against the requirement and deduplicate only the comparison view. Preserve all source records.
 7. Calculate CNY TCO and a single composite score with the frozen model. Show non-CNY platform prices in parentheses and never treat unknown costs as zero.
 8. Produce the procurement output main table plus details, exclusions, risks, evidence, and confirmations. A recommendation is provisional until its blocking confirmations are resolved.
-9. Run the repository validators, including `scripts/validate_end_to_end.py`, before calling the run complete.
+9. When shortlisted candidates still need supplier confirmation, prepare an RFQ question set and a structured answer sheet for manual use. Read [references/rfq-preparation.md](references/rfq-preparation.md). Do not send it.
+10. Run the repository validators, including `scripts/validate_end_to_end.py`, before calling the run complete.
 
 For artifact selection, stopping conditions, and status rules, read [references/workflow-contract.md](references/workflow-contract.md).
 
 ## Boundaries
 
 - Stop at a candidate pool and preliminary comparison. Do not message suppliers, negotiate, order, approve, or write to ERP/OA unless separately authorized.
+- RFQ preparation means drafting questions and an answer structure only. It does not imply opening customer-service chat, submitting a form, or contacting a supplier.
 - Do not bypass access controls. Record a failed channel and use an allowed fallback.
 - A failed or partial stage stays failed or partial in the final report. List unfinished work explicitly.
 - Frozen schemas may receive compatibility fixes only; changed semantics require a new candidate version.
-
 

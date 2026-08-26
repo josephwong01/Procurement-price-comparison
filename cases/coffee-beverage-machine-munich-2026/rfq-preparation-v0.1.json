@@ -1,0 +1,52 @@
+{
+  "rfq_version": "0.1",
+  "rfq_id": "RFQ-PREP-COFFEE-MUNICH-2026-001",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "status": "DRAFT_FOR_MANUAL_USE",
+  "contact_mode": "NO_AUTOMATIC_CONTACT",
+  "quantity": 1,
+  "intended_use": "November 2026 trade-show bar in Munich, Germany; baseline about 120 beverages/day",
+  "shared_questions": [
+    {"question_id": "Q-ELEC-01", "topic": "ELECTRICAL", "question": "请确认该具体SKU的额定电压、频率和插头规格，是否可长期使用德国230V/50Hz电源？", "answer_type": "TEXT_AND_DOCUMENT", "blocking": true, "status": "OPEN", "requested_evidence": "铭牌照片或规格书"},
+    {"question_id": "Q-WATER-01", "topic": "WATER", "question": "机器能否不接固定上下水，直接使用桶装水或内置水箱？如需水泵，请确认是否包含及连接方式。", "answer_type": "TEXT_AND_PHOTO", "blocking": true, "status": "OPEN", "requested_evidence": "供水连接示意或实物照片"},
+    {"question_id": "Q-CAPACITY-01", "topic": "THROUGHPUT", "question": "在连续使用情况下，每小时建议最大出杯量是多少？制作一杯常规200ml饮品约需多少秒？", "answer_type": "NUMBER_AND_TEXT", "blocking": true, "status": "OPEN", "requested_evidence": "规格书或测试说明"},
+    {"question_id": "Q-PACK-01", "topic": "PACKAGING", "question": "请提供整机净重、包装后毛重和外箱长宽高。", "answer_type": "MEASUREMENTS", "blocking": true, "status": "OPEN", "requested_evidence": "装箱数据"},
+    {"question_id": "Q-COMPLIANCE-01", "topic": "COMPLIANCE", "question": "可否提供CE相关文件及食品接触材料或卫生安全文件？请列出文件名称。", "answer_type": "DOCUMENT_LIST", "blocking": true, "status": "OPEN", "requested_evidence": "证书或符合性声明扫描件"},
+    {"question_id": "Q-PRICE-01", "topic": "COMMERCIAL", "question": "采购1台该具体SKU的含税成交价、国内运费、发票类型分别是什么？", "answer_type": "MONEY_AND_TEXT", "blocking": true, "status": "OPEN", "requested_evidence": "正式报价或平台订单价格截图"},
+    {"question_id": "Q-LEAD-01", "topic": "DELIVERY", "question": "从付款或下单开始，预计几天可以发货？当前库存是否为该具体SKU？", "answer_type": "DAYS_AND_TEXT", "blocking": true, "status": "OPEN", "requested_evidence": "库存和交期确认"},
+    {"question_id": "Q-WARRANTY-01", "topic": "AFTER_SALES", "question": "质保期限、质保起算点、主要易损件和境外使用后的售后处理方式是什么？", "answer_type": "TEXT", "blocking": false, "status": "OPEN", "requested_evidence": "售后条款"}
+  ],
+  "candidate_questions": [
+    {
+      "candidate_id": "LIVE-TB-MIAOQUE-565058058111-3C3H",
+      "platform": "Taobao",
+      "supplier": "妙雀官方品牌店",
+      "product_url": "https://item.taobao.com/item.htm?id=565058058111",
+      "selected_sku": "台式3冷3热+冷热水 电子制冷 / SKU 4075962964092",
+      "questions": [
+        {"question_id": "Q-MIAOQUE-01", "question": "页面写有‘送内置水泵’，请确认该SKU能否直接抽取常见18.9L桶装水，并列明随机附件。", "blocking": true, "status": "OPEN"},
+        {"question_id": "Q-MIAOQUE-02", "question": "3个冷饮和3个热饮通道可分别放哪些原料？咖啡、奶茶和果汁能否同时配置？", "blocking": true, "status": "OPEN"}
+      ]
+    },
+    {
+      "candidate_id": "LIVE-1688-DONPER-730288359108-E30SCW8",
+      "platform": "1688",
+      "supplier": "黄石东贝电子商务有限公司",
+      "product_url": "https://detail.1688.com/offer/730288359108.html",
+      "selected_sku": "E-30SCW-8 / SKU 5122572396600",
+      "questions": [
+        {"question_id": "Q-DONPER-01", "question": "请解释E-30SCW-8中各字母/数字对应的饮品通道、制冷和供水配置。", "blocking": true, "status": "OPEN"},
+        {"question_id": "Q-DONPER-02", "question": "页面标注欧洲销售地区；该SKU是否已有德国或欧盟出口案例，可提供何种电气和合规配置？", "blocking": true, "status": "OPEN"}
+      ]
+    }
+  ],
+  "answer_sheet": {
+    "response_received_at": null,
+    "recorded_by": null,
+    "answers": [],
+    "attachments": [],
+    "next_review_status": "WAITING_FOR_MANUAL_RESPONSES"
+  }
+}
+
+
