@@ -1,0 +1,111 @@
+{
+  "run_version": "0.1-live-checkpoint",
+  "run_id": "E2E-COFFEE-MUNICH-2026-LIVE-20260826",
+  "generated_at": "2026-08-26T16:20:00+08:00",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "status": "PARTIAL",
+  "status_reason": "Live sourcing and detail normalization completed; exact international freight, 50Hz confirmation for China SKUs, and supplier confirmation remain open.",
+  "query_execution": {
+    "required_platforms": ["Amazon Germany", "Taobao", "1688", "JD China", "JD Germany / Joybuy"],
+    "additional_platforms": ["GGM Gastro"],
+    "runs": [
+      {"platform": "1688", "method": "APIFY_API", "run_id": "yXFGHwKIcOVahnKpe", "dataset_id": "ILixCdl8IoycaoqMu", "status": "SUCCEEDED", "result_count": 10},
+      {"platform": "Taobao", "method": "APIFY_API", "run_id": "3ToOpoh21XHgdAbyZ", "dataset_id": "3pNmRqR5fGVCv4N0Z", "status": "SUCCEEDED", "result_count": 10},
+      {"platform": "Taobao", "method": "APIFY_API_DETAIL", "run_id": "sbIwmmCdmrLZOW9mH", "dataset_id": "EicSLFjQRXesh2Ldj", "status": "PARTIAL", "result_count": 1},
+      {"platform": "1688", "method": "APIFY_API_DETAIL", "run_id": "pAtTk2wxKzagRfQPP", "dataset_id": "jMVcM796zXPTzZFcZ", "status": "SUCCEEDED", "result_count": 2},
+      {"platform": "Amazon Germany", "method": "BROWSER", "status": "PARTIAL", "result_count": 1, "limitation": "Browser delivery region displayed Singapore rather than Munich."},
+      {"platform": "JD China", "method": "PUBLIC_WEB", "status": "PARTIAL", "result_count": 1, "limitation": "Product family and reviews visible; price not locked."},
+      {"platform": "JD Germany / Joybuy", "method": "PUBLIC_WEB", "status": "PARTIAL", "result_count": 0, "limitation": "No sufficiently fresh directly verifiable result in this run."},
+      {"platform": "GGM Gastro", "method": "PUBLIC_WEB", "status": "SUCCEEDED", "result_count": 1}
+    ]
+  },
+  "comparison_assumptions": {
+    "exchange_rate": "1 EUR ≈ 8.30 CNY (planning rate, not settlement rate)",
+    "china_to_munich_freight_cny": "2800-3200 per machine, planning estimate",
+    "china_import_tax_and_fees_cny": "900-1200 per machine, planning estimate",
+    "daily_demand": "about 120 beverages/day baseline; peak throughput not yet field-tested",
+    "unknown_cost_policy": "DO_NOT_TREAT_AS_ZERO"
+  },
+  "shortlist": [
+    {
+      "rank": 1,
+      "candidate_id": "LIVE-TB-MIAOQUE-565058058111-3C3H",
+      "platform": "Taobao",
+      "product_title": "妙雀台式3冷3热+冷热水电子制冷商用饮料机",
+      "product_url": "https://item.taobao.com/item.htm?id=565058058111",
+      "selected_sku_id": "4075962964092",
+      "original_price": "CNY 2480",
+      "estimated_munich_tco_cny": 6380,
+      "tco_range_cny": [6180, 6780],
+      "overall_score": 78.4,
+      "eligibility": "CONDITIONAL",
+      "advantages": ["咖啡、奶茶、果汁等多通道场景匹配度高", "台式，适合展会吧台", "内置水泵信号，2年保修，店铺累计售300"],
+      "disadvantages": ["50Hz未明确", "桶装水直抽和德国合规文件待确认", "国际运输和税费为估算"]
+    },
+    {
+      "rank": 2,
+      "candidate_id": "LIVE-1688-DONPER-730288359108-E30SCW8",
+      "platform": "1688",
+      "product_title": "东贝冷热速溶咖啡奶茶果汁现调机 E-30SCW-8",
+      "product_url": "https://detail.1688.com/offer/730288359108.html",
+      "selected_sku_id": "5122572396600",
+      "original_price": "CNY 2475",
+      "estimated_munich_tco_cny": 6525,
+      "tco_range_cny": [6275, 6875],
+      "overall_score": 75.6,
+      "eligibility": "CONDITIONAL",
+      "advantages": ["冷热现调和多饮品方向符合需求", "工厂、诚信通、欧洲销售地区信号", "一年质保终身维护，复购率47.34%"],
+      "disadvantages": ["型号编码未直接解释具体饮品数量", "电压频率和桶装水方式待确认", "销量仅4，跨境落地成本为估算"]
+    },
+    {
+      "rank": 3,
+      "candidate_id": "LIVE-AMAZON-DE-DELONGHI-ECAM22110B",
+      "platform": "Amazon Germany",
+      "product_title": "De'Longhi Magnifica S ECAM 22.110.B",
+      "product_url": "https://www.amazon.de/DeLonghi-ECAM-22-110-B-Kaffeevollautomat-Milchaufsch%C3%A4umd%C3%BCse/dp/B00400OMU0",
+      "original_price": "EUR 294.90",
+      "estimated_munich_tco_cny": 2448,
+      "tco_range_cny": [2448, 2700],
+      "overall_score": 74.3,
+      "eligibility": "CONDITIONAL_FALLBACK",
+      "advantages": ["德国本地低成本、Amazon自营库存信号", "4.4/5，54618条评价", "1.8L内置水箱，咖啡品质和维护便利性较强"],
+      "disadvantages": ["不是多通道速溶饮料机", "奶饮需要人工操作", "本次浏览器未锁定慕尼黑配送地区"]
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "candidate_id": "LIVE-GGM-KVACB-SET2",
+      "platform": "GGM Gastro",
+      "product_title": "Kaffeevollautomat KVACB#SET2 - 16 Programme - mit Milchkühlschrank",
+      "product_url": "https://www.ggmgastro.com/de-de-eur/kaffeevollautomat-16-programme-5-zoll-touchscreen-inkl-milchkuehlschrank-kvacb-set2/querystring.channable%3D423d39736b75004b56414342235345543256",
+      "original_price": "EUR 1081.99 net / EUR 1287.57 gross",
+      "estimated_munich_tco_cny": 10687,
+      "exclusion_reason": "Gross purchase cost exceeds the CNY 10000 ceiling, despite strong functional and delivery fit."
+    },
+    {
+      "candidate_id": "LIVE-1688-COFFELADY-872509673584",
+      "platform": "1688",
+      "product_title": "Coffelady AM7203全自动商用咖啡机",
+      "product_url": "https://detail.1688.com/offer/872509673584.html",
+      "original_price": "CNY 1900",
+      "exclusion_reason": "MOQ is 200 units and the machine is coffee-focused rather than a multi-drink dispenser."
+    }
+  ],
+  "recommendation": {
+    "decision_status": "SHORTLIST_ONLY",
+    "primary_candidate_id": "LIVE-TB-MIAOQUE-565058058111-3C3H",
+    "backup_candidate_id": "LIVE-1688-DONPER-730288359108-E30SCW8",
+    "local_fallback_candidate_id": "LIVE-AMAZON-DE-DELONGHI-ECAM22110B",
+    "rationale": "Miaoque currently has the clearest locked SKU and best match for coffee plus other drinks. Donper is the supplier-diversification backup. DeLonghi is a low-logistics-risk fallback only if multi-drink capability is relaxed."
+  },
+  "open_confirmations": [
+    "Confirm 230V/50Hz and EU plug or acceptable adapter for the two China candidates.",
+    "Confirm direct use of bottled water or included pump configuration.",
+    "Obtain packed dimensions and gross weight for freight quotation.",
+    "Confirm CE/food-contact documentation acceptable for exhibition use in Germany.",
+    "Test or confirm peak cups per hour before final selection.",
+    "Recheck stock and delivery in the month of purchase; current stock cannot guarantee November 2026 availability."
+  ]
+}
+
+
