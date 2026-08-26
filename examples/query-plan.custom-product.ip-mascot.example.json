@@ -1,0 +1,165 @@
+{
+"schema_version": "0.1",
+  "plan_id": "QP-MASCOT-001",
+  "requirement_id": "PR-IP-MASCOT-001",
+  "procurement_type": "CUSTOM_PRODUCT",
+  "plan_status": "READY",
+  "planning_context": {
+    "requirement_status": "SEARCH_READY",
+    "blocking_questions": [],
+    "warnings": [
+      "详细人体尺寸和返工规则待确认"
+    ],
+    "assumptions": [],
+    "input_schema_version": "0.2-candidate.2"
+  },
+  "platform_tasks": [
+    {
+      "task_id": "TASK-1688-MASCOT",
+      "target": {
+        "platform_id": "1688-cn",
+        "platform_name": "1688",
+        "market": "CN",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.1688.com/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 1,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "API",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": true,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-MAS-1",
+          "text": "IP人偶服定制 整块泡沫雕刻 水晶毛绒 海绵 高还原",
+          "language": "zh-CN",
+          "purpose": "ATTRIBUTE_VARIANT",
+          "breadth": "PRECISE",
+          "negative_terms": [
+            "现货儿童服"
+          ]
+        },
+        {
+          "query_id": "Q-MAS-2",
+          "text": "卡通人偶服厂家 来图定制 泡沫头套",
+          "language": "zh-CN",
+          "purpose": "SUPPLIER_DISCOVERY",
+          "breadth": "BROAD",
+          "negative_terms": []
+        }
+      ],
+      "filters": [
+        {
+          "filter_id": "F-MAS-MOQ",
+          "field": "moq",
+          "operator": "LTE",
+          "value": 1,
+          "level": "HARD",
+          "application": "POST_FILTER",
+          "reason": "采购1套"
+        },
+        {
+          "filter_id": "F-MAS-LEAD",
+          "field": "lead_time_days",
+          "operator": "LTE",
+          "value": 10,
+          "level": "HARD",
+          "application": "MANUAL_REVIEW",
+          "reason": "定制交期通常需询盘确认"
+        }
+      ],
+      "result_target": {
+        "min_candidates": 5,
+        "max_candidates": 20
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-MIC-MASCOT",
+      "target": {
+        "platform_id": "made-in-china",
+        "platform_name": "Made-in-China",
+        "market": "CN",
+        "channel_type": "SUPPLIER_DIRECTORY",
+        "base_url": "https://www.made-in-china.com/"
+      },
+      "scope_role": "SUPPLEMENTAL_DISCOVERY",
+      "priority": 2,
+      "search_language": "en",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-MAS-3",
+          "text": "custom mascot costume foam head manufacturer",
+          "language": "en",
+          "purpose": "SUPPLIER_DISCOVERY",
+          "breadth": "BALANCED",
+          "negative_terms": []
+        }
+      ],
+      "filters": [],
+      "result_target": {
+        "min_candidates": 1,
+        "max_candidates": 8
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    }
+  ],
+  "discovery_policy": {
+    "enabled": true,
+    "min_platforms": 1,
+    "max_platforms": 3,
+    "selection_criteria": [
+      "中国定制厂家",
+      "存在相似案例"
+    ],
+    "selected_platform_ids": [
+      "made-in-china"
+    ]
+  },
+  "stop_conditions": {
+    "minimum_eligible_candidates": 5,
+    "minimum_price_levels": 2,
+    "all_must_search_attempted": true,
+    "stop_on_budget_exhaustion": false,
+    "maximum_queries": 12
+  },
+  "fallback_rules": [
+    {
+      "rule_id": "FB-MAS-1",
+      "trigger": "INSUFFICIENT_RESULTS",
+      "action": "ADD_PLATFORM",
+      "target_task_id": null,
+      "notes": "补充中国定制厂家或供应商目录"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T08:00:00Z",
+    "updated_at": "2026-08-26T08:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "planner_version": "0.1-candidate",
+    "overall_confidence": "MEDIUM",
+    "assumptions": [
+      "交期和工艺最终需要询盘"
+    ]
+  }
+}
+

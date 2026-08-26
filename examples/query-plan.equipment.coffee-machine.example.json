@@ -1,0 +1,338 @@
+{
+"schema_version": "0.1",
+  "plan_id": "QP-COFFEE-MUNICH-001",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "procurement_type": "EQUIPMENT",
+  "plan_status": "READY",
+  "planning_context": {
+    "requirement_status": "SEARCH_READY",
+    "blocking_questions": [],
+    "warnings": [
+      "具体日期、吧台尺寸和税费待确认"
+    ],
+    "assumptions": [
+      "预算币种为CNY"
+    ],
+    "input_schema_version": "0.2.1-candidate"
+  },
+  "platform_tasks": [
+    {
+      "task_id": "TASK-AMAZON-DE",
+      "target": {
+        "platform_id": "amazon-de",
+        "platform_name": "Amazon Germany",
+        "market": "DE",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.amazon.de/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 1,
+      "search_language": "de",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-AMZ-1",
+          "text": "Kaffee Heißgetränkeautomat Schokolade Wassertank 230V",
+          "language": "de",
+          "purpose": "CORE_PRODUCT",
+          "breadth": "BALANCED",
+          "negative_terms": [
+            "Spielzeug"
+          ]
+        }
+      ],
+      "filters": [
+        {
+          "filter_id": "F-AMZ-PRICE",
+          "field": "delivered_price_cny",
+          "operator": "LTE",
+          "value": 10000,
+          "level": "HARD",
+          "application": "POST_FILTER",
+          "reason": "总预算上限"
+        }
+      ],
+      "result_target": {
+        "min_candidates": 2,
+        "max_candidates": 10
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-TAOBAO-CN",
+      "target": {
+        "platform_id": "taobao-cn",
+        "platform_name": "淘宝",
+        "market": "CN",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.taobao.com/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 2,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "API",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": true,
+        "notes": "API不可用时使用已登录浏览器"
+      },
+      "queries": [
+        {
+          "query_id": "Q-TB-1",
+          "text": "商用咖啡饮料机 咖啡 热巧克力 桶装水 220V",
+          "language": "zh-CN",
+          "purpose": "ATTRIBUTE_VARIANT",
+          "breadth": "BALANCED",
+          "negative_terms": [
+            "玩具"
+          ]
+        }
+      ],
+      "filters": [
+        {
+          "filter_id": "F-TB-QTY",
+          "field": "moq",
+          "operator": "LTE",
+          "value": 1,
+          "level": "HARD",
+          "application": "POST_FILTER",
+          "reason": "采购数量1台"
+        }
+      ],
+      "result_target": {
+        "min_candidates": 2,
+        "max_candidates": 10
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-1688-CN",
+      "target": {
+        "platform_id": "1688-cn",
+        "platform_name": "1688",
+        "market": "CN",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.1688.com/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 3,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "API",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": true,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-1688-1",
+          "text": "商用速溶咖啡饮料机 双粉料 桶装水 出口欧洲",
+          "language": "zh-CN",
+          "purpose": "SUPPLIER_DISCOVERY",
+          "breadth": "BALANCED",
+          "negative_terms": []
+        }
+      ],
+      "filters": [
+        {
+          "filter_id": "F-1688-POWER",
+          "field": "power",
+          "operator": "CONTAINS",
+          "value": "230V/50Hz",
+          "level": "PREFERENCE",
+          "application": "POST_FILTER",
+          "reason": "德国电源适配"
+        }
+      ],
+      "result_target": {
+        "min_candidates": 2,
+        "max_candidates": 10
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-JD-CN",
+      "target": {
+        "platform_id": "jd-cn",
+        "platform_name": "京东-中国",
+        "market": "CN",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.jd.com/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 4,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-JD-1",
+          "text": "商用咖啡机 饮料机 水箱 展会",
+          "language": "zh-CN",
+          "purpose": "USE_CASE",
+          "breadth": "BROAD",
+          "negative_terms": []
+        }
+      ],
+      "filters": [],
+      "result_target": {
+        "min_candidates": 1,
+        "max_candidates": 8
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-JOYBUY-DE",
+      "target": {
+        "platform_id": "jd-de-joybuy",
+        "platform_name": "Joybuy Germany",
+        "market": "DE",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.joybuy.de/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 5,
+      "search_language": "de",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-JOY-1",
+          "text": "Kaffeemaschine Getränkeautomat gewerblich",
+          "language": "de",
+          "purpose": "CORE_PRODUCT",
+          "breadth": "BROAD",
+          "negative_terms": []
+        }
+      ],
+      "filters": [],
+      "result_target": {
+        "min_candidates": 0,
+        "max_candidates": 5
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-GGM-DE",
+      "target": {
+        "platform_id": "ggm-gastro-de",
+        "platform_name": "GGM Gastro",
+        "market": "DE",
+        "channel_type": "RETAILER",
+        "base_url": "https://www.ggmgastro.com/de-de-eur/"
+      },
+      "scope_role": "SUPPLEMENTAL_DISCOVERY",
+      "priority": 6,
+      "search_language": "de",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-GGM-1",
+          "text": "Heißgetränkeautomat Kaffee Schokolade 230V",
+          "language": "de",
+          "purpose": "ALTERNATIVE_TERM",
+          "breadth": "PRECISE",
+          "negative_terms": []
+        }
+      ],
+      "filters": [],
+      "result_target": {
+        "min_candidates": 1,
+        "max_candidates": 5
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    }
+  ],
+  "discovery_policy": {
+    "enabled": true,
+    "min_platforms": 1,
+    "max_platforms": 3,
+    "selection_criteria": [
+      "德国交付匹配",
+      "可核验价格和规格"
+    ],
+    "selected_platform_ids": [
+      "ggm-gastro-de"
+    ]
+  },
+  "stop_conditions": {
+    "minimum_eligible_candidates": 5,
+    "minimum_price_levels": 3,
+    "all_must_search_attempted": true,
+    "stop_on_budget_exhaustion": false,
+    "maximum_queries": 20
+  },
+  "fallback_rules": [
+    {
+      "rule_id": "FB-ACCESS",
+      "trigger": "ACCESS_BLOCKED",
+      "action": "CHANGE_ACCESS_METHOD",
+      "target_task_id": null,
+      "notes": "按任务允许的方法降级并保留失败原因"
+    },
+    {
+      "rule_id": "FB-JOYBUY",
+      "trigger": "NO_RESULTS",
+      "action": "SKIP_WITH_REASON",
+      "target_task_id": "TASK-JOYBUY-DE",
+      "notes": "京东德国无有效结果时记录后继续其他平台"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T08:00:00Z",
+    "updated_at": "2026-08-26T08:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "planner_version": "0.1-candidate",
+    "overall_confidence": "HIGH",
+    "assumptions": [
+      "本文件用于Schema回归，尚未执行搜索"
+    ]
+  }
+}
+

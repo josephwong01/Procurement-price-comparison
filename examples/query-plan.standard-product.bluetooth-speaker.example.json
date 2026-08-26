@@ -1,0 +1,142 @@
+{
+"schema_version": "0.1",
+  "plan_id": "QP-SPEAKER-001",
+  "requirement_id": "PR-BT-SPEAKER-GIFT-001",
+  "procurement_type": "STANDARD_PRODUCT",
+  "plan_status": "READY",
+  "planning_context": {
+    "requirement_status": "SEARCH_READY",
+    "blocking_questions": [],
+    "warnings": [
+      "Logo工艺和到货日待确认"
+    ],
+    "assumptions": [],
+    "input_schema_version": "0.2-candidate.2"
+  },
+  "platform_tasks": [
+    {
+      "task_id": "TASK-1688-SPEAKER",
+      "target": {
+        "platform_id": "1688-cn",
+        "platform_name": "1688",
+        "market": "CN",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.1688.com/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 1,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "API",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": true,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-SPK-1",
+          "text": "蓝牙音响 企业礼品 logo定制 10个",
+          "language": "zh-CN",
+          "purpose": "CORE_PRODUCT",
+          "breadth": "BALANCED",
+          "negative_terms": []
+        }
+      ],
+      "filters": [
+        {
+          "filter_id": "F-SPK-PRICE",
+          "field": "unit_price_cny",
+          "operator": "LTE",
+          "value": 100,
+          "level": "HARD",
+          "application": "POST_FILTER",
+          "reason": "单价预算"
+        },
+        {
+          "filter_id": "F-SPK-MOQ",
+          "field": "moq",
+          "operator": "LTE",
+          "value": 10,
+          "level": "HARD",
+          "application": "POST_FILTER",
+          "reason": "采购数量"
+        }
+      ],
+      "result_target": {
+        "min_candidates": 3,
+        "max_candidates": 15
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-AMAZON-SPK",
+      "target": {
+        "platform_id": "amazon-de",
+        "platform_name": "Amazon Germany",
+        "market": "DE",
+        "channel_type": "MARKETPLACE",
+        "base_url": "https://www.amazon.de/"
+      },
+      "scope_role": "PREFERRED",
+      "priority": 2,
+      "search_language": "de",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-SPK-2",
+          "text": "Bluetooth Lautsprecher Werbegeschenk Logo",
+          "language": "de",
+          "purpose": "USE_CASE",
+          "breadth": "BALANCED",
+          "negative_terms": []
+        }
+      ],
+      "filters": [],
+      "result_target": {
+        "min_candidates": 1,
+        "max_candidates": 8
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    }
+  ],
+  "discovery_policy": {
+    "enabled": false,
+    "min_platforms": 0,
+    "max_platforms": 0,
+    "selection_criteria": [],
+    "selected_platform_ids": []
+  },
+  "stop_conditions": {
+    "minimum_eligible_candidates": 5,
+    "minimum_price_levels": 3,
+    "all_must_search_attempted": true,
+    "stop_on_budget_exhaustion": false,
+    "maximum_queries": 10
+  },
+  "fallback_rules": [],
+  "provenance": {
+    "created_at": "2026-08-26T08:00:00Z",
+    "updated_at": "2026-08-26T08:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "planner_version": "0.1-candidate",
+    "overall_confidence": "HIGH",
+    "assumptions": [
+      "尚未执行搜索"
+    ]
+  }
+}
+

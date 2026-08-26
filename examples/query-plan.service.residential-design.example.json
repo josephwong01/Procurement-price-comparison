@@ -1,0 +1,157 @@
+{
+"schema_version": "0.1",
+  "plan_id": "QP-DESIGN-001",
+  "requirement_id": "PR-RESIDENTIAL-DESIGN-001",
+  "procurement_type": "SERVICE",
+  "plan_status": "READY",
+  "planning_context": {
+    "requirement_status": "SEARCH_READY",
+    "blocking_questions": [],
+    "warnings": [
+      "风格、效果图数量和修改轮次待确认"
+    ],
+    "assumptions": [],
+    "input_schema_version": "0.2-candidate.2"
+  },
+  "platform_tasks": [
+    {
+      "task_id": "TASK-TAOBAO-DESIGN",
+      "target": {
+        "platform_id": "taobao-cn",
+        "platform_name": "淘宝",
+        "market": "CN",
+        "channel_type": "SERVICE_PLATFORM",
+        "base_url": "https://www.taobao.com/"
+      },
+      "scope_role": "MUST_SEARCH",
+      "priority": 1,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "API",
+        "allowed_fallback_methods": [
+          "BROWSER",
+          "SCREENSHOT"
+        ],
+        "authentication_expected": true,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-DES-1",
+          "text": "150平 全屋室内设计 平面图 3D建模 渲染效果图",
+          "language": "zh-CN",
+          "purpose": "CORE_PRODUCT",
+          "breadth": "BALANCED",
+          "negative_terms": [
+            "软件教程"
+          ]
+        }
+      ],
+      "filters": [
+        {
+          "filter_id": "F-DES-BUDGET",
+          "field": "all_in_service_fee_cny",
+          "operator": "LTE",
+          "value": 8000,
+          "level": "HARD",
+          "application": "MANUAL_REVIEW",
+          "reason": "页面入口价通常不是全包价"
+        },
+        {
+          "filter_id": "F-DES-LEAD",
+          "field": "lead_time_days",
+          "operator": "LTE",
+          "value": 14,
+          "level": "HARD",
+          "application": "MANUAL_REVIEW",
+          "reason": "支付后两周交付"
+        }
+      ],
+      "result_target": {
+        "min_candidates": 5,
+        "max_candidates": 20
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    },
+    {
+      "task_id": "TASK-ZBJ-DESIGN",
+      "target": {
+        "platform_id": "zbj-cn",
+        "platform_name": "猪八戒网",
+        "market": "CN",
+        "channel_type": "SERVICE_PLATFORM",
+        "base_url": "https://www.zbj.com/"
+      },
+      "scope_role": "SUPPLEMENTAL_DISCOVERY",
+      "priority": 2,
+      "search_language": "zh-CN",
+      "access_strategy": {
+        "primary_method": "PUBLIC_WEB",
+        "allowed_fallback_methods": [
+          "BROWSER"
+        ],
+        "authentication_expected": false,
+        "notes": null
+      },
+      "queries": [
+        {
+          "query_id": "Q-DES-2",
+          "text": "住宅室内设计 平面布局 3D效果图 服务商",
+          "language": "zh-CN",
+          "purpose": "SUPPLIER_DISCOVERY",
+          "breadth": "BALANCED",
+          "negative_terms": []
+        }
+      ],
+      "filters": [],
+      "result_target": {
+        "min_candidates": 1,
+        "max_candidates": 8
+      },
+      "execution_status": "PENDING",
+      "skip_reason": null,
+      "execution_result": null
+    }
+  ],
+  "discovery_policy": {
+    "enabled": true,
+    "min_platforms": 1,
+    "max_platforms": 3,
+    "selection_criteria": [
+      "设计服务平台或工作室",
+      "可查看住宅案例"
+    ],
+    "selected_platform_ids": [
+      "zbj-cn"
+    ]
+  },
+  "stop_conditions": {
+    "minimum_eligible_candidates": 5,
+    "minimum_price_levels": 2,
+    "all_must_search_attempted": true,
+    "stop_on_budget_exhaustion": false,
+    "maximum_queries": 12
+  },
+  "fallback_rules": [
+    {
+      "rule_id": "FB-DES-1",
+      "trigger": "DATA_INCOMPLETE",
+      "action": "DEFER_MANUAL_REVIEW",
+      "target_task_id": "TASK-TAOBAO-DESIGN",
+      "notes": "全包价、修改轮次和交期进入待询盘清单"
+    }
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T08:00:00Z",
+    "updated_at": "2026-08-26T08:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "planner_version": "0.1-candidate",
+    "overall_confidence": "MEDIUM",
+    "assumptions": [
+      "Query Planner不主动联系服务商"
+    ]
+  }
+}
+
