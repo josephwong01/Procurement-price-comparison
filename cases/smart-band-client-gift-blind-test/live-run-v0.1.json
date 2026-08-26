@@ -1,0 +1,93 @@
+{
+  "run_version": "0.1-live-blind-test",
+  "run_id": "E2E-SMART-BAND-GIFT-20260826",
+  "requirement_id": "PR-SMART-BAND-GIFT-BLIND-001",
+  "status": "PARTIAL",
+  "report_status": "SHORTLIST_ONLY",
+  "generated_at": "2026-08-26T17:10:00+08:00",
+  "coverage": [
+    {"platform": "JD China", "method": "PUBLIC_WEB", "status": "SUCCEEDED", "result": "Current product and price signals obtained."},
+    {"platform": "Taobao/Tmall", "method": "APIFY_API", "status": "PARTIAL", "run_ids": ["SgUPKugenbeZflmdg", "l4OEc0keyJ84IFLsu"], "dataset_ids": ["To3hvhHOgobhg1OWJ", "vtdbuSxbjX5Qf8PMv"], "result": "20 results collected; current-model query was dominated by accessories, generic products, and old models, so none entered the final shortlist."},
+    {"platform": "Amazon China", "method": "PUBLIC_WEB", "status": "FAILED", "result": "No stable current retail candidate found."},
+    {"platform": "Huawei Official", "method": "PUBLIC_WEB", "status": "SUCCEEDED", "result": "Band 11 and Band 11 Pro product, feature, and starting-price signals obtained."},
+    {"platform": "Xiaomi Official", "method": "PUBLIC_WEB", "status": "PARTIAL", "result": "Band 10 product and after-sales signals obtained; usable current price came from JD."},
+    {"platform": "Honor Official", "method": "PUBLIC_WEB", "status": "SUCCEEDED", "result": "Band 10 specifications and official price signals obtained."}
+  ],
+  "scoring_model": {
+    "dimensions": [
+      {"code": "PRODUCT_MATCH", "weight": 0.25},
+      {"code": "PRICE", "weight": 0.20},
+      {"code": "SUPPLIER", "weight": 0.20},
+      {"code": "DELIVERY", "weight": 0.20},
+      {"code": "QUALITY_RISK", "weight": 0.15}
+    ],
+    "note": "Delivery scores use channel capability signals; exact seven-day arrival requires address-level checkout confirmation."
+  },
+  "main_comparison_table": [
+    {
+      "rank": 1,
+      "candidate_id": "HUAWEI-BAND11-PRO",
+      "recommendation_role": "HIGHEST_CONFIGURATION",
+      "platform": "Huawei Official / JD China",
+      "product_title": "华为手环11 Pro",
+      "product_url": "https://consumer.huawei.com/cn/wearables/band11-pro/",
+      "unit_price_cny": 389,
+      "goods_total_cny": 778,
+      "overall_score": 91.0,
+      "supplier_signal": "品牌官网；京东当前有自营/正品行货带票和7天价保信号",
+      "advantages": ["1.62英寸高亮屏和独立GNSS，礼品档次最高", "专业睡眠与运动功能完整", "两件商品总价仍远低于预算"],
+      "disadvantages": ["相较基础手环溢价约100至140元/件", "具体颜色库存和7天到货需按地址确认"],
+      "eligibility": "CONDITIONAL"
+    },
+    {
+      "rank": 2,
+      "candidate_id": "XIAOMI-BAND10-STANDARD",
+      "recommendation_role": "BALANCED",
+      "platform": "JD China / Xiaomi Official",
+      "product_title": "小米手环10 标准版",
+      "product_url": "https://www.mi.com/shop/buy/detail?cfrom=search&product_id=25086",
+      "unit_price_cny": 289,
+      "goods_total_cny": 578,
+      "overall_score": 88.8,
+      "supplier_signal": "小米京东自营旗舰店；京东榜单显示近期高销量、正品行货带票",
+      "advantages": ["品牌认知、功能和价格平衡", "适合作为男女通用客户礼品", "京东自营更有利于7天内到货"],
+      "disadvantages": ["标准版具体颜色和SKU需在下单页再次锁定", "收礼人手机生态未知，部分联动体验可能不同"],
+      "eligibility": "CONDITIONAL"
+    },
+    {
+      "rank": 3,
+      "candidate_id": "HONOR-BAND10-STANDARD",
+      "recommendation_role": "LOWEST_COST",
+      "platform": "Honor Official / JD China",
+      "product_title": "荣耀手环10 标准版",
+      "product_url": "https://www.honor.com/cn/wearables/honor-band-10/",
+      "unit_price_cny": 249,
+      "goods_total_cny": 498,
+      "overall_score": 85.6,
+      "supplier_signal": "荣耀官网；官方规格完整，公开价格信号约249元",
+      "advantages": ["价格最低", "1.57英寸AMOLED、96种运动、最长14天续航", "轻薄，礼品适用性较好"],
+      "disadvantages": ["官方内购页面的211元商品不单独销售，不能作为可购价", "公开价格与最终京东成交价需下单前确认"],
+      "eligibility": "CONDITIONAL"
+    }
+  ],
+  "recommendation": {
+    "current_tendency": "GIFT_QUALITY_LEANING",
+    "primary_candidate_id": "HUAWEI-BAND11-PRO",
+    "balanced_candidate_id": "XIAOMI-BAND10-STANDARD",
+    "lowest_cost_candidate_id": "HONOR-BAND10-STANDARD",
+    "decision": "For a client gift and ample budget, Huawei Band 11 Pro is the provisional first choice. Choose Xiaomi Band 10 when broad familiarity and value are more important; choose Honor Band 10 for minimum cost."
+  },
+  "open_confirmations": [
+    "Confirm whether CNY 1000 is per unit or total; all three options satisfy either interpretation for two units except future price changes.",
+    "Confirm recipient phone ecosystem if known; otherwise prefer cross-platform basic functions and avoid ecosystem-dependent claims.",
+    "Confirm preferred colors and whether identical or two different colors are desired.",
+    "Confirm invoice requirement and gift packaging requirement.",
+    "Verify address-level stock and arrival within seven days immediately before ordering."
+  ],
+  "excluded_or_failed_channels": [
+    {"platform": "Taobao/Tmall", "reason": "Fresh API search returned mostly accessories, generic devices, and older models; insufficient confidence for shortlist."},
+    {"platform": "Amazon China", "reason": "No stable current retail offer found."},
+    {"candidate": "荣耀手环10内购专享页面", "reason": "Displayed CNY 211 offer states that the item is not sold separately."}
+  ]
+}
+

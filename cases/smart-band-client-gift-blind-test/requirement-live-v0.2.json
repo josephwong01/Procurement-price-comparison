@@ -1,0 +1,24 @@
+{
+  "requirement_id": "PR-SMART-BAND-GIFT-BLIND-001",
+  "schema_version": "0.2-live-test",
+  "procurement_type": "STANDARD_PRODUCT",
+  "product_name": "智能手环",
+  "quantity": {"value": 2, "unit": "piece"},
+  "use_case": "客户礼品",
+  "delivery_destination": "中国大陆",
+  "delivery_window_days": 7,
+  "budget": {
+    "currency": "CNY",
+    "maximum_unit_price": 1000,
+    "maximum_goods_total": 2000,
+    "interpretation_status": "ASSUMED_FROM_USER_WORDING"
+  },
+  "platform_scope": {
+    "required": ["JD China", "Taobao/Tmall", "Amazon China"],
+    "agent_added": ["Huawei Official", "Xiaomi Official", "Honor Official"]
+  },
+  "status": "SEARCH_READY_WITH_ASSUMPTION",
+  "open_confirmation": "Confirm whether CNY 1000 is a per-unit limit or a total limit. Current run assumes per-unit."
+}
+
+
