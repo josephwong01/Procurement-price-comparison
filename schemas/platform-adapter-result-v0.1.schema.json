@@ -1,0 +1,28 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://github.com/josephwong01/Procurement-price-comparison/schemas/platform-adapter-result-v0.1.schema.json",
+  "title":"Platform Adapter Result Schema v0.1",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","adapter_run_id","adapter","source","execution_status","input_records","output_artifacts","field_mappings","unmapped_fields","warnings","errors","provenance"],
+  "properties":{
+    "schema_version":{"const":"0.1"},"adapter_run_id":{"$ref":"#/$defs/nonEmptyString"},"adapter":{"$ref":"#/$defs/adapter"},"source":{"$ref":"#/$defs/source"},
+    "execution_status":{"enum":["SUCCEEDED","PARTIAL","FAILED","SKIPPED"]},"input_records":{"type":"array","items":{"$ref":"#/$defs/inputRecord"},"minItems":1},
+    "output_artifacts":{"type":"array","items":{"$ref":"#/$defs/outputArtifact"}},"field_mappings":{"type":"array","items":{"$ref":"#/$defs/fieldMapping"}},
+    "unmapped_fields":{"type":"array","items":{"$ref":"#/$defs/unmappedField"}},"warnings":{"type":"array","items":{"$ref":"#/$defs/nonEmptyString"}},
+    "errors":{"type":"array","items":{"$ref":"#/$defs/adapterError"}},"provenance":{"$ref":"#/$defs/provenance"}
+  },
+  "$defs":{
+    "nonEmptyString":{"type":"string","minLength":1},"nullableString":{"type":["string","null"]},"confidence":{"enum":["HIGH","MEDIUM","LOW","UNVERIFIED"]},
+    "adapter":{"type":"object","additionalProperties":false,"required":["adapter_id","adapter_version","adapter_family","platform_codes"],"properties":{"adapter_id":{"$ref":"#/$defs/nonEmptyString"},"adapter_version":{"$ref":"#/$defs/nonEmptyString"},"adapter_family":{"enum":["APIFY_MARKETPLACE","PUBLIC_WEB","AUTHENTICATED_BROWSER","SCREENSHOT_MANUAL","GENERIC_API"]},"platform_codes":{"type":"array","items":{"$ref":"#/$defs/nonEmptyString"},"minItems":1,"uniqueItems":true}}},
+    "source":{"type":"object","additionalProperties":false,"required":["platform_code","platform_name","access_method","market_country","source_url","observed_at","authentication_used"],"properties":{"platform_code":{"$ref":"#/$defs/nonEmptyString"},"platform_name":{"$ref":"#/$defs/nonEmptyString"},"access_method":{"enum":["API","PUBLIC_WEB","BROWSER","SCREENSHOT","MANUAL"]},"market_country":{"type":["string","null"],"pattern":"^[A-Z]{2}$"},"source_url":{"oneOf":[{"type":"string","format":"uri"},{"type":"null"}]},"observed_at":{"type":"string","format":"date-time"},"authentication_used":{"type":"boolean"}}},
+    "inputRecord":{"type":"object","additionalProperties":false,"required":["input_id","record_type","raw_reference","content_hash","redacted","observed_at"],"properties":{"input_id":{"$ref":"#/$defs/nonEmptyString"},"record_type":{"enum":["SEARCH_RESULT","PRODUCT_DETAIL","STORE_DETAIL","WEB_PAGE","BROWSER_CAPTURE","SCREENSHOT","MANUAL_NOTE"]},"raw_reference":{"$ref":"#/$defs/nonEmptyString"},"content_hash":{"$ref":"#/$defs/nullableString"},"redacted":{"type":"boolean"},"observed_at":{"type":"string","format":"date-time"}}},
+    "outputArtifact":{"type":"object","additionalProperties":false,"required":["artifact_type","artifact_id","schema_version","artifact_path","validation_status"],"properties":{"artifact_type":{"enum":["PRODUCT_CANDIDATE","SUPPLIER","EVIDENCE_ONLY"]},"artifact_id":{"$ref":"#/$defs/nonEmptyString"},"schema_version":{"$ref":"#/$defs/nonEmptyString"},"artifact_path":{"$ref":"#/$defs/nonEmptyString"},"validation_status":{"enum":["PASSED","FAILED","NOT_RUN"]}}},
+    "fieldMapping":{"type":"object","additionalProperties":false,"required":["mapping_id","input_id","source_path","target_artifact_id","target_path","transformation","value_status","confidence","evidence_ref"],"properties":{"mapping_id":{"$ref":"#/$defs/nonEmptyString"},"input_id":{"$ref":"#/$defs/nonEmptyString"},"source_path":{"$ref":"#/$defs/nonEmptyString"},"target_artifact_id":{"$ref":"#/$defs/nonEmptyString"},"target_path":{"$ref":"#/$defs/nonEmptyString"},"transformation":{"enum":["DIRECT","NORMALIZED","CALCULATED","ENUM_MAPPED","MANUAL_INTERPRETATION","NOT_MAPPED"]},"value_status":{"enum":["OBSERVED","DERIVED","ESTIMATED","UNKNOWN","CONFLICTING"]},"confidence":{"$ref":"#/$defs/confidence"},"evidence_ref":{"$ref":"#/$defs/nonEmptyString"}}},
+    "unmappedField":{"type":"object","additionalProperties":false,"required":["input_id","source_path","reason","disposition"],"properties":{"input_id":{"$ref":"#/$defs/nonEmptyString"},"source_path":{"$ref":"#/$defs/nonEmptyString"},"reason":{"$ref":"#/$defs/nonEmptyString"},"disposition":{"enum":["IGNORED","PRESERVED_RAW","NEEDS_MAPPING","SENSITIVE_REDACTED"]}}},
+    "adapterError":{"type":"object","additionalProperties":false,"required":["code","message","retryable","affected_input_id"],"properties":{"code":{"$ref":"#/$defs/nonEmptyString"},"message":{"$ref":"#/$defs/nonEmptyString"},"retryable":{"type":"boolean"},"affected_input_id":{"type":["string","null"]}}},
+    "provenance":{"type":"object","additionalProperties":false,"required":["started_at","finished_at","created_by","collection_run_id","overall_confidence","assumptions"],"properties":{"started_at":{"type":"string","format":"date-time"},"finished_at":{"type":"string","format":"date-time"},"created_by":{"$ref":"#/$defs/nonEmptyString"},"collection_run_id":{"$ref":"#/$defs/nullableString"},"overall_confidence":{"$ref":"#/$defs/confidence"},"assumptions":{"type":"array","items":{"$ref":"#/$defs/nonEmptyString"},"uniqueItems":true}}}
+  }
+}
+
+
+
