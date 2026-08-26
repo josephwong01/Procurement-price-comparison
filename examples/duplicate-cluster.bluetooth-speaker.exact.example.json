@@ -1,0 +1,89 @@
+{
+"schema_version": "0.1",
+  "record_type": "DUPLICATE_CLUSTER",
+  "cluster_id": "DUP-RECCI-RSKW26-BLUE",
+  "requirement_id": "PR-BT-SPEAKER-GIFT-001",
+  "canonical_candidate_id": "TAOBAO-726948050702-BLUE-QTY10",
+  "canonical_selection_basis": [
+    "LOCKED_SKU",
+    "COMPLETE_PRICE",
+    "EVIDENCE_QUALITY",
+    "DIRECT_URL"
+  ],
+  "members": [
+    {
+      "candidate_id": "TAOBAO-726948050702-BLUE-QTY10",
+      "platform_code": "TAOBAO-CN",
+      "supplier_id": "2215377569695",
+      "product_url": "https://item.taobao.com/item.htm?id=726948050702",
+      "fingerprint": {
+        "brand": "RECCI",
+        "model": "RSK-W26",
+        "manufacturer_part_number": null,
+        "gtin": null,
+        "selected_sku": "5266969924720",
+        "normalized_title": "recci rsk-w26 蓝色 蓝牙音箱",
+        "key_attributes": {
+          "color": "blue"
+        }
+      },
+      "member_role": "CANONICAL"
+    },
+    {
+      "candidate_id": "TAOBAO-726948050702-BLUE-QTY10-BROWSER-CAPTURE",
+      "platform_code": "TAOBAO-CN",
+      "supplier_id": "2215377569695",
+      "product_url": "https://item.taobao.com/item.htm?id=726948050702",
+      "fingerprint": {
+        "brand": "RECCI",
+        "model": "RSK-W26",
+        "manufacturer_part_number": null,
+        "gtin": null,
+        "selected_sku": "5266969924720",
+        "normalized_title": "recci rsk-w26 蓝色 蓝牙音箱",
+        "key_attributes": {
+          "color": "blue"
+        }
+      },
+      "member_role": "ALTERNATIVE_SOURCE"
+    }
+  ],
+  "relationships": [
+    {
+      "left_candidate_id": "TAOBAO-726948050702-BLUE-QTY10",
+      "right_candidate_id": "TAOBAO-726948050702-BLUE-QTY10-BROWSER-CAPTURE",
+      "relationship_type": "EXACT_DUPLICATE",
+      "confidence": "HIGH",
+      "matching_keys": [
+        "platform_code",
+        "product_url",
+        "supplier_id",
+        "brand",
+        "model",
+        "selected_sku",
+        "color"
+      ],
+      "conflicting_keys": [],
+      "reason": "同一淘宝商品、店铺和已选SKU，仅采集方式不同",
+      "evidence_refs": [
+        "cases/bluetooth-speaker-giveaway/product-candidate-taobao-726948050702-real-regression.json"
+      ]
+    }
+  ],
+  "resolution": "MERGE_EXACT_DUPLICATES",
+  "rationale": "比较主表只保留API记录为规范候选，但浏览器采集证据仍关联保留",
+  "evidence_refs": [
+    "cases/bluetooth-speaker-giveaway/product-candidate-taobao-726948050702-real-regression.json"
+  ],
+  "provenance": {
+    "created_at": "2026-08-26T10:00:00Z",
+    "updated_at": "2026-08-26T10:00:00Z",
+    "created_by": "Procurement-price-comparison Agent",
+    "engine_version": "0.1-candidate",
+    "overall_confidence": "HIGH",
+    "assumptions": [
+      "第二成员用于精确重复结构回归"
+    ]
+  }
+}
+
