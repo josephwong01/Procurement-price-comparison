@@ -1,0 +1,6 @@
+interface:
+  display_name: "采购询源与比价"
+  short_description: "从采购需求生成可追溯的多平台候选比价与初筛结论"
+  default_prompt: "Use $procurement-sourcing to turn this procurement need into a traceable candidate comparison."
+
+

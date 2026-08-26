@@ -1,0 +1,23 @@
+{
+  "run_version": "0.1",
+  "run_id": "E2E-COFFEE-MUNICH-2026-HISTORICAL-001",
+  "case_type": "equipment",
+  "status": "PARTIAL",
+  "requirement_id": "PR-2026-MUNICH-COFFEE-001",
+  "artifacts": [
+    {"stage": "REQUIREMENT", "path": "cases/coffee-beverage-machine-munich-2026/requirement-v0.2.1-platform-scope-candidate.json", "id_field": "requirement_id", "expected_id": "PR-2026-MUNICH-COFFEE-001"},
+    {"stage": "QUERY_PLAN", "path": "cases/coffee-beverage-machine-munich-2026/query-plan-v0.1-candidate-historical-execution-regression.json", "id_field": "plan_id", "expected_id": "QP-COFFEE-MUNICH-001-HISTORICAL-REPLAY"},
+    {"stage": "ADAPTER", "path": "examples/adapter-result.public-web-ggm.example.json", "id_field": "adapter_run_id", "expected_id": "ADAPTER-GGM-HAS2S"},
+    {"stage": "CANDIDATE", "path": "examples/product-candidate.equipment.coffee-machine.example.json", "id_field": "candidate_id", "expected_id": "GGM-HAS2S-DE-MUNICH-2026"},
+    {"stage": "SUPPLIER", "path": "cases/coffee-beverage-machine-munich-2026/supplier-ggm-gastro-lightweight-real-regression.json", "id_field": "supplier_id", "expected_id": "SUPPLIER-GGM-GASTRO"},
+    {"stage": "MATCH_DEDUP", "path": "cases/coffee-beverage-machine-munich-2026/duplicate-cluster-ggm-has2s-real-regression.json", "id_field": "cluster_id", "expected_id": "DUP-COFFEE-GGM-HAS2S"},
+    {"stage": "TCO_SCORE", "path": "cases/coffee-beverage-machine-munich-2026/tco-score-ggm-has2s-real-regression.json", "id_field": "candidate_id", "expected_id": "COFFEE-GGM-HAS2S"},
+    {"stage": "FINAL_OUTPUT", "path": "cases/coffee-beverage-machine-munich-2026/procurement-output-v0.1-candidate.3-regression.json", "id_field": "report_id", "expected_id": "REPORT-2026-MUNICH-COFFEE-REG-002"}
+  ],
+  "limitations": [
+    "This is a historical orchestration regression assembled from captures made at different stages.",
+    "Legacy candidate identifiers are not identical across every artifact, so this run does not claim fresh live-source lineage.",
+    "Exact Munich delivery cost, stock, final lead time, and supplier confirmation remain open."
+  ]
+}
+
