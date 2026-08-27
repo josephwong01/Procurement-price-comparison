@@ -1,5 +1,9 @@
-.DS_Store
-Thumbs.db
-*.tmp
-*.log
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Generated validation dependencies and caches
 work/
+__pycache__/
+*.py[cod]
