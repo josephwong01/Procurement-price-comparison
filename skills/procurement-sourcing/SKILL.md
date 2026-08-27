@@ -10,9 +10,9 @@ Build a reviewable procurement shortlist without pretending that unknown data is
 ## Workflow
 
 1. Locate the repository root by finding `docs/project-roadmap.md` and `schemas/`.
-2. Capture the buyer's need with the latest frozen Requirement Schema. Ask only about missing facts that would materially change search or eligibility; keep assumptions explicit.
-3. Generate a Query Plan from the frozen contract. Search the buyer-named platforms first, then add no more than three relevant channels when useful.
-4. Record every collection attempt through the Platform Adapter contract. Preserve source URL, observed time, original value, confidence, and access failure. Never store tokens, cookies, or authorization headers.
+2. Capture the buyer's need with the latest frozen Requirement Schema. Ask only about missing facts that would materially change search or eligibility; keep assumptions explicit. When quantity is greater than one, distinguish unit-price, line-total, and all-in budget. If the wording is ambiguous, either ask once or proceed with a reversible stated assumption and leave confirmation open.
+3. Generate a Query Plan from the frozen contract. Search the buyer-named platforms first, then add no more than three relevant channels when useful. Choose added channels using quantity, MOQ, destination, and delivery window; a wholesale marketplace need not be a primary channel for a small urgent order.
+4. Record every collection attempt through the Platform Adapter contract. Preserve source URL, observed time, original value, confidence, and access failure. Never store tokens, cookies, or authorization headers. Separate technical execution success from procurement usefulness: a search can succeed while yielding zero eligible candidates.
 5. Normalize successful results into Product Candidate and Supplier records. Keep observed, claimed, estimated, conflicting, and unknown values distinct.
 6. Match against the requirement and deduplicate only the comparison view. Preserve all source records.
 7. Calculate CNY TCO and a single composite score with the frozen model. Show non-CNY platform prices in parentheses and never treat unknown costs as zero.

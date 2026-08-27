@@ -40,8 +40,24 @@ Historical regression may reuse independently captured artifacts. If candidate i
 
 Never upgrade `PARTIAL` or `FAILED` merely because execution was attempted.
 
+Channel execution and candidate coverage are separate:
+
+- `SUCCEEDED` means the collection method returned usable records, not that those records match the requirement.
+- Record relevant-candidate count independently from raw-result count.
+- Accessories, misleading keyword matches, obsolete models, unavailable offers, and MOQ-incompatible offers are excluded with reasons rather than counted as coverage.
+- A required channel with zero relevant candidates remains visible in limitations; it does not force unrelated products into the shortlist.
+
+## Budget interpretation
+
+For quantity greater than one, do not silently collapse these different meanings:
+
+- maximum unit price;
+- maximum goods line total;
+- all-in budget including freight, tax, customization, or service fees.
+
+If only one number is supplied, store the working interpretation and its confirmation status. Prefer candidates that satisfy both plausible unit and total interpretations when that does not distort the result.
+
 ## Human gates
 
 Buyer confirmation is required before treating unresolved hard requirements, supplier claims, exact freight/tax, availability, lead time, or final selection as approved. The skill may recommend what to confirm and generate an RFQ draft, but supplier contact remains out of scope for the MVP.
-
 
