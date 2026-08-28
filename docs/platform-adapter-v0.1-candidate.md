@@ -14,6 +14,8 @@
 4. `SCREENSHOT_MANUAL`：截图或人工抄录的降级输入。
 5. `GENERIC_API`：未来其他结构化接口。
 
+Apify渠道运行前必须执行凭证和额度预检，规则见`skills/procurement-sourcing/references/apify-credential-preflight.md`。`users/me`的HTTP 200证明Token有效；`free_tier_exhausted`属于Actor额度不足，不能记录为凭证失效。Actor返回`SUCCEEDED`但Dataset只有错误对象时，技术执行与采购可用性必须分别记录。
+
 ## 核心规则
 
 1. 每次运行必须记录Adapter版本、平台、访问方式、输入记录和采集时间。
@@ -34,4 +36,3 @@
 - 登录浏览器或截图降级通过1例。
 - 输出引用现有Product Candidate与Supplier正式Schema。
 - 失败、部分成功、未知字段和敏感脱敏规则通过业务校验。
-

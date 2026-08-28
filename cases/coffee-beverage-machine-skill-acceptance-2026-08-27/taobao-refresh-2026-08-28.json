@@ -1,0 +1,126 @@
+{
+  "artifact_type": "platform_refresh_record",
+  "case_id": "coffee-beverage-machine-skill-acceptance-2026-08-27",
+  "platform": "TAOBAO-CN",
+  "observed_at": "2026-08-28T04:02:19Z",
+  "credential_preflight": {
+    "endpoint": "https://api.apify.com/v2/users/me",
+    "http_status": 200,
+    "token_valid": true,
+    "token_value_stored": false,
+    "note": "Token仅用于请求头；本记录不保存Token、Cookie或Authorization header。"
+  },
+  "search_run": {
+    "actor_id": "PsAKYWM55HG4AHXjK",
+    "actor_name": "zen-studio/taobao-search-scraper",
+    "run_id": "Hzp3nlQ3Dx0MmdSCu",
+    "dataset_id": "RKJodfXjK3caiWMvu",
+    "query": "咖啡饮料机",
+    "status": "SUCCEEDED",
+    "raw_result_count": 10,
+    "observed_cost_usd": 0.05
+  },
+  "detail_runs": [
+    {
+      "actor_id": "7jAvjQrZev2r4OZOq",
+      "run_id": "tmNl0qPMaaNYmXPRC",
+      "dataset_id": "4AstOHyyWPnuxGj3p",
+      "item_id": "618084462338",
+      "status": "SUCCEEDED"
+    },
+    {
+      "actor_id": "7jAvjQrZev2r4OZOq",
+      "run_id": "19eMd5KHMMkcp55kX",
+      "dataset_id": "JweXEx8qoZjKKBpnG",
+      "item_id": "599177481318",
+      "status": "SUCCEEDED"
+    },
+    {
+      "actor_id": "7jAvjQrZev2r4OZOq",
+      "run_id": "lD7yh4ZGaLe9JTCTH",
+      "dataset_id": "ZcoODd6tNjZatwGsP",
+      "item_id": "565058058111",
+      "status": "SUCCEEDED"
+    }
+  ],
+  "normalized_candidates": [
+    {
+      "candidate_id": "TB-XITIDAO-599177481318-4179293628127",
+      "product_url": "https://item.taobao.com/item.htm?id=599177481318",
+      "shop_name": "西堤岛设备品牌店",
+      "brand": "西堤岛",
+      "model": "X-41SCW",
+      "selected_sku_id": "4179293628127",
+      "selected_sku": "三种冷热饮+冷热水｜台式（电子制冷）",
+      "selected_sku_price_cny": 2130,
+      "stock": 200,
+      "total_sold": 300,
+      "voltage": "111V~240V（含）",
+      "power": "1600W",
+      "warranty": "2年",
+      "confidence": "HIGH"
+    },
+    {
+      "candidate_id": "TB-TANGQUE-618084462338-5262229818107",
+      "product_url": "https://item.taobao.com/item.htm?id=618084462338",
+      "shop_name": "唐雀旗舰店",
+      "brand": "唐雀",
+      "model": "TQ400",
+      "selected_sku_id": "5262229818107",
+      "selected_sku": "台式3冷3热+冰热水（电子制冷）",
+      "selected_sku_price_cny": 2380,
+      "stock": 86,
+      "total_sold": 200,
+      "voltage": "220V",
+      "power": "1750W",
+      "warranty": "12个月",
+      "confidence": "HIGH"
+    },
+    {
+      "candidate_id": "TB-MIAOQUE-565058058111-4075962964092",
+      "product_url": "https://item.taobao.com/item.htm?id=565058058111",
+      "shop_name": "妙雀官方品牌店",
+      "brand": "妙雀",
+      "selected_sku_id": "4075962964092",
+      "selected_sku": "台式3冷3热+冷热水（电子制冷）",
+      "selected_sku_price_cny": 2480,
+      "stock": 200,
+      "total_sold": 300,
+      "power": "1600W",
+      "warranty": "2年",
+      "confidence": "HIGH"
+    }
+  ],
+  "failed_targeted_runs": [
+    {
+      "query": "唐雀旗舰店 咖啡饮料机",
+      "run_id": "QOZWT80KKdVtIMhb0",
+      "dataset_id": "G0IQUhbCHDWyj3eWa",
+      "execution_status": "SUCCEEDED",
+      "procurement_usefulness": "FAILED",
+      "error": "free_tier_exhausted"
+    },
+    {
+      "query": "松崎京选旗舰店 咖啡饮料机",
+      "run_id": "913WDPdbVH64qjQMg",
+      "dataset_id": "gSSfmR5DwVLPKgvns",
+      "execution_status": "SUCCEEDED",
+      "procurement_usefulness": "FAILED",
+      "error": "free_tier_exhausted"
+    },
+    {
+      "query": "斯麦龙旗舰店 咖啡饮料机",
+      "run_id": "gsd3FzWNbDHgiW8Mw",
+      "dataset_id": "4w6vevVki0AmNK7mF",
+      "execution_status": "SUCCEEDED",
+      "procurement_usefulness": "FAILED",
+      "error": "free_tier_exhausted"
+    }
+  ],
+  "status": "PARTIAL",
+  "unfinished": [
+    "松崎京选旗舰店商品ID、精确SKU价格、销量和评分未刷新",
+    "斯麦龙旗舰店商品ID、精确SKU价格、销量和评分未刷新",
+    "所有中国候选的50Hz、桶装水/水箱和德国合规仍需下单前确认"
+  ]
+}
