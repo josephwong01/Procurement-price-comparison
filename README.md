@@ -47,4 +47,6 @@ python scripts/validate_mvp.py
 - 库存、运费、税费、交期等不能确认时必须标记未知或待询价，不得编造。
 - 搜索执行成功不等于产生有效候选；原始结果与有效候选数量分别记录。
 
+Apify 连接与浏览器 Console 排查见 [Apify 连接常见问题](docs/apify-browser-console-faq.md)。
+
 详见 [项目路线图](docs/project-roadmap.md) 和 [MVP 发布检查清单](docs/mvp-release-checklist-v0.1.md)。
