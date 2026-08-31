@@ -9,6 +9,19 @@ Build a reviewable procurement shortlist without pretending that unknown data is
 
 ## Workflow
 
+### 0. 首次运行与采集通道（必须先做）
+
+首次使用或换工作区时，先分别检查 Skill、`APIFY_TOKEN` 和采集通道；三者互不等价。不要因为 Token 存在就假设 Apify 工具已连接，也不要把缺少 MCP 当成唯一失败条件。
+
+按以下顺序选择允许的采集路径：
+
+1. 若当前会话实际暴露 Apify/Actor/Dataset 工具，使用该工具并记录运行证据。
+2. 若工具未暴露，使用 Codex 内置浏览器打开 `https://console.apify.com/`，让用户在浏览器中手动登录（不得索取密码、Token 或 Cookie），登录后通过 Console 运行授权 Actor、查看 Runs/Datasets。
+3. Chrome 扩展或 Chrome Native Host 缺失不等于 Apify 故障；只要 Codex 内置浏览器可访问并登录 Console，就可继续。
+4. 只有内置浏览器无法访问 Console 且没有 Apify 工具时，才报告缺少采集通道并停止，不要重复配置 Token、申请 Google 权限或修改采购文件。
+
+采集通道决策和常见故障见 [Apify 连接常见问题](../../docs/apify-browser-console-faq.md)。
+
 1. Locate the repository root by finding `docs/project-roadmap.md` and `schemas/`.
 2. Capture the buyer's need with the latest frozen Requirement Schema. Ask only about missing facts that would materially change search or eligibility; keep assumptions explicit. When quantity is greater than one, distinguish unit-price, line-total, and all-in budget. If the wording is ambiguous, either ask once or proceed with a reversible stated assumption and leave confirmation open.
 3. Generate a Query Plan from the frozen contract. Search the buyer-named platforms first, then add no more than three relevant channels when useful. Choose added channels using quantity, MOQ, destination, and delivery window; a wholesale marketplace need not be a primary channel for a small urgent order.

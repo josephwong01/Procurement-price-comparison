@@ -19,6 +19,8 @@ MVP v0.1 已完成：需求 Schema、最终输出、候选商品、供应商、Q
 
 Skill 入口位于 `skills/procurement-sourcing/SKILL.md`。输入采购品类、数量、预算、用途、收货地和到货要求；信息不完整时，Skill 会区分硬约束、偏好、假设和待确认项，并保留证据与未知项。
 
+首次使用或更换工作区时，请先阅读 [Apify 连接常见问题](docs/apify-browser-console-faq.md)。配置 `APIFY_TOKEN` 不会自动创建 Apify MCP；若当前会话没有 Apify 工具，可直接在 Codex 内置浏览器登录 Apify Console 后运行 Actor。
+
 ## 校验
 
 安装校验依赖后运行：
