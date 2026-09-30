@@ -7,6 +7,13 @@ description: Turn a procurement need into a traceable multi-platform candidate c
 
 Build a reviewable procurement shortlist without pretending that unknown data is confirmed.
 
+## Two operating modes
+
+- **Product-selection mode:** discover and score suitable directions/products from a use case, then ask the buyer to confirm the shortlist before price collection. Regression example: the Munich 2026 electronics-show S+ prize request.
+- **Fixed-list comparison mode:** compare only buyer-supplied products, item IDs, or URLs across platforms. Do not expand the product scope or run social discovery unless asked. Regression example: the coffee-machine comparison.
+
+If both are requested, finish selection and shortlist confirmation before starting comparison. If unclear, ask which mode is intended.
+
 ## Workflow
 
 ### 0. 首次运行与采集通道（必须先做）
@@ -24,13 +31,13 @@ Build a reviewable procurement shortlist without pretending that unknown data is
 
 1. Locate the repository root by finding `docs/project-roadmap.md` and `schemas/`.
 2. Capture the buyer's need with the latest frozen Requirement Schema. Ask only about missing facts that would materially change search or eligibility; keep assumptions explicit. When quantity is greater than one, distinguish unit-price, line-total, and all-in budget. If the wording is ambiguous, either ask once or proceed with a reversible stated assumption and leave confirmation open.
-3. If social trend discovery is requested, run it after requirement freeze and before candidate selection. Read [social-trend-discovery-v0.1.md](../../docs/social-trend-discovery-v0.1.md). It creates direction-level leads only.
-4. Generate a Query Plan and preserve the full candidate pool, including user additions, explicit exclusions, budget risks, and unresolved candidates.
+3. In product-selection mode, if social trend discovery is requested, run it after requirement freeze and before candidate selection. Read [social-trend-discovery-v0.1.md](../../docs/social-trend-discovery-v0.1.md). It creates direction-level leads only. Skip this in fixed-list comparison mode unless explicitly requested.
+4. Generate a Query Plan. Selection mode preserves the full candidate pool; fixed-list mode preserves the supplied list and records exclusions without inventing new products.
 5. Before collection, let the buyer choose Console/browser execution or authenticated API/adapter execution. Read [references/api-routing.md](references/api-routing.md); record every attempt in [references/api-incident-log.md](references/api-incident-log.md) without secrets.
 6. Record every collection attempt through the Platform Adapter contract. Preserve source URL, observed time, original value, confidence, run/dataset IDs, cost, and access failure. Separate technical execution success from procurement usefulness.
 7. Normalize successful results into Product Candidate and Supplier records. Keep observed, claimed, estimated, conflicting, and unknown values distinct. On validation failure, return to the same direction and choose a replacement; do not relax hard constraints.
 8. Match against the requirement and deduplicate only the comparison view. Preserve all source records.
-9. Before scoring, show dimensions and default weights and let the buyer keep or change them. Read [references/scoring-weights.md](references/scoring-weights.md) and recompute all candidates under one selected weight set.
+9. Before scoring in selection mode, show dimensions and default weights and let the buyer keep or change them. In fixed-list mode, rank by normalized landed cost and fit unless the buyer requests the full composite score. Read [references/scoring-weights.md](references/scoring-weights.md) when scoring is used.
 10. Calculate CNY TCO and a composite score with the selected model. Show non-CNY platform prices in parentheses and never treat unknown costs as zero.
 11. Produce the procurement output main table plus details, exclusions, risks, evidence, API/adapter log, and confirmations. A recommendation is provisional until its blocking confirmations are resolved.
 12. When shortlisted candidates still need supplier confirmation, prepare an RFQ question set and a structured answer sheet for manual use. Read [references/rfq-preparation.md](references/rfq-preparation.md). Do not send it.

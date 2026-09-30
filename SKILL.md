@@ -5,20 +5,32 @@ description: Structure enterprise procurement requirements and prepare traceable
 
 # Procurement Price Comparison
 
-Turn an informal procurement request into a reviewable requirement, then produce sourcing and comparison outputs whose assumptions and evidence can be audited.
+Turn an informal procurement request into a reviewable requirement, then produce sourcing and comparison outputs whose assumptions and evidence can be audited. This Skill has two explicit modes; do not silently mix them.
+
+## Mode routing
+
+### A. Product-selection mode
+
+Use when the buyer asks what products or directions would be suitable, gives a use case but no fixed product list, or wants new candidates discovered. Freeze the requirement, optionally use social trend discovery, build and score a direction/candidate pool, let the buyer confirm the shortlist, then collect prices. The Munich 2026 electronics-show S+ prize request (technology-forward, foreign-user friendly, CNY 1,000/unit, quantity 2) is the reference regression case.
+
+### B. Multi-platform price-comparison mode
+
+Use when the buyer supplies named products, item IDs, URLs, or a fixed shortlist. Do not invent new directions or run social discovery unless explicitly requested. Collect comparable offers across the requested platforms, normalize specification/condition/quantity/shipping/tax, calculate landed cost and confidence, and rank the supplied products. The coffee-machine request is the reference regression case: start from the supplied coffee-machine links and compare them; do not turn it into an open-ended product search.
+
+If the buyer asks for both, complete mode A through shortlist confirmation, then start mode B. If intent is ambiguous, ask one routing question: “Do you want candidate discovery, fixed-list price comparison, or both?”
 
 ## Workflow
 
-1. Parse the request with `schemas/procurement-requirement.schema.json`.
+1. Route to mode A or B before collecting anything. Parse the request with `schemas/procurement-requirement.schema.json`.
 2. Classify constraints as `HARD`, `PREFERENCE`, or `INFORMATION`.
 3. Determine readiness. Ask at most three blocking questions per round and never silently assume quantity, delivery deadline, tax rate, substitute brand, or customization process.
-4. Before candidate selection, optionally run social trend discovery: extract and score keywords, read only approved official APIs or low-volume public pages, and produce evidence-linked direction signals. Social signals expand directions but never replace platform verification.
-5. Build a platform × query × filter plan, then keep a complete candidate pool with user additions, explicit exclusions, budget risks, and unresolved candidates.
+4. In mode A, optionally run social trend discovery before candidate selection. In mode B, skip it unless explicitly requested.
+5. Build a platform × query × filter plan. Mode A keeps a complete candidate pool; mode B keeps the buyer's fixed list and records any rejected item with its reason.
 6. Before collection, let the buyer choose Console/browser execution or authenticated API/adapter execution. Read `skills/procurement-sourcing/references/api-routing.md`; record every attempt in `api-incident-log.md` without storing secrets.
-7. Normalize candidates before comparing them. Exclude candidates that fail hard constraints and use the documented same-direction fallback when validation fails.
-8. Before final scoring, show the scoring dimensions and default weights. Let the buyer keep or adjust them, then recompute every candidate under one selected weight set. Read `skills/procurement-sourcing/references/scoring-weights.md`.
+7. Normalize candidates/offers before comparing them. Exclude hard-constraint failures and mark unknowns instead of treating them as zero.
+8. In mode A, show scoring dimensions and weights before ranking. In mode B, rank primarily by normalized landed cost and fit; apply the same scoring model only when the buyer asks for a product-fit ranking. Read `skills/procurement-sourcing/references/scoring-weights.md` when scoring is used.
 9. Compare standardized landed cost, not display price. Keep product fit, supplier reliability, and unresolved procurement risks separate.
-10. Preserve the source URL, observation time, evidence, confidence, run/dataset IDs, cost, and access status for every material claim.
+10. Preserve source URL, observation time, evidence, confidence, run/dataset IDs, cost, and access status for every material claim.
 11. Present recommendations as decision support. Flag unknowns, exclusions, API failures, and generate an inquiry checklist for human confirmation.
 
 ## Required references
