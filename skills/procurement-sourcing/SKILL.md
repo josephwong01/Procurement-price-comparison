@@ -24,15 +24,17 @@ Build a reviewable procurement shortlist without pretending that unknown data is
 
 1. Locate the repository root by finding `docs/project-roadmap.md` and `schemas/`.
 2. Capture the buyer's need with the latest frozen Requirement Schema. Ask only about missing facts that would materially change search or eligibility; keep assumptions explicit. When quantity is greater than one, distinguish unit-price, line-total, and all-in budget. If the wording is ambiguous, either ask once or proceed with a reversible stated assumption and leave confirmation open.
-3. Generate a Query Plan from the frozen contract. Search the buyer-named platforms first, then add no more than three relevant channels when useful. Choose added channels using quantity, MOQ, destination, and delivery window; a wholesale marketplace need not be a primary channel for a small urgent order.
-   When the plan uses Apify, read [references/apify-credential-preflight.md](references/apify-credential-preflight.md) before the first Actor run. Verify the selected credential with `users/me`, distinguish authentication from network/TLS and Actor quota failures, and never expose the token.
-4. Record every collection attempt through the Platform Adapter contract. Preserve source URL, observed time, original value, confidence, and access failure. Never store tokens, cookies, or authorization headers. Separate technical execution success from procurement usefulness: a search can succeed while yielding zero eligible candidates.
-5. Normalize successful results into Product Candidate and Supplier records. Keep observed, claimed, estimated, conflicting, and unknown values distinct.
-6. Match against the requirement and deduplicate only the comparison view. Preserve all source records.
-7. Calculate CNY TCO and a single composite score with the frozen model. Show non-CNY platform prices in parentheses and never treat unknown costs as zero.
-8. Produce the procurement output main table plus details, exclusions, risks, evidence, and confirmations. Every candidate and exclusion must retain a clickable source URL. Target 6-10 total comparison rows across the main table and exclusions whenever the evidence supports them; if fewer usable or meaningfully excluded records exist, report the coverage gap instead of adding irrelevant products. A recommendation is provisional until its blocking confirmations are resolved.
-9. When shortlisted candidates still need supplier confirmation, prepare an RFQ question set and a structured answer sheet for manual use. Read [references/rfq-preparation.md](references/rfq-preparation.md). Do not send it.
-10. Run the repository validators, including `scripts/validate_end_to_end.py`, before calling the run complete.
+3. If social trend discovery is requested, run it after requirement freeze and before candidate selection. Read [social-trend-discovery-v0.1.md](../../docs/social-trend-discovery-v0.1.md). It creates direction-level leads only.
+4. Generate a Query Plan and preserve the full candidate pool, including user additions, explicit exclusions, budget risks, and unresolved candidates.
+5. Before collection, let the buyer choose Console/browser execution or authenticated API/adapter execution. Read [references/api-routing.md](references/api-routing.md); record every attempt in [references/api-incident-log.md](references/api-incident-log.md) without secrets.
+6. Record every collection attempt through the Platform Adapter contract. Preserve source URL, observed time, original value, confidence, run/dataset IDs, cost, and access failure. Separate technical execution success from procurement usefulness.
+7. Normalize successful results into Product Candidate and Supplier records. Keep observed, claimed, estimated, conflicting, and unknown values distinct. On validation failure, return to the same direction and choose a replacement; do not relax hard constraints.
+8. Match against the requirement and deduplicate only the comparison view. Preserve all source records.
+9. Before scoring, show dimensions and default weights and let the buyer keep or change them. Read [references/scoring-weights.md](references/scoring-weights.md) and recompute all candidates under one selected weight set.
+10. Calculate CNY TCO and a composite score with the selected model. Show non-CNY platform prices in parentheses and never treat unknown costs as zero.
+11. Produce the procurement output main table plus details, exclusions, risks, evidence, API/adapter log, and confirmations. A recommendation is provisional until its blocking confirmations are resolved.
+12. When shortlisted candidates still need supplier confirmation, prepare an RFQ question set and a structured answer sheet for manual use. Read [references/rfq-preparation.md](references/rfq-preparation.md). Do not send it.
+13. Run the repository validators, including `scripts/validate_end_to_end.py`, before calling the run complete.
 
 For artifact selection, stopping conditions, and status rules, read [references/workflow-contract.md](references/workflow-contract.md).
 
@@ -41,5 +43,7 @@ For artifact selection, stopping conditions, and status rules, read [references/
 - Stop at a candidate pool and preliminary comparison. Do not message suppliers, negotiate, order, approve, or write to ERP/OA unless separately authorized.
 - RFQ preparation means drafting questions and an answer structure only. It does not imply opening customer-service chat, submitting a form, or contacting a supplier.
 - Do not bypass access controls. Record a failed channel and use an allowed fallback.
+- Social collection is limited to approved official APIs, low-volume public-page reading, or user-supplied public links. Do not use Apify Actors for Reddit/X social discovery. For later authorized e-commerce comparison, Apify Actors are allowed when source, input, cost limit, access result, and Dataset provenance are recorded; do not bypass controls or conceal failures.
+- Do not use CAPTCHA bypass, proxy/fingerprint evasion, cookie theft/reuse, unauthorized bulk extraction, or infinite retries. Console availability does not prove an API/MCP channel exists.
 - A failed or partial stage stays failed or partial in the final report. List unfinished work explicitly.
 - Frozen schemas may receive compatibility fixes only; changed semantics require a new candidate version.
