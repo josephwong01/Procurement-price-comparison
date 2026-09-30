@@ -24,7 +24,7 @@ If the buyer asks for both, complete mode A through shortlist confirmation, then
 1. Route to mode A or B before collecting anything. Parse the request with `schemas/procurement-requirement.schema.json`.
 2. Classify constraints as `HARD`, `PREFERENCE`, or `INFORMATION`.
 3. Determine readiness. Ask at most three blocking questions per round and never silently assume quantity, delivery deadline, tax rate, substitute brand, or customization process.
-4. In mode A, optionally run social trend discovery before candidate selection. In mode B, skip it unless explicitly requested.
+4. In mode A, run social trend discovery before candidate selection by default. Mode B may skip it unless explicitly requested. If the required social stage is unavailable, mark the run `PARTIAL` and record the coverage limitation; do not silently proceed as if it was completed.
 5. Build a platform × query × filter plan. Mode A keeps a complete candidate pool; mode B keeps the buyer's fixed list and records any rejected item with its reason.
 6. Before collection, let the buyer choose Console/browser execution or authenticated API/adapter execution. Read `skills/procurement-sourcing/references/api-routing.md`; record every attempt in `api-incident-log.md` without storing secrets.
 7. Normalize candidates/offers before comparing them. Exclude hard-constraint failures and mark unknowns instead of treating them as zero.
@@ -32,6 +32,20 @@ If the buyer asks for both, complete mode A through shortlist confirmation, then
 9. Compare standardized landed cost, not display price. Keep product fit, supplier reliability, and unresolved procurement risks separate.
 10. Preserve source URL, observation time, evidence, confidence, run/dataset IDs, cost, and access status for every material claim.
 11. Present recommendations as decision support. Flag unknowns, exclusions, API failures, and generate an inquiry checklist for human confirmation.
+
+For every run, include a trace block for the selected mode. In selection mode it must contain:
+
+```yaml
+social_discovery:
+  required: true
+  platforms: []
+  keyword_scores: []
+  queries: []
+  results: []
+  limitations: []
+```
+
+An empty list is valid only when the stage is `UNAVAILABLE` or `PARTIAL` and the limitation explains why. Social signals expand directions and keywords; they never prove product authenticity, price, stock, customs feasibility, or purchase eligibility.
 
 ## Required references
 

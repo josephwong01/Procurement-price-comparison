@@ -9,7 +9,7 @@ Build a reviewable procurement shortlist without pretending that unknown data is
 
 ## Two operating modes
 
-- **Product-selection mode:** discover and score suitable directions/products from a use case, then ask the buyer to confirm the shortlist before price collection. Regression example: the Munich 2026 electronics-show S+ prize request.
+- **Product-selection mode:** discover and score suitable directions/products from a use case. Before candidate selection, run the required Reddit/X (or explicitly scoped equivalent) public trend-discovery stage, then ask the buyer to confirm the shortlist before price collection. Regression example: the Munich 2026 electronics-show S+ prize request.
 - **Fixed-list comparison mode:** compare only buyer-supplied products, item IDs, or URLs across platforms. Do not expand the product scope or run social discovery unless asked. Regression example: the coffee-machine comparison.
 
 If both are requested, finish selection and shortlist confirmation before starting comparison. If unclear, ask which mode is intended.
@@ -31,7 +31,7 @@ If both are requested, finish selection and shortlist confirmation before starti
 
 1. Locate the repository root by finding `docs/project-roadmap.md` and `schemas/`.
 2. Capture the buyer's need with the latest frozen Requirement Schema. Ask only about missing facts that would materially change search or eligibility; keep assumptions explicit. When quantity is greater than one, distinguish unit-price, line-total, and all-in budget. If the wording is ambiguous, either ask once or proceed with a reversible stated assumption and leave confirmation open.
-3. In product-selection mode, if social trend discovery is requested, run it after requirement freeze and before candidate selection. Read [social-trend-discovery-v0.1.md](../../docs/social-trend-discovery-v0.1.md). It creates direction-level leads only. Skip this in fixed-list comparison mode unless explicitly requested.
+3. In product-selection mode, run social trend discovery after requirement freeze and before candidate selection. Read [social-trend-discovery-v0.1.md](../../docs/social-trend-discovery-v0.1.md). It creates direction-level leads only. The trace must include `social_discovery.required=true`, platforms, keyword scores, queries, results, and limitations. If unavailable, mark the run `PARTIAL`; do not silently omit the stage. Skip it in fixed-list comparison mode unless explicitly requested.
 4. Generate a Query Plan. Selection mode preserves the full candidate pool; fixed-list mode preserves the supplied list and records exclusions without inventing new products.
 5. Before collection, let the buyer choose Console/browser execution or authenticated API/adapter execution. Read [references/api-routing.md](references/api-routing.md); record every attempt in [references/api-incident-log.md](references/api-incident-log.md) without secrets.
 6. Record every collection attempt through the Platform Adapter contract. Preserve source URL, observed time, original value, confidence, run/dataset IDs, cost, and access failure. Separate technical execution success from procurement usefulness.
